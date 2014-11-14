@@ -71,4 +71,4 @@ Diary Team Blue:
 Domain Model: Task sollten auch Alert auslösen können. Entweder man leitet von Correction ab oder eine separate Verbindung zu Alert
 Sequence Diagramm: Hier sollte ein Timeslot im Hintergrund laufen, damit der Arzt wissen kann, ob der Patient die Tasks gesehen hat oder nicht
 
-
+Test
