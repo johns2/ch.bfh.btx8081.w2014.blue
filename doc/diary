@@ -5,54 +5,54 @@ Diary Team Blue:
 
 25. September 2014:
 - Besprechung Task 1 und Task 2 (siehe Dokumentation), Festlegung folgender Punkte:
-1. Treffen und Feedbacks jeweils Donnerstag nachmittags, wenn m�glich w�hrend der Lektion
-2. Valdiation vor Weihnachten
+1. Treffen und Feedbacks jeweils Donnerstag nachmittags, wenn möglich während der Lektion
+2. Validation vor Weihnachten
 3. Final Version 18. Dezember
 4. Kommunikation via WhatsApp-Gruppe
 - Abwesend: johns2
 
 26. September 2014:
-- Pr�sentation Task 1 und 2
-- Er�ffnung WhatsApp-Gruppe
-- Aufgabenverteilung f�r n�chste Woche: Aktualisierung Diary (Sabine) und Upload der Dokumentation von Task 1+2 (Michel)
+- Präsentation Task 1 und 2
+- Eröffnung WhatsApp-Gruppe
+- Aufgabenverteilung für nächste Woche: Aktualisierung Diary (Sabine) und Upload der Dokumentation von Task 1+2 (Michel)
 - Alle Gruppenmitglieder waren anwesend
 
 27. September 2014:
-- Dokumentation von Task 01+02 in Word erstellt und Upload des .docx fils (Michel)
+- Dokumentation von Task 01+02 in Word erstellt und Upload des .docx files (Michel)
 
 08. Oktober 2014:
 - Interview Anfrage geschrieben an die Psychiatrische Klinik Koenigsfelden (Michel)
 
 09. Oktober 2014: 
 - Die Gruppe hat mit dem Design Thinking Prozess angefangen. Wir haben uns zuerst mal mit dem ganzen Prozess
-  auseinadergesetzt und sind uns der Funktionsweise des Design Thinking Prozesses bewusstgeworden, anschlissend haben wir
+  auseinandergesetzt und sind uns der Funktionsweise des Design Thinking Prozesses bewusstgeworden, anschliessend haben wir
   die Punkte "Scoping" and "Reserach" bearbeitet.
   - Alle Gruppenmitglieder waren anwesend
 
 10. Oktober 2014: 
-- Erstellen von Use-Cases durch alle Projektmitglieder . Kategorisierung und Zusammenfassung in f�nf Use-Cases.
-- Beginn Aufzeichung der Prototypen.
-- Aufgaben bis n�chste Woche: Prototypen in gemeinsamer Vorlage (wird per Mail/Github versendet von Stefan), 
-	Interview-Anfragen: MTRA (Pira), Kinder- & Jugendpsychologe (Sabine), Universit�re Psychiatrische Dienste Bern (Stefan), 
+- Erstellen von Use-Cases durch alle Projektmitglieder . Kategorisierung und Zusammenfassung in fünf Use-Cases.
+- Beginn Aufzeichnung der Prototypen.
+- Aufgaben bis nächste Woche: Prototypen in gemeinsamer Vorlage (wird per Mail/Github versendet von Stefan), 
+	Interview-Anfragen: MTRA (Pira), Kinder- & Jugendpsychologe (Sabine), Universitäre Psychiatrische Dienste Bern (Stefan), 
 	Psychiatrische Klinik Koenigsfelden (Antwort abwarten, Michel)
 - Alle Gruppenmitglieder waren anwesend
 	
 15. Oktober 2014:
 - Prototyp fertig erstellt (ganze Gruppe)
 - Word-Dokumentation (Stefan)
-- Pr�senatation vorbereiten f�r 16. Oktober 2014 (Sabine, Michel)
+- Präsentation vorbereiten für 16. Oktober 2014 (Sabine, Michel)
 - Alle Gruppenmitglieder waren anwesend
 
 16. Oktober 2014:
-- Interview mit Dr.med.Patrick Haemmerle (Kinder und Jugendpsychologe) durchgef�hrt von Sabine.
-- In der ersten Lektion haben wir als ganze Gruppe die Pr�sentation fertig erstellt und Stefan
+- Interview mit Dr.med.Patrick Haemmerle (Kinder und Jugendpsychologe) durchgeführt von Sabine.
+- In der ersten Lektion haben wir als ganze Gruppe die Präsentation fertig erstellt und Stefan
   hat noch die Word-Dokumentation von Task03 fertig geschrieben und hochgeladen.
-- In der zweiten Lektion wurde die Pr�sentation gehalten.
+- In der zweiten Lektion wurde die Präsentation gehalten.
 - Alle Gruppenmitglieder waren anwesend
 
 22. Oktober 2014:
 - Die Gruppe hat mit Task 06 "External Perspective" angefangen.
-- Wir haben uns als erstes mit der Entwicklung des Context Models besch�ftigt und es als entwurf auf Papier aufgezeichnet.
+- Wir haben uns als erstes mit der Entwicklung des Context Models beschäftigt und es als Entwurf auf Papier aufgezeichnet.
 - Alle Gruppenmitglieder waren anwesend
 
 29. Oktober 2014:
@@ -62,7 +62,7 @@ Diary Team Blue:
 31. Oktober 2014:
 - Task07 begonnen
 - Feedback Task06 (4/5 Punkte) erhalten: Context Model->Keine Pfeile, sondern Linien
-										 Activity Diagram->Daten/Aktivit�t unterscheiden, Tasks: Verben, Objects: Nomen, (mehr) Systeme anzeigen
+										 Activity Diagram->Daten/Aktivität unterscheiden, Tasks: Verben, Objects: Nomen, (mehr) Systeme anzeigen
 - Abwesend: mahep1
 
 05.November 2014
@@ -74,8 +74,38 @@ Sequence Diagramm: Hier sollte ein Timeslot im Hintergrund laufen, damit der Arz
 
 20. November 2014
 Installation von Vaadin und Maven auf allen Geräten. Umwandlung des Projekts in ein Maven-Projekt. 
-Beginn Tasks 9 und 10 (Scrum).
+Beginn Tasks 9 und 10 (Scrum and Software Architecture).
 - Alle Gruppenmitglieder waren anwesend
+
+26. November 2014
+Präsentation der Resultate Task 9 und 10
+- Feedback von Herr Vogel: 
+	--Task 9: 
+	- Die Verwendung des MVC-Patterns ist durch Vaadin vorgegeben
+	- Die konkret verwendeten Vaadin-Klassen müssen vor der Implementierung definiert werden
+	- In den Folien der Vorlesung sind die meistverwendeten Klassen bereits beschrieben 
+	- Die Entwicklung soll Use Case-/User Stories-betrieben funktionieren 
+	- Als Big-Picture für ein Use Case kann ein GUI's herbeigezogen werden
+	
+	Feedback andere Gruppen: 
+	- Datenbank ausserhalb der Applikation modellieren  
+	- Controller nimmt UI-Eingaben entgegen und reicht diese an ein Model weiter  
+	- z.B. Listener werden von der App implementiert. Vaadin bietet ein Interface
+	
+	--Task 10:
+	Product Backlog: 
+	- Login zusammenfassen (zu detailliert)
+	- Prioritäten nach Wichtigkeit der Use Case's setzen
+	
+	Sprint Backlog: 
+	- Nach einem Sprint soll eine komplette User Story umgesetzt werden -> Agiler Ansatz -> Einfache Sachen sollen zuerst komplett abgearbeitet werden (GUI, DB, Architektur)
+	- Ziel: Hohes Coupling erzielen, durch die Implementierung von Interfaces
+	- ID's: Product Backlog ID's erscheinen erneut im Sprint Backlog 
+	- Tests und Dokumentation werden während der Entwicklung durchgeführt - nicht am Schluss
+	
+	Feedback andere Gruppen: Pair-Developing höchstens im ersten Sprint, anschliessend nur eine verantwortliche Person
+
+- Abwesend: 
 
 
 
