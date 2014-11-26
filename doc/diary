@@ -5,16 +5,16 @@ Diary Team Blue:
 
 25. September 2014:
 - Besprechung Task 1 und Task 2 (siehe Dokumentation), Festlegung folgender Punkte:
-1. Treffen und Feedbacks jeweils Donnerstag nachmittags, wenn möglich während der Lektion
+1. Treffen und Feedbacks jeweils Donnerstag nachmittags, wenn mï¿½glich wï¿½hrend der Lektion
 2. Valdiation vor Weihnachten
 3. Final Version 18. Dezember
 4. Kommunikation via WhatsApp-Gruppe
 - Abwesend: johns2
 
 26. September 2014:
-- Präsentation Task 1 und 2
-- Eröffnung WhatsApp-Gruppe
-- Aufgabenverteilung für nächste Woche: Aktualisierung Diary (Sabine) und Upload der Dokumentation von Task 1+2 (Michel)
+- Prï¿½sentation Task 1 und 2
+- Erï¿½ffnung WhatsApp-Gruppe
+- Aufgabenverteilung fï¿½r nï¿½chste Woche: Aktualisierung Diary (Sabine) und Upload der Dokumentation von Task 1+2 (Michel)
 - Alle Gruppenmitglieder waren anwesend
 
 27. September 2014:
@@ -30,29 +30,29 @@ Diary Team Blue:
   - Alle Gruppenmitglieder waren anwesend
 
 10. Oktober 2014: 
-- Erstellen von Use-Cases durch alle Projektmitglieder . Kategorisierung und Zusammenfassung in fünf Use-Cases.
+- Erstellen von Use-Cases durch alle Projektmitglieder . Kategorisierung und Zusammenfassung in fï¿½nf Use-Cases.
 - Beginn Aufzeichung der Prototypen.
-- Aufgaben bis nächste Woche: Prototypen in gemeinsamer Vorlage (wird per Mail/Github versendet von Stefan), 
-	Interview-Anfragen: MTRA (Pira), Kinder- & Jugendpsychologe (Sabine), Universitäre Psychiatrische Dienste Bern (Stefan), 
+- Aufgaben bis nï¿½chste Woche: Prototypen in gemeinsamer Vorlage (wird per Mail/Github versendet von Stefan), 
+	Interview-Anfragen: MTRA (Pira), Kinder- & Jugendpsychologe (Sabine), Universitï¿½re Psychiatrische Dienste Bern (Stefan), 
 	Psychiatrische Klinik Koenigsfelden (Antwort abwarten, Michel)
 - Alle Gruppenmitglieder waren anwesend
 	
 15. Oktober 2014:
 - Prototyp fertig erstellt (ganze Gruppe)
 - Word-Dokumentation (Stefan)
-- Präsenatation vorbereiten für 16. Oktober 2014 (Sabine, Michel)
+- Prï¿½senatation vorbereiten fï¿½r 16. Oktober 2014 (Sabine, Michel)
 - Alle Gruppenmitglieder waren anwesend
 
 16. Oktober 2014:
-- Interview mit Dr.med.Patrick Haemmerle (Kinder und Jugendpsychologe) durchgeführt von Sabine.
-- In der ersten Lektion haben wir als ganze Gruppe die Präsentation fertig erstellt und Stefan
+- Interview mit Dr.med.Patrick Haemmerle (Kinder und Jugendpsychologe) durchgefï¿½hrt von Sabine.
+- In der ersten Lektion haben wir als ganze Gruppe die Prï¿½sentation fertig erstellt und Stefan
   hat noch die Word-Dokumentation von Task03 fertig geschrieben und hochgeladen.
-- In der zweiten Lektion wurde die Präsentation gehalten.
+- In der zweiten Lektion wurde die Prï¿½sentation gehalten.
 - Alle Gruppenmitglieder waren anwesend
 
 22. Oktober 2014:
 - Die Gruppe hat mit Task 06 "External Perspective" angefangen.
-- Wir haben uns als erstes mit der Entwicklung des Context Models beschäftigt und es als entwurf auf Papier aufgezeichnet.
+- Wir haben uns als erstes mit der Entwicklung des Context Models beschï¿½ftigt und es als entwurf auf Papier aufgezeichnet.
 - Alle Gruppenmitglieder waren anwesend
 
 29. Oktober 2014:
@@ -62,13 +62,20 @@ Diary Team Blue:
 31. Oktober 2014:
 - Task07 begonnen
 - Feedback Task06 (4/5 Punkte) erhalten: Context Model->Keine Pfeile, sondern Linien
-										 Activity Diagram->Daten/Aktivität unterscheiden, Tasks: Verben, Objects: Nomen, (mehr) Systeme anzeigen
+										 Activity Diagram->Daten/Aktivitï¿½t unterscheiden, Tasks: Verben, Objects: Nomen, (mehr) Systeme anzeigen
 - Abwesend: mahep1
 
-05.11.2014
-- Präsentation Task07
+05.November 2014
+- PrÃ¤sentation Task07
 -Korrekturen laut Feedback von Herr Vogel:
-Domain Model: Task sollten auch Alert auslösen können. Entweder man leitet von Correction ab oder eine separate Verbindung zu Alert
+Domain Model: Task sollten auch Alert auslÃ¶sen kÃ¶nnen. Entweder man leitet von Correction ab oder eine separate Verbindung zu Alert
 Sequence Diagramm: Hier sollte ein Timeslot im Hintergrund laufen, damit der Arzt wissen kann, ob der Patient die Tasks gesehen hat oder nicht
+- Alle Gruppenmitglieder waren anwesend
+
+20. November 2014
+Installation von Vaadin und Maven auf allen GerÃ¤ten. Umwandlung des Projekts in ein Maven-Projekt. 
+Beginn Tasks 9 und 10 (Scrum).
+- Alle Gruppenmitglieder waren anwesend
+
 
 
