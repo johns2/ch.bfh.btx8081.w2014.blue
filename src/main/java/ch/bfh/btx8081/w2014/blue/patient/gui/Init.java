@@ -8,7 +8,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
 /**
- * @author Riza
+ * @author Riza Ramsauer
  *
  */
 public class Init extends com.vaadin.ui.UI {      
