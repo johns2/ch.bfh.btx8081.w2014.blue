@@ -11,6 +11,8 @@ import com.vaadin.ui.Layout;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.Reindeer;
 
+import elemental.css.CSSStyleDeclaration.Overflow;
+
 /**
  * @author Pira
  *
@@ -31,8 +33,8 @@ public class PatientMainDesign {
 		private void createLayout()
 		{
 			layout.setStyleName(Reindeer.LAYOUT_BLUE);
-			layout.setWidth("320px");
-			layout.setHeight("480px");
+			layout.setWidth("100%");
+			layout.setHeight("100%");
 			createMainLayout();	
 			layout.addComponent(mainLayout);
 		}

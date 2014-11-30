@@ -3,19 +3,21 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.ui.Label;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
+
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.VerticalLayout;
 
 /**
  * @author Riza Ramsauer
  *
  */
-public class Init extends com.vaadin.ui.UI {      
-		  public void init(VaadinRequest request) {         
-		    getPage().setTitle("Login"); 
-		    VerticalLayout content = new VerticalLayout(); 
-		    setContent(content); 
-		    content.addComponent(new Label("Login"));   
-		  } 
+public class Init extends VerticalLayout implements View{      
+	@Override
+	public void enter(ViewChangeEvent event) 
+	{
+		ControllerUI.navigateTo(ControllerUI.LOGINVIEW);
+	}
+
 }

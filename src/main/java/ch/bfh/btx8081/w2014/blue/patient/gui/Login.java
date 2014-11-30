@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
 import com.vaadin.data.validator.EmailValidator;
+import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
@@ -14,7 +15,7 @@ import com.vaadin.ui.VerticalLayout;
  *
  */
 @SuppressWarnings("serial")
-public class Login extends VerticalLayout {
+public class Login extends VerticalLayout implements View {
 
 
 		final VerticalLayout layout;
@@ -49,7 +50,6 @@ public class Login extends VerticalLayout {
 		private void createLayout() {
 
 			design.setTitleLabel("MHC-Patient");
-			// verticalLayout_1
 			verticalLayout = buildVerticalLayout_1();
 			mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
 
@@ -65,9 +65,7 @@ public class Login extends VerticalLayout {
 		}
 
 		/**
-		 * Builds the verticallayout and defines the size. Edits the
-		 * verticallayout by adding the application logo, textfield and a
-		 * passwordfield.
+		 * Builds the verticallayout and defines the size. 
 		 */
 		private VerticalLayout buildVerticalLayout_1() {
 			// common part: create layout
@@ -85,7 +83,7 @@ public class Login extends VerticalLayout {
 			userField.setWidth("80%");
 			userField.setHeight("-1px");
 			userField.addValidator(new EmailValidator(
-					"Username must be an email address"));
+					"False Username, Username must be an email address"));
 			userField.setInvalidAllowed(false);
 			verticalLayout.addComponent(userField);
 			verticalLayout.setComponentAlignment(userField,
