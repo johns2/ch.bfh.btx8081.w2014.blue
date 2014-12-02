@@ -18,6 +18,13 @@ public class Init extends VerticalLayout implements View{
 	public void enter(ViewChangeEvent event) 
 	{
 		ControllerUI.navigateTo(ControllerUI.LOGINVIEW);
+		ControllerUI.navigateTo(ControllerUI.HOMEVIEW);
+		ControllerUI.navigateTo(ControllerUI.THERAPYVIEW);
+		ControllerUI.navigateTo(ControllerUI.MEDICATION);
+		
+		
+		
+		
 	}
 
 }
