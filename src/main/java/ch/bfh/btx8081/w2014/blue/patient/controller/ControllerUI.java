@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import ch.bfh.btx8081.w2014.blue.patient.gui.HomeView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Init;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Login;
+import ch.bfh.btx8081.w2014.blue.patient.gui.Medication;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Therapy;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -40,8 +41,8 @@ public class ControllerUI extends UI {
     	navigator = new Navigator(this, this);
     	navigator.addView("", new Init());
         navigator.addView(LOGINVIEW, new Login());
-    	navigator.addView(HOMEVIEW, new HomeView());
     	navigator.addView(THERAPYVIEW, new Therapy());
+    	
     	
         
     }
