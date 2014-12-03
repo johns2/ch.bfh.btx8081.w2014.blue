@@ -5,7 +5,7 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
 
 import javax.servlet.annotation.WebServlet;
 
-import ch.bfh.btx8081.w2014.blue.patient.gui.HomeView;
+import ch.bfh.btx8081.w2014.blue.patient.gui.Home;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Init;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Login;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Medication;
@@ -34,16 +34,14 @@ public class ControllerUI extends UI {
     @VaadinServletConfiguration(productionMode = false, ui = ControllerUI.class, widgetset = "ch.bfh.btx8081.w2014.blue.patient.gui.AppWidgetSet")
     public static class Servlet extends VaadinServlet {
     }
+    
     @Override
     protected void init(VaadinRequest request) 
     {
-    	
     	navigator = new Navigator(this, this);
     	navigator.addView("", new Init());
         navigator.addView(LOGINVIEW, new Login());
     	navigator.addView(THERAPYVIEW, new Therapy());
-    	
-    	
         
     }
     /**
@@ -58,7 +56,7 @@ public class ControllerUI extends UI {
     
     public static void navigateToHome(String view)
     { 
-    	navigator.addView(HOMEVIEW, new HomeView());
+    	navigator.addView(HOMEVIEW, new Home());
     	previousView = navigator.getState();
         navigator.navigateTo(view);
        
