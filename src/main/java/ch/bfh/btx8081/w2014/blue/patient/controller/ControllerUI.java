@@ -6,8 +6,8 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
 import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.btx8081.w2014.blue.patient.gui.HomeView;
-import ch.bfh.btx8081.w2014.blue.patient.gui.Init;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Login;
+import ch.bfh.btx8081.w2014.blue.patient.gui.Medication;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Therapy;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -36,15 +36,15 @@ public class ControllerUI extends UI {
     }
     
     @Override
-    protected void init(VaadinRequest request) 
+    protected void init(VaadinRequest request) 	
     {
     	navigator = new Navigator(this, this);
-    	navigator.addView("", new Init());
         navigator.addView(LOGINVIEW, new Login());
     	navigator.addView(THERAPYVIEW, new Therapy());
     	navigator.addView(HOMEVIEW, new HomeView());
+    	navigator.addView(MEDICATION, new Medication());
     	//Better: first page to be accessed by patient
-        //navigateTo(LOGINVIEW);
+        navigateTo(LOGINVIEW);
     }
     /**
      * 

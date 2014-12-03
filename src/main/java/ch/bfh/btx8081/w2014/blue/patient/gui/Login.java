@@ -9,6 +9,7 @@ import ch.bfh.btx8081.w2014.blue.patient.database.Data;
 import ch.bfh.btx8081.w2014.blue.patient.database.User;
 import ch.bfh.btx8081.w2014.blue.patient.model.HashValueGenerator;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.data.validator.EmailValidator;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.navigator.View;
@@ -20,7 +21,6 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.BaseTheme;
 
 /**
  * @author Pira
@@ -127,7 +127,6 @@ public class Login extends VerticalLayout implements View {
 	private void buildHorizontalLayout_1() {
 
 		homeButton = new Button("Login");
-		homeButton.setStyleName(BaseTheme.BUTTON_LINK);
 		homeButton.setImmediate(true);
 		homeButton.setWidth("100px");
 		homeButton.setHeight("-10px");

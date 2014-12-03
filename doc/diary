@@ -107,5 +107,15 @@ Präsentation der Resultate Task 9 und 10
 
 - Abwesend: 
 
+27. November 2014
+Started with developing in sprint 1.
 
+03. Dezember 2014
+GUI's are in a first version finished.
+Problems: 
+	- Init: Wird in Controller verschoben. Init class wird gelöscht.
+	
+	To Do's: 
+	- Login Authentification
+	- Refresh GUI's
 
