@@ -13,18 +13,13 @@ import com.vaadin.ui.VerticalLayout;
  * @author Riza Ramsauer
  *
  */
-public class Init extends VerticalLayout implements View{      
+public class Init extends VerticalLayout implements View { 
+	
 	@Override
 	public void enter(ViewChangeEvent event) 
 	{
+		// Don't access Controller from UI -> Cycle
 		ControllerUI.navigateTo(ControllerUI.LOGINVIEW);
-		ControllerUI.navigateTo(ControllerUI.HOMEVIEW);
-		ControllerUI.navigateTo(ControllerUI.THERAPYVIEW);
-		ControllerUI.navigateTo(ControllerUI.MEDICATION);
-		
-		
-		
-		
 	}
 
 }

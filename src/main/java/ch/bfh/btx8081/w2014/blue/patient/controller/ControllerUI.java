@@ -42,7 +42,8 @@ public class ControllerUI extends UI {
     	navigator.addView("", new Init());
         navigator.addView(LOGINVIEW, new Login());
     	navigator.addView(THERAPYVIEW, new Therapy());
-        
+    	//Better: first page to be accessed by patient
+        //navigateTo(LOGINVIEW);
     }
     /**
      * 
@@ -51,7 +52,7 @@ public class ControllerUI extends UI {
      */
     public static void navigateTo(String view)
     {
-    navigator.navigateTo(view);
+    	navigator.navigateTo(view);
     }
     
     public static void navigateToHome(String view)
