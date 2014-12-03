@@ -1,0 +1,1 @@
+$wnd.ch_bfh_btx8081_w2014_blue_patient_gui_AppWidgetSet.runAsyncCallback2('T8(907,1,jkd);_.vc=function T_b(){hRb((!aRb&&(aRb=new mRb),aRb),this.b.e)};Ped(Vh)(2);\n//# sourceURL=ch.bfh.btx8081.w2014.blue.patient.gui.AppWidgetSet-2.js\n')
