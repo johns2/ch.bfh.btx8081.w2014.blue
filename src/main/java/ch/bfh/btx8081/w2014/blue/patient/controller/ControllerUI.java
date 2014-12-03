@@ -5,10 +5,9 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
 
 import javax.servlet.annotation.WebServlet;
 
-import ch.bfh.btx8081.w2014.blue.patient.gui.Home;
+import ch.bfh.btx8081.w2014.blue.patient.gui.HomeView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Init;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Login;
-import ch.bfh.btx8081.w2014.blue.patient.gui.Medication;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Therapy;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -21,6 +20,7 @@ import com.vaadin.ui.UI;
  * @author Pira
  *
  */
+@SuppressWarnings("serial")
 public class ControllerUI extends UI {
 	public static final String HOMEVIEW = "home";
 	public static final String LOGINVIEW = "login";
@@ -42,6 +42,7 @@ public class ControllerUI extends UI {
     	navigator.addView("", new Init());
         navigator.addView(LOGINVIEW, new Login());
     	navigator.addView(THERAPYVIEW, new Therapy());
+    	navigator.addView(HOMEVIEW, new HomeView());
     	//Better: first page to be accessed by patient
         //navigateTo(LOGINVIEW);
     }
@@ -57,7 +58,7 @@ public class ControllerUI extends UI {
     
     public static void navigateToHome(String view)
     { 
-    	navigator.addView(HOMEVIEW, new Home());
+    	navigator.addView(HOMEVIEW, new HomeView());
     	previousView = navigator.getState();
         navigator.navigateTo(view);
        
