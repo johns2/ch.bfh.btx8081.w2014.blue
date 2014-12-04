@@ -127,11 +127,12 @@ public class Therapy extends VerticalLayout implements View{
 		doctorNotes.setHeight("-1px");
 		doctorNotes.setRequired(true);
 		doctorNotes.setImmediate(true);
+		doctorNotes.setRows(10);
 		verticalLayout.addComponent(doctorNotes);
 		verticalLayout.setComponentAlignment(doctorNotes,
 				Alignment.BOTTOM_CENTER);
 		
-		doctorNotes.setRows(10);
+		
 		
 		
 		// Table for Goals of Therapies
