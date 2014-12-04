@@ -145,9 +145,9 @@ public class Therapy extends VerticalLayout implements View{
 		goalTable.setImmediate(true);
 		
 		goalTable.setPageLength(10);
-		goalTable.addContainerProperty("String", String.class, "");
-		goalTable.addContainerProperty("Button", Button.class, "OK");
-		goalTable.addContainerProperty("Button", Button.class, "X");
+		goalTable.addContainerProperty("Goals", String.class, "");
+		goalTable.addContainerProperty("Done", Button.class, "");
+		goalTable.addContainerProperty("Not done", Button.class, "");
 		
 		verticalLayout.addComponent(goalTable);
 		verticalLayout.setComponentAlignment(goalTable,
