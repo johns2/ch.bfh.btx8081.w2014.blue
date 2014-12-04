@@ -99,8 +99,7 @@ public class Therapy extends VerticalLayout implements View{
 		therapyList.setImmediate(true);
 		therapyList.setNullSelectionAllowed(false);
 		verticalLayout.addComponent(therapyList);
-		verticalLayout.setComponentAlignment(therapyList,
-				Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(therapyList,Alignment.TOP_CENTER);
 		
 		
 		
@@ -113,8 +112,7 @@ public class Therapy extends VerticalLayout implements View{
 		therapyName.setRequired(true);
 		therapyName.setImmediate(true);
 		verticalLayout.addComponent(therapyName);
-		verticalLayout.setComponentAlignment(therapyName,
-				Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(therapyName,Alignment.MIDDLE_LEFT);
 		
 		
 		
@@ -129,8 +127,7 @@ public class Therapy extends VerticalLayout implements View{
 		doctorNotes.setImmediate(true);
 		doctorNotes.setRows(10);
 		verticalLayout.addComponent(doctorNotes);
-		verticalLayout.setComponentAlignment(doctorNotes,
-				Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(doctorNotes,Alignment.MIDDLE_RIGHT);
 		
 		
 		
@@ -151,14 +148,13 @@ public class Therapy extends VerticalLayout implements View{
 		goalTable.addContainerProperty("Not done", Button.class, "");
 		
 		verticalLayout.addComponent(goalTable);
-		verticalLayout.setComponentAlignment(goalTable,
-				Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(goalTable,Alignment.BOTTOM_LEFT);
 		
 		
 		// Button for OK
 		
 		buttonOk = new Button ("OK");
-		
+		/*
 		buttonOk.setWidth("80%");
 		buttonOk.setHeight("-1px");
 		
@@ -169,9 +165,9 @@ public class Therapy extends VerticalLayout implements View{
 		});
 		
 		
-		
+		*/
 		verticalLayout.addComponent(buttonOk);
-		verticalLayout.setComponentAlignment(buttonOk, Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(buttonOk, Alignment.BOTTOM_RIGHT);
 		
 		
 		        
@@ -181,7 +177,7 @@ public class Therapy extends VerticalLayout implements View{
 
 
 		buttonNotOk = new Button ("X");
-		
+		/*
 		buttonNotOk.setWidth("80%");
 		buttonNotOk.setHeight("-1px");
 		
@@ -190,10 +186,9 @@ public class Therapy extends VerticalLayout implements View{
 		        Notification.show("Send a Email to the Doctor");
 		    }
 		});
-		
+		*/
 		verticalLayout.addComponent(buttonNotOk);
-		verticalLayout.setComponentAlignment(buttonNotOk,
-			Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(buttonNotOk,Alignment.BOTTOM_CENTER);
 
 		
 		// Link for Mail to Doctor send
@@ -209,8 +204,7 @@ public class Therapy extends VerticalLayout implements View{
 		
 		
 		verticalLayout.addComponent(mailToDoctor);
-		verticalLayout.setComponentAlignment(mailToDoctor,
-			Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(mailToDoctor,Alignment.BOTTOM_CENTER);
 		
 		
 		return verticalLayout;
