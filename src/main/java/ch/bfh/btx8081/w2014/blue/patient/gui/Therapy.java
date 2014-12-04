@@ -168,9 +168,11 @@ public class Therapy extends VerticalLayout implements View{
 		});
 		
 		
+		
 		verticalLayout.addComponent(buttonOk);
-		verticalLayout.setComponentAlignment(buttonOk,
-			Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(buttonOk, Alignment.BOTTOM_CENTER);
+		
+		
 		        
 		
 		// Button for NOT OK
