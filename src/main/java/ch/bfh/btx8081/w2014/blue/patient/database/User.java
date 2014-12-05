@@ -13,18 +13,18 @@ public class User {
 	private String password;
 
 
-	public User(String name, String string) {
+	public User(String name, String password) {
 		this.name = name;
-		this.password = string;
+		this.password = password;
 	}
 
 
-	public String getName() {
+	public String getUsername() {
 	
 		return name;
 	}
 
-	public String getPasswort() {
+	public String getPassword() {
 	
 		return password;
 	}

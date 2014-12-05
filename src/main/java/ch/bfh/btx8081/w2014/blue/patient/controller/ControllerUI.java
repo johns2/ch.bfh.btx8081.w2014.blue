@@ -26,63 +26,59 @@ public class ControllerUI extends UI {
 	public static final String LOGINVIEW = "login";
 	public static final String THERAPYVIEW = "therapy";
 	public static final String MEDICATION = "medication";
-	
+
 	private static Navigator navigator;
 	private static String previousView;
-	
-    @WebServlet(value = "/*", asyncSupported = true)
-    @VaadinServletConfiguration(productionMode = false, ui = ControllerUI.class, widgetset = "ch.bfh.btx8081.w2014.blue.patient.gui.AppWidgetSet")
-    public static class Servlet extends VaadinServlet {
-    }
-    
-    @Override
-    protected void init(VaadinRequest request) 	
-    {
-    	navigator = new Navigator(this, this);
-        navigator.addView(LOGINVIEW, new Login());
-    	navigator.addView(THERAPYVIEW, new Therapy());
-    	navigator.addView(HOMEVIEW, new HomeView());
-    	navigator.addView(MEDICATION, new Medication());
-    	//Better: first page to be accessed by patient
-        navigateTo(LOGINVIEW);
-    }
-    /**
-     * 
-     * @param view
-     * 
-     */
-    public static void navigateTo(String view)
-    {
-    	navigator.navigateTo(view);
-    }
-    
-    public static void navigateToHome(String view)
-    { 
-    	navigator.addView(HOMEVIEW, new HomeView());
-    	previousView = navigator.getState();
-        navigator.navigateTo(view);
-       
-    }
-    
-    public static void navigateLogout(String view)
-    {
-    	previousView = navigator.getState();
-        navigator.navigateTo(view);
-        navigator.removeView(HOMEVIEW);
- 
-    }
-    
-    
-    /**
-     * 
-     * @return
-     */
-    public static String getPreviousView()
-    {
-		return previousView;
-    }
 
+	@WebServlet(value = "/*", asyncSupported = true)
+	@VaadinServletConfiguration(productionMode = false, ui = ControllerUI.class, widgetset = "ch.bfh.btx8081.w2014.blue.patient.gui.AppWidgetSet")
+	public static class Servlet extends VaadinServlet {
+	}
+
+	@Override
+	protected void init(VaadinRequest request) {
+		getSession().setAttribute("user", null);
+		navigator = new Navigator(this, this);
+		ControllerLogin loginController = new ControllerLogin(this);
+		navigator.addView(LOGINVIEW, new Login(loginController));
+		navigator.addView(THERAPYVIEW, new Therapy());
+		navigator.addView(HOMEVIEW, new HomeView());
+		navigator.addView(MEDICATION, new Medication());
+		navigateTo(LOGINVIEW);
+	}
+	
+	
+
+	/**
+	 * 
+	 * @param view
+	 * 
+	 */
+	public static void navigateTo(String view) {
+			navigator.navigateTo(view);
+	}
+
+	// public static void navigateToHome()
+	// {
+	// //navigator.addView(HOMEVIEW, new HomeView());
+	// previousView = navigator.getState();
+	// navigator.navigateTo(HOMEVIEW);
+	//
+	// }
+
+	public void navigateLogout(String view) {
+		previousView = navigator.getState();
+		navigator.navigateTo(view);
+		// navigator.removeView(HOMEVIEW);
+
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static String getPreviousView() {
+		return previousView;
+	}
 
 }
-
-

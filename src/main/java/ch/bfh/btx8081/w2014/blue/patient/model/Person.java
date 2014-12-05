@@ -7,7 +7,7 @@ package ch.bfh.btx8081.w2014.blue.patient.model;
  * 
  */
 
-public class Person {
+public abstract class Person {
 	private int userID;
 	private String PersonName;
 	

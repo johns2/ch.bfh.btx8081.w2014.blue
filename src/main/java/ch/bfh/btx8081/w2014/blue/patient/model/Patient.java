@@ -38,27 +38,37 @@ public class Patient extends Person {
 		this.password = password;
 	}
 
+	/**
+	 * Returns the username in lower case
+	 * 
+	 * @return username in lower case characters
+	 */
 	public String getUsername() {
+		username = username.toLowerCase();
 		return username;
 	}
 
 	/**
-	 * Sets the username in lower cases
+	 * Sets the username
 	 * 
 	 * @param username
-	 *            in lower case characters
 	 */
 	public void setUsername(String username) {
-		username = username.toLowerCase();
 		this.username = username;
 	}
 
+	/**
+	 * Returns the password of a Patient user
+	 * 
+	 * @return password
+	 * 
+	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * Sets the password of this Patient user.
+	 * Sets the password of a Patient user.
 	 * 
 	 * @param password
 	 *            Password in plaintext as a String
@@ -78,15 +88,22 @@ public class Patient extends Person {
 		return emailaddress;
 	}
 
+	/**
+	 * Returns the e-mail address of a Patient user
+	 * 
+	 * @return e-mail address
+	 * 
+	 */
 	public void setEmailaddress(String emailaddress) {
 		this.emailaddress = emailaddress;
 	}
 
 	/**
 	 * Chooses a Task and returns the ID of the Task
+	 * 
 	 * @return taskNumber Tasknumber as an Integer
 	 */
-	//To-Do: First implement Task-/Notification management
+	// To-Do: First implement Task-/Notification management
 	public int chooseTask() {
 		return 0;
 	}
@@ -96,7 +113,7 @@ public class Patient extends Person {
 	 * 
 	 */
 	public void informDoctor() {
-		//To Do: Implement Task-/Notification management
+		// To Do: Implement Task-/Notification management
 	}
 
 }
