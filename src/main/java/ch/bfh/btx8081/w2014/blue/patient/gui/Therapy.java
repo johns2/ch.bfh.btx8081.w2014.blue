@@ -85,8 +85,8 @@ public class Therapy extends VerticalLayout implements View{
 		// common part: create layout
 		verticalLayout = new VerticalLayout();
 		verticalLayout.setImmediate(false);
-		verticalLayout.setWidth("780px");
-		verticalLayout.setHeight("1440px");
+		verticalLayout.setWidth("260px");
+		verticalLayout.setHeight("720px");
 		verticalLayout.setMargin(false);
 
 		// Comobox for Therapies
