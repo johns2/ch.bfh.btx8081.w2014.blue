@@ -58,7 +58,7 @@ public class HomeView extends VerticalLayout implements View {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				Notification.show("Go to medication page");
-				ControllerUI.navigateTo(ControllerUI.MEDICATION);
+				//ControllerUI.navigateTo(ControllerUI.MEDICATION);
 
 			}
 		});
@@ -124,7 +124,7 @@ public class HomeView extends VerticalLayout implements View {
 		logoutButton = new Button("Logout");
 		verticalLayout.addComponent(logoutButton);
 		verticalLayout.setComponentAlignment(logoutButton,
-				Alignment.BOTTOM_CENTER);
+				Alignment.TOP_CENTER);
 
 		return verticalLayout;
 	}
