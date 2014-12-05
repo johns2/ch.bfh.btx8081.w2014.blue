@@ -85,8 +85,8 @@ public class Therapy extends VerticalLayout implements View{
 		// common part: create layout
 		verticalLayout = new VerticalLayout();
 		verticalLayout.setImmediate(false);
-		verticalLayout.setWidth("260px");
-		verticalLayout.setHeight("720px");
+		verticalLayout.setWidth("780px");
+		verticalLayout.setHeight("1440px");
 		verticalLayout.setMargin(false);
 
 		// Comobox for Therapies
@@ -112,7 +112,7 @@ public class Therapy extends VerticalLayout implements View{
 		therapyName.setRequired(true);
 		therapyName.setImmediate(true);
 		verticalLayout.addComponent(therapyName);
-		verticalLayout.setComponentAlignment(therapyName,Alignment.MIDDLE_LEFT);
+		verticalLayout.setComponentAlignment(therapyName,Alignment.MIDDLE_CENTER);
 		
 		
 		
@@ -148,7 +148,7 @@ public class Therapy extends VerticalLayout implements View{
 		goalTable.addContainerProperty("Not done", Button.class, "");
 		
 		verticalLayout.addComponent(goalTable);
-		verticalLayout.setComponentAlignment(goalTable,Alignment.BOTTOM_LEFT);
+		verticalLayout.setComponentAlignment(goalTable,Alignment.MIDDLE_LEFT);
 		
 		
 		// Button for OK
@@ -188,7 +188,7 @@ public class Therapy extends VerticalLayout implements View{
 		});
 		*/
 		verticalLayout.addComponent(buttonNotOk);
-		verticalLayout.setComponentAlignment(buttonNotOk,Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(buttonNotOk,Alignment.BOTTOM_LEFT);
 
 		
 		// Link for Mail to Doctor send
