@@ -1,5 +1,9 @@
 package ch.bfh.btx8081.w2014.blue.patient.model;
 
+import java.util.List;
+
+import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
+
 /**
  * 
  * This model implements a patient user of our application with his credentials,
@@ -17,6 +21,7 @@ public class Patient extends Person {
 	private String username;
 	private String password;
 	private String emailaddress;
+	private List<Medication> medications;
 
 	/**
 	 * The Patient constructor creates a Patient Object which extends the Person
@@ -36,6 +41,14 @@ public class Patient extends Person {
 		super(userID, PersonName);
 		this.username = username;
 		this.password = password;
+	}
+	
+	/**
+	 * @return The Medications for this patient
+	 */
+	public List<Medication> getMedication() {
+		this.medications = XmlFileReader.getMedication(this);
+		return this.medications;
 	}
 
 	/**
