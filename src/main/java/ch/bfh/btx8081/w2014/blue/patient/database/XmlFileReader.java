@@ -19,10 +19,6 @@ import ch.bfh.btx8081.w2014.blue.patient.model.Medication;
 import ch.bfh.btx8081.w2014.blue.patient.model.Patient;
 import ch.bfh.btx8081.w2014.blue.patient.model.Therapy;
 
-/**
- * 
- * @author R. Ramsauer
- */
 public class XmlFileReader {
 
 	private static final String MEDICATION_PATH = "Medication.xml";
