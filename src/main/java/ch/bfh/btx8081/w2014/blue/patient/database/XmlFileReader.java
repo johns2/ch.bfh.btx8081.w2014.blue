@@ -1,5 +1,10 @@
 package ch.bfh.btx8081.w2014.blue.patient.database;
 
+/**
+ * 
+ * @author R. Ramsauer
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
