@@ -102,6 +102,7 @@ public class Login extends VerticalLayout implements View {
 		// textField_1 for insert the Username
 
 		userField = new TextField(" Username:");
+		userField.setIcon(FontAwesome.USER);
 		userField.setImmediate(true);
 		userField.setRequired(true);
 		userField.setWidth("80%");
@@ -115,6 +116,7 @@ public class Login extends VerticalLayout implements View {
 
 		// passwordField_1 for insert the Password
 		passwordField = new PasswordField("Password: ");
+		passwordField.setIcon(FontAwesome.KEY);
 		passwordField.setImmediate(false);
 		passwordField.setWidth("80%");
 		passwordField.setHeight("-1px");
