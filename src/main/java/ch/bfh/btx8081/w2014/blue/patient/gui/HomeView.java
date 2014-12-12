@@ -5,8 +5,11 @@ package ch.bfh.btx8081.w2014.blue.patient.gui;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 
+import com.sun.jna.platform.unix.X11.Font;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FontAwesome;
+import com.vaadin.server.FontIcon;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -112,16 +115,19 @@ public class HomeView extends VerticalLayout implements View {
 		verticalLayout.setMargin(false);
 
 		medicationButton = new Button("Medication");
+		medicationButton.setIcon(FontAwesome.MEDKIT);
 		verticalLayout.addComponent(medicationButton);
 		verticalLayout.setComponentAlignment(medicationButton,
 				Alignment.TOP_CENTER);
 
 		therapyButton = new Button("Therapy");
+		therapyButton.setIcon(FontAwesome.TH);
 		verticalLayout.addComponent(therapyButton);
 		verticalLayout.setComponentAlignment(therapyButton,
 				Alignment.MIDDLE_CENTER);
 
 		logoutButton = new Button("Logout");
+		logoutButton.setIcon(FontAwesome.SIGN_OUT);
 		verticalLayout.addComponent(logoutButton);
 		verticalLayout.setComponentAlignment(logoutButton,
 				Alignment.TOP_CENTER);
