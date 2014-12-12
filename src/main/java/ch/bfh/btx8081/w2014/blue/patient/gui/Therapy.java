@@ -3,22 +3,17 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
-import com.vaadin.data.validator.EmailValidator;
+
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
+
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.Link;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.PasswordField;
-import com.vaadin.ui.Table;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 
 
 
@@ -34,12 +29,8 @@ public class Therapy extends VerticalLayout implements View{
 	private VerticalLayout verticalLayout;
 	private PatientMainDesign design;
 	protected ComboBox therapyList;
-	protected TextField therapyName;
-	protected TextArea doctorNotes;
-	protected Table goalTable;
-	protected Link mailToDoctor;
-	protected Button buttonOk;
-	protected Button buttonNotOk;
+	protected Button buttonNext1;
+
 	
 	/**
 	 * Constructs a THERAPYVIEW on the base of different parameters.
@@ -71,8 +62,7 @@ public class Therapy extends VerticalLayout implements View{
 		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
 
 	}
-	
-	
+
 	
 	
 	
@@ -86,7 +76,7 @@ public class Therapy extends VerticalLayout implements View{
 		verticalLayout = new VerticalLayout();
 		verticalLayout.setImmediate(false);
 		verticalLayout.setWidth("260px");
-		verticalLayout.setHeight("720px");
+		verticalLayout.setHeight("360px");
 		verticalLayout.setMargin(false);
 
 		// Comobox for Therapies
@@ -101,111 +91,20 @@ public class Therapy extends VerticalLayout implements View{
 		verticalLayout.addComponent(therapyList);
 		verticalLayout.setComponentAlignment(therapyList,Alignment.TOP_CENTER);
 		
+		// Button for Next
 		
-		
-		// Textfield for TherayTitleName
-		
-		therapyName = new TextField(" Therapyname: ");
-		
-		therapyName.setWidth("80%");
-		therapyName.setHeight("-1px");
-		therapyName.setRequired(true);
-		therapyName.setImmediate(true);
-		verticalLayout.addComponent(therapyName);
-		verticalLayout.setComponentAlignment(therapyName,Alignment.MIDDLE_CENTER);
-		
-		
-		
-		
-		// Textarea for TherapyNotes
-		
-		doctorNotes = new TextArea ("DoctorNotes: ");
-		
-		doctorNotes.setWidth("80%");
-		doctorNotes.setHeight("-1px");
-		doctorNotes.setRequired(true);
-		doctorNotes.setImmediate(true);
-		doctorNotes.setRows(10);
-		verticalLayout.addComponent(doctorNotes);
-		verticalLayout.setComponentAlignment(doctorNotes,Alignment.MIDDLE_RIGHT);
-		
-		
-		
-		
-		// Table for Goals of Therapies
-		
-		goalTable = new Table ("Therapy Goals");
-		
-		goalTable.setWidth("80%");
-		goalTable.setHeight("-1px");
-		
-		goalTable.setRequired(true);
-		goalTable.setImmediate(true);
-		
-		goalTable.setPageLength(10);
-		goalTable.addContainerProperty("Goals", String.class, "");
-		goalTable.addContainerProperty("Done", Button.class, "");
-		goalTable.addContainerProperty("Not done", Button.class, "");
-		
-		verticalLayout.addComponent(goalTable);
-		verticalLayout.setComponentAlignment(goalTable,Alignment.MIDDLE_LEFT);
-		
-		
-		// Button for OK
-		
-		buttonOk = new Button ("OK");
-		/*
-		buttonOk.setWidth("80%");
-		buttonOk.setHeight("-1px");
-		
-		buttonOk.addClickListener(new Button.ClickListener() {
-		    public void buttonClick(ClickEvent event) {
-		        Notification.show("Well done !");
-		    }
+		buttonNext1 = new Button ("Next");
+		buttonNext1.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW2);
+
+			}
 		});
 		
-		
-		*/
-		verticalLayout.addComponent(buttonOk);
-		verticalLayout.setComponentAlignment(buttonOk, Alignment.BOTTOM_RIGHT);
-		
-		
-		        
-		
-		// Button for NOT OK
-		
-
-
-		buttonNotOk = new Button ("X");
-		/*
-		buttonNotOk.setWidth("80%");
-		buttonNotOk.setHeight("-1px");
-		
-		buttonNotOk.addClickListener(new Button.ClickListener() {
-		    public void buttonClick(ClickEvent event) {
-		        Notification.show("Send a Email to the Doctor");
-		    }
-		});
-		*/
-		verticalLayout.addComponent(buttonNotOk);
-		verticalLayout.setComponentAlignment(buttonNotOk,Alignment.BOTTOM_LEFT);
-
-		
-		// Link for Mail to Doctor send
-		
-		Link mailToDoctor = new Link("Send a reprot to Doctor",
-		        new ExternalResource("Doctor@bfh.ch"));
-		
-		mailToDoctor.setWidth("80%");
-		mailToDoctor.setHeight("-1px");
-		
-		
-		mailToDoctor.setImmediate(true);
-		
-		
-		verticalLayout.addComponent(mailToDoctor);
-		verticalLayout.setComponentAlignment(mailToDoctor,Alignment.BOTTOM_CENTER);
-		
+		verticalLayout.addComponent(buttonNext1);
+		verticalLayout.setComponentAlignment(buttonNext1,Alignment.MIDDLE_CENTER);
 		
 		return verticalLayout;
 		
@@ -217,7 +116,6 @@ public class Therapy extends VerticalLayout implements View{
 	    
 	}
     
-
     
 
 }
