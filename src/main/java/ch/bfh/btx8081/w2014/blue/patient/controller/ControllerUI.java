@@ -9,6 +9,8 @@ import ch.bfh.btx8081.w2014.blue.patient.gui.HomeView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Login;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Medication;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Therapy;
+import ch.bfh.btx8081.w2014.blue.patient.gui.Therapy2;
+import ch.bfh.btx8081.w2014.blue.patient.gui.Therapy3;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -25,6 +27,8 @@ public class ControllerUI extends UI {
 	public static final String HOMEVIEW = "home";
 	public static final String LOGINVIEW = "login";
 	public static final String THERAPYVIEW = "therapy";
+	public static final String THERAPYVIEW2 = "therapy2";
+	public static final String THERAPYVIEW3 = "therapy3";
 	public static final String MEDICATION = "medication";
 
 	private static Navigator navigator;
@@ -42,6 +46,8 @@ public class ControllerUI extends UI {
 		ControllerLogin loginController = new ControllerLogin(this);
 		navigator.addView(LOGINVIEW, new Login(loginController));
 		navigator.addView(THERAPYVIEW, new Therapy());
+		navigator.addView(THERAPYVIEW2, new Therapy2());
+		navigator.addView(THERAPYVIEW3, new Therapy3());
 		navigator.addView(HOMEVIEW, new HomeView());
 		navigator.addView(MEDICATION, new Medication());
 		navigateTo(LOGINVIEW);
