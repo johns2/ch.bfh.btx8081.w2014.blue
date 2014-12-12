@@ -13,6 +13,7 @@ import ch.bfh.btx8081.w2014.blue.patient.model.HashValueGenerator;
 import com.vaadin.annotations.Theme;
 import com.vaadin.data.validator.AbstractValidator;
 import com.vaadin.data.validator.EmailValidator;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -135,6 +136,7 @@ public class Login extends VerticalLayout implements View {
 	private void buildHorizontalLayout_1() {
 
 		homeButton = new Button("Login");
+		homeButton.setIcon(FontAwesome.SIGN_IN);
 		homeButton.setImmediate(true);
 		homeButton.setWidth("100px");
 		homeButton.setHeight("-10px");
