@@ -33,8 +33,8 @@ public class PatientMainDesign {
 		private void createLayout()
 		{
 			layout.setStyleName(Reindeer.LAYOUT_BLUE);
-			layout.setWidth("100%");
-			layout.setHeight("100%");
+			layout.setWidth("25%");
+			layout.setHeight("75%");
 			createMainLayout();	
 			layout.addComponent(mainLayout);
 		}
