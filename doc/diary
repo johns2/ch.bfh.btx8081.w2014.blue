@@ -109,6 +109,7 @@ Präsentation der Resultate Task 9 und 10
 
 27. November 2014
 Started with developing in sprint 1.
+- All project members were present
 
 03. Dezember 2014
 GUI's are in a first version finished.
@@ -118,9 +119,29 @@ Problems:
 	To Do's: 
 	- Login Authentification
 	- Refresh GUI's
-	
+- All project members were present
+
 04. Dezember 2014 
 	Feedback von Herr Vogel: 
 	- View soll nur die visuellen Elemente anzeigen
-	- 
+- All project members were present
 
+05. Dezember 2014
+	Feedback Sprint 1: 
+	To Do's: 
+	- Template für einheitliches Design
+	- Screenflow für Navigation festlegen
+	
+	Inputs Architektur:
+	- Pro View ein Controller (falls nötig)
+	- Keine View-Elemente an Controller
+	- Session-Handling zentrieren in eine übergeordnete Benutzerverwaltung (kein Controller)
+	- Model speichert Daten aus der DB in Java-Logik
+- All project members were present
+	
+12. Dezember 2014
+	Feedback code guidelines: 
+	- We should fix the problems due the JAXB-Library, which can not be found. 
+	- Deliver the project with this library
+		-> Pira will fix this
+- All project members were present
