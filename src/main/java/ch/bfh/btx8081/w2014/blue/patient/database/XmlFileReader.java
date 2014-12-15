@@ -15,18 +15,52 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import ch.bfh.btx8081.w2014.blue.patient.model.Medication;
-import ch.bfh.btx8081.w2014.blue.patient.model.Patient;
-import ch.bfh.btx8081.w2014.blue.patient.model.Therapy;
+import ch.bfh.btx8081.w2014.blue.patient.model.showMedication;
+import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
+import ch.bfh.btx8081.w2014.blue.patient.model.showTherapy;
 
 public class XmlFileReader {
 
+	private static final String USER_PATH = "UserData.xml";
 	private static final String MEDICATION_PATH = "Medication.xml";
 	private static final String THERAPY_PATH = "Therapy.xml";
-
-	public static List<Therapy> getTherapies() {
+	
+	public static List<UserData> getUserData() {
 		SAXBuilder builder = new SAXBuilder();
-		File xmlFile = new File(MEDICATION_PATH);
+		File xmlFile = new File(USER_PATH);
+
+		try {
+
+			// Create document from path
+			Document document = (Document) builder.build(xmlFile);
+			Element rootNode = document.getRootElement();
+
+			// Get list of all User
+			List<Element> users = rootNode.getChildren("users");
+			List<UserData> retUser = new ArrayList<UserData>();
+			for (Element userElement : users) {
+				// Mapping XML-File to Model Class
+				UserData user = new UserData();
+				user.setUsername(userElement.getChildText("Username"));
+				user.setPassword (userElement
+						.getChildText("Password"));
+				// Add current Users to list
+				retUser.add(user);
+			}
+			return retUser;
+		} catch (IOException io) {
+			System.out.println(io.getMessage());
+		} catch (JDOMException jdomex) {
+			System.out.println(jdomex.getMessage());
+		}
+		return null;
+	}
+	
+	
+
+	public static List<showTherapy> getTherapies() {
+		SAXBuilder builder = new SAXBuilder();
+		File xmlFile = new File(THERAPY_PATH);
 
 		try {
 
@@ -36,10 +70,10 @@ public class XmlFileReader {
 
 			// Get list of all Therapies
 			List<Element> therapies = rootNode.getChildren("therapy");
-			List<Therapy> retTherapies = new ArrayList<Therapy>();
+			List<showTherapy> retTherapies = new ArrayList<showTherapy>();
 			for (Element therapyElement : therapies) {
 				// Mapping XML-File to Model Class
-				Therapy therapy = new Therapy();
+				showTherapy therapy = new showTherapy();
 				therapy.setName(therapyElement.getChildText("name"));
 				therapy.setDescription(therapyElement
 						.getChildText("description"));
@@ -56,7 +90,7 @@ public class XmlFileReader {
 		return null;
 	}
 
-	public static List<Medication> getMedication(Patient patient) {
+	public static List<showMedication> getMedication(UserData patient) {
 		SAXBuilder builder = new SAXBuilder();
 		File xmlFile = new File(MEDICATION_PATH);
 
@@ -74,11 +108,11 @@ public class XmlFileReader {
 				// want to find information for
 				if (patientMedication.getAttribute("username").equals(
 						patient.getUsername())) {
-					List<Medication> medications = new ArrayList<Medication>();
+					List<showMedication> medications = new ArrayList<showMedication>();
 					// Read the medications for a patient
 					for (Element medicationElement : patientMedication
 							.getChildren("Medication")) {
-						Medication medication = new Medication();
+						showMedication medication = new showMedication();
 						// Map xml data to model class
 						medication.setName(medicationElement
 								.getChildText("name"));

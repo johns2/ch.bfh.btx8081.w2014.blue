@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-import ch.bfh.btx8081.w2014.blue.patient.model.Patient;
+import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 
 /**
  * Manages and provides Controller with Entities from Database
@@ -30,7 +30,7 @@ public class EntityManager {
 		}
 	}
 	
-	public List<Patient> getPatients() {
+	public List<UserData> getPatients() {
 		return null;
 	}
 

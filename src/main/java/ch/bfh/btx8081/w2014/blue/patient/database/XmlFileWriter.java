@@ -14,7 +14,7 @@ import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import ch.bfh.btx8081.w2014.blue.patient.model.Patient;
+import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 
 public class XmlFileWriter {
 
@@ -26,7 +26,7 @@ public class XmlFileWriter {
 	private static final String PATIENTS_ELEMENT_ID = "username";
 	private static final String PATIENTS_PATH = "patients.xml";
 
-	public static void writePatientXml(Patient patient) {
+	public static void writePatientXml(UserData patient) {
 
 		try {
 			// Create root element
