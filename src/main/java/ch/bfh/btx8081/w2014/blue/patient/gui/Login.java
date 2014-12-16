@@ -1,27 +1,16 @@
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
-import java.awt.Component;
-
-import javax.swing.JOptionPane;
-
-import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerLogin;
-import ch.bfh.btx8081.w2014.blue.patient.database.Data;
-import ch.bfh.btx8081.w2014.blue.patient.database.User;
-import ch.bfh.btx8081.w2014.blue.patient.model.HashValueGenerator;
 
-import com.vaadin.annotations.Theme;
 import com.vaadin.data.validator.AbstractValidator;
-import com.vaadin.data.validator.EmailValidator;
-import com.vaadin.server.FontAwesome;
-import com.vaadin.server.Page;
-import com.vaadin.server.Page.Styles;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page.Styles;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;

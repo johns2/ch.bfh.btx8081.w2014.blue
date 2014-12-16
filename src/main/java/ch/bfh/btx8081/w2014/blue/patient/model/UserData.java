@@ -17,11 +17,11 @@ import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
  * @throws
  *
  */
-public class Patient extends Person {
+public class UserData {
 	private String username;
 	private String password;
 	private String emailaddress;
-	private List<Medication> medications;
+	private List<showMedication> medications;
 
 	/**
 	 * The Patient constructor creates a Patient Object which extends the Person
@@ -36,9 +36,10 @@ public class Patient extends Person {
 	 * @param username
 	 * @param password
 	 */
-	public Patient(int userID, String PersonName, String username,
+	public UserData() {}
+	public UserData(String username,
 			String password) {
-		super(userID, PersonName);
+		
 		this.username = username;
 		this.password = password;
 	}
@@ -46,7 +47,7 @@ public class Patient extends Person {
 	/**
 	 * @return The Medications for this patient
 	 */
-	public List<Medication> getMedication() {
+	public List<showMedication> getMedication() {
 		this.medications = XmlFileReader.getMedication(this);
 		return this.medications;
 	}
