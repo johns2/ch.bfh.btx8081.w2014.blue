@@ -14,6 +14,8 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.data.validator.AbstractValidator;
 import com.vaadin.data.validator.EmailValidator;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page;
+import com.vaadin.server.Page.Styles;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -42,6 +44,7 @@ public class Login extends VerticalLayout implements View {
 	private TextField userField;
 	private PatientMainDesign design;
 	private ControllerLogin loginController;
+	private Styles style;
 
 	/**
 	 * Constructs a LOGINVIEW on the base of different parameters.
@@ -52,9 +55,14 @@ public class Login extends VerticalLayout implements View {
 	public Login()
 
 	{
+		
+		
 		design = new PatientMainDesign(this);
+		style=design.getStyles();
+		createCssForButton();
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
+		
 		horizontalLayout_1 = design.getLowerHorizontalLayout();
 		upperVerticalLayout = design.getUpperVerticalLayout();
 		buildHorizontalLayout_1();
@@ -137,14 +145,19 @@ public class Login extends VerticalLayout implements View {
 	 */
 	private void buildHorizontalLayout_1() {
 
-		homeButton = new Button("Login");
+		homeButton = new Button();
+		homeButton.setHeight(null);
+		homeButton.addStyleName("icons");
 		homeButton.setIcon(FontAwesome.SIGN_IN);
 		homeButton.setImmediate(true);
-		homeButton.setWidth("100px");
-		homeButton.setHeight("-10px");
+		//homeButton.setWidth("100px");
+		//homeButton.setHeight("-10px");
+		
+		
+		
 		horizontalLayout_1.addComponent(homeButton);
 		horizontalLayout_1.setComponentAlignment(homeButton,
-				Alignment.MIDDLE_LEFT);
+				Alignment.TOP_CENTER);
 		homeButton.addClickListener(new Button.ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
@@ -189,6 +202,22 @@ public class Login extends VerticalLayout implements View {
 		public Class<String> getType() {
 			return String.class;
 		}
+	}
+	
+	
+	private void createCssForButton(){
+		
+		
+		style.add(".icons .v-icon{"
+				+ "font-size: 30pt;"
+				+ ""
+				+ "}"
+				+ ".icons .v-button-wrap{"
+				+ "background:#87CEEB;"
+				+ "display:block;"
+				+ "padding:0;"
+				+"}"
+				);
 	}
 
 //	public void NavigateToHome() {
