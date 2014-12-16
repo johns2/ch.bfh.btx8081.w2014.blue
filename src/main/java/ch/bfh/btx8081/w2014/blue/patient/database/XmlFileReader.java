@@ -15,15 +15,15 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import ch.bfh.btx8081.w2014.blue.patient.model.showMedication;
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
+import ch.bfh.btx8081.w2014.blue.patient.model.showMedication;
 import ch.bfh.btx8081.w2014.blue.patient.model.showTherapy;
 
 public class XmlFileReader {
 
-	private static final String USER_PATH = "UserData.xml";
-	private static final String MEDICATION_PATH = "Medication.xml";
-	private static final String THERAPY_PATH = "Therapy.xml";
+	private static final String USER_PATH = "XML/UserData.xml";
+	private static final String MEDICATION_PATH = "XML/Medication.xml";
+	private static final String THERAPY_PATH = "XML/Therapy.xml";
 	
 	public static List<UserData> getUserData() {
 		SAXBuilder builder = new SAXBuilder();
@@ -135,5 +135,8 @@ public class XmlFileReader {
 		// If the reading process was unsuccessful return null
 		return null;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(XmlFileReader.getTherapies().toString());
 
-}
+}}
