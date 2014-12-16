@@ -8,6 +8,7 @@ import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -111,6 +112,7 @@ public class Therapy2 extends VerticalLayout implements View{
 	// Button for Next
 	
 	buttonNext2 = new Button ("Next");
+	buttonNext2.setIcon(FontAwesome.ARROW_CIRCLE_O_RIGHT);
 	buttonNext2.addClickListener(new Button.ClickListener() {
 
 		@Override
