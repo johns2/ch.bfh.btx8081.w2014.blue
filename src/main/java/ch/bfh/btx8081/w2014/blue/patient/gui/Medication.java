@@ -3,12 +3,16 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
+
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Button.ClickEvent;
 
 /**
  * @author Pira
@@ -21,17 +25,17 @@ public class Medication extends VerticalLayout implements View {
 	final VerticalLayout layout;
 	private AbsoluteLayout mainLayout;
 	private VerticalLayout verticalLayout;
-	private Button DosageButton;
+	private Button dosageButton;
 	private Button MedInfoButton;
-	private Button HomeButton;
+	private Button homeButton;
 	private PatientMainDesign design;
 
 	public Medication()
 	{
+		buildVerticalLayout_1();
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
-		buildVerticalLayout_1();
 		createLayout();
 	}
 	
@@ -42,9 +46,10 @@ public class Medication extends VerticalLayout implements View {
 	}
 	
 	public void enter(ViewChangeEvent event) {
-		DosageButton.addClickListener(null);
+		/*dosageButton.addClickListener(null);
 		MedInfoButton.addClickListener(null);
-		HomeButton.addClickListener(null);
+		homeButton.addClickListener(null);
+		*/
 	}
 	
 	private VerticalLayout buildVerticalLayout_1(){
@@ -54,26 +59,38 @@ public class Medication extends VerticalLayout implements View {
 		verticalLayout.setHeight("360px");
 		verticalLayout.setMargin(false);
 		
-		DosageButton = new Button("Current Dosage");
-		DosageButton.setImmediate(true);
-		DosageButton.setWidth("80%");
-		DosageButton.setHeight("-1px");
-		verticalLayout.addComponent(DosageButton);
-		verticalLayout.setComponentAlignment(DosageButton, Alignment.MIDDLE_CENTER);
+		dosageButton = new Button("Current Dosage");
+		dosageButton.setIcon(FontAwesome.HOSPITAL_O);
+		dosageButton.setImmediate(true);
+		dosageButton.setWidth("80%");
+		dosageButton.setHeight("-1px");
+		verticalLayout.addComponent(dosageButton);
+		verticalLayout.setComponentAlignment(dosageButton, Alignment.MIDDLE_CENTER);
 		
 		MedInfoButton = new Button("Medicine Information");
+		MedInfoButton.setIcon(FontAwesome.INFO_CIRCLE);
 		MedInfoButton.setImmediate(true);
 		MedInfoButton.setWidth("80%");
 		MedInfoButton.setHeight("-1px");
 		verticalLayout.addComponent(MedInfoButton);
 		verticalLayout.setComponentAlignment(MedInfoButton, Alignment.MIDDLE_CENTER);
 		
-		HomeButton = new Button("Home");
-		HomeButton.setImmediate(true);
-		HomeButton.setWidth("80%");
-		HomeButton.setHeight("-1px");
-		verticalLayout.addComponent(HomeButton);
-		verticalLayout.setComponentAlignment(HomeButton, Alignment.BOTTOM_CENTER);
+		homeButton = new Button("Home");
+		homeButton.setIcon(FontAwesome.HOME);
+		homeButton.setImmediate(true);
+		homeButton.setWidth("80%");
+		homeButton.setHeight("-1px");
+		homeButton.addClickListener(new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				ControllerUI.navigateTo(ControllerUI.HOMEVIEW);
+				
+			}
+		});
+		verticalLayout.addComponent(homeButton);
+		verticalLayout.setComponentAlignment(homeButton, Alignment.BOTTOM_CENTER);
 		
 		return verticalLayout;
 		
