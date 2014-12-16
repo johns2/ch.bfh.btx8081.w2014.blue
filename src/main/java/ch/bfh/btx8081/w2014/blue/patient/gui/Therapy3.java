@@ -7,6 +7,7 @@ package ch.bfh.btx8081.w2014.blue.patient.gui;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -107,7 +108,7 @@ public class Therapy3 extends VerticalLayout implements View{
 	// Button for OK
 	
 	buttonOk = new Button ("Done");
-	
+	buttonOk.setIcon(FontAwesome.CHECK);
 	buttonOk.setWidth("40%");
 	buttonOk.setHeight("-1px");
 	
@@ -125,7 +126,7 @@ public class Therapy3 extends VerticalLayout implements View{
 	// Button for NOT OK
 	
 	buttonNotOk = new Button ("Not done");
-	
+	buttonNotOk.setIcon(FontAwesome.TIMES);
 	buttonNotOk.setWidth("40%");
 	buttonNotOk.setHeight("-1px");
 	
