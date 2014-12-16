@@ -1,0 +1,30 @@
+<Medications>
+	<PatientMedication username="Patient1">
+		<Medication>
+			<name>Cipralex</name>
+			<dosage>10</dosage>
+			<description>antidepressant, emotionally elevating</description>
+		</Medication>
+		<Medication>
+			<name>Dafalgan</name>
+			<dosage>500</dosage>
+			<description>analgesic</description>
+		</Medication>
+		<Medication>
+			<name>Irfen</name>
+			<dosage>600</dosage>
+			<description>anti-inflammatory, pain-relieving</description>
+		</Medication>
+		<Medication>
+			<name>Remeron</name>
+			<dosage>30</dosage>
+			<description>antidepressant, sleep-inducing</description>
+		</Medication>
+		<Medication>
+			<name>Stilnox</name>
+			<dosage>10</dosage>
+			<description>sedative</description>
+		</Medication>
+	</PatientMedication>
+</Medications>
+	
