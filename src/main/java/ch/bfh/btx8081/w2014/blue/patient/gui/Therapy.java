@@ -23,7 +23,8 @@ import com.vaadin.ui.Button.ClickEvent;
 
 /**
  * @author Michel
- *
+ * This Class creates the 1st page of the 
+ * therapy section
  */
 @SuppressWarnings("serial")
 public class Therapy extends VerticalLayout implements View{
@@ -38,10 +39,7 @@ public class Therapy extends VerticalLayout implements View{
 	
 	/**
 	 * Constructs a THERAPYVIEW on the base of different parameters.
-	 * 
-	 * 
 	 */
-	
 	public Therapy()
 
 	{
@@ -56,25 +54,20 @@ public class Therapy extends VerticalLayout implements View{
 	 * create a layout and add this new layout at the mainLayout. the title
 	 * of this layout will be defined.
 	 */
-	
-	
 	private void createLayout() {
 
 		design.setTitleLabel("Therapy");
-		// verticalLayout_1
+		// verticalLayout_21
 		verticalLayout = buildVerticalLayout_21();
 		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
 
 	}
-
-	
-	
 	
 	/**
 	 * Builds the verticallayout and defines the size. Edits the
-	 * verticallayout by adding the application logo, 
+	 * verticallayout by adding the application logo, a combobox
+	 * for the list of various therapies and a next button to go to the next page
 	 */
-	
 	private VerticalLayout buildVerticalLayout_21() {
 		// common part: create layout
 		verticalLayout = new VerticalLayout();
@@ -134,6 +127,4 @@ public class Therapy extends VerticalLayout implements View{
 		
 	    
 	}
-    
-    
 	}
