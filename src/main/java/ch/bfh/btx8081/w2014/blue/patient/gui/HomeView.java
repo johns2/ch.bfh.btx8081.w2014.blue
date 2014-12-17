@@ -60,8 +60,8 @@ public class HomeView extends VerticalLayout implements View {
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				Notification.show("Go to medication page");
-				//ControllerUI.navigateTo(ControllerUI.MEDICATION);
+				
+				ControllerUI.navigateTo(ControllerUI.MEDICATION);
 
 			}
 		});
@@ -121,7 +121,7 @@ public class HomeView extends VerticalLayout implements View {
 				Alignment.TOP_CENTER);
 
 		therapyButton = new Button("Therapy");
-		therapyButton.setIcon(FontAwesome.TH);
+		therapyButton.setIcon(FontAwesome.USER_MD);
 		verticalLayout.addComponent(therapyButton);
 		verticalLayout.setComponentAlignment(therapyButton,
 				Alignment.MIDDLE_CENTER);
