@@ -26,37 +26,46 @@ public class XmlFileReader {
 	private static final String THERAPY_PATH = "XML/Therapy.xml";
 	
 	public static List<UserData> getUserData() {
+		
+		
 		SAXBuilder builder = new SAXBuilder();
 		File xmlFile = new File(USER_PATH);
-
-		try {
-
 			// Create document from path
-			Document document = (Document) builder.build(xmlFile);
-			Element rootNode = document.getRootElement();
+			Document document;
+			try {
+				document = (Document) builder.build(xmlFile);
+				Element rootNode = document.getRootElement();
 
-			// Get list of all User
-			List<Element> users = rootNode.getChildren("users");
-			List<UserData> retUser = new ArrayList<UserData>();
-			for (Element userElement : users) {
-				// Mapping XML-File to Model Class
-				UserData user = new UserData();
-				user.setUsername(userElement.getChildText("Username"));
-				user.setPassword (userElement
-						.getChildText("Password"));
-				// Add current Users to list
-				retUser.add(user);
+				// Get list of all User
+				List<Element> users = rootNode.getChildren("users");
+				List<UserData> retUser = new ArrayList<UserData>();
+				for (Element userElement : users) {
+					// Mapping XML-File to Model Class
+					UserData user = new UserData();
+					user.setUsername(userElement.getChildText("Username"));
+					user.setPassword (userElement
+							.getChildText("Password"));
+					// Add current Users to list
+					retUser.add(user);
+				}
+				return retUser;
+			} catch (JDOMException e) {
+				e.printStackTrace();
+				throwDataAccessException(e);
+			} catch (IOException e) {
+				e.printStackTrace();
+				throwDataAccessException(e);
 			}
-			return retUser;
-		} catch (IOException io) {
-			System.out.println(io.getMessage());
-		} catch (JDOMException jdomex) {
-			System.out.println(jdomex.getMessage());
-		}
-		return null;
+			return null;
 	}
 	
+	private static void throwDataAccessException(JDOMException e) {
+		throw new DataAccessException("The specified File " + USER_PATH + " does not have a valid xml format.");
+	}
 	
+	private static void throwDataAccessException(IOException e) {
+		throw new DataAccessException("The specified File " + USER_PATH + " could not be found.");
+	}
 
 	public static List<showTherapy> getTherapies() {
 		SAXBuilder builder = new SAXBuilder();
