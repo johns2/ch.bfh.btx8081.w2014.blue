@@ -21,9 +21,9 @@ import com.vaadin.ui.Button.ClickEvent;
 
 /**
  * @author Michel
- *
+ * This Class creates the 2nd page of the 
+ * therapy section
  */
-
 @SuppressWarnings("serial")
 public class Therapy2 extends VerticalLayout implements View{
     
@@ -37,11 +37,8 @@ public class Therapy2 extends VerticalLayout implements View{
 
 	
 	/**
-	 * Constructs a THERAPYVIEW on the base of different parameters.
-	 * 
-	 * 
+	 * Constructs a THERAPYVIEW2 on the base of different parameters.
 	 */
-	
 	public Therapy2()
 
 	{
@@ -56,24 +53,21 @@ public class Therapy2 extends VerticalLayout implements View{
 	 * create a layout and add this new layout at the mainLayout. the title
 	 * of this layout will be defined.
 	 */
-	
-	
 	private void createLayout() {
 
 		design.setTitleLabel("Therapy");
-		// verticalLayout_1
+		// verticalLayout_22
 		verticalLayout = buildVerticalLayout_22();
 		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
 
 	}
 
-	
-	
 	/**
 	 * Builds the verticallayout and defines the size. Edits the
-	 * verticallayout by adding the application logo, 
+	 * verticallayout by adding the application logo, a textfield
+	 * to show the title of the choosen therpay, a textarea for the notes 
+	 * of the doctor, and a next button to go to the next page
 	 */
-	
 	private VerticalLayout buildVerticalLayout_22() {
 		// common part: create layout
 		verticalLayout = new VerticalLayout();
