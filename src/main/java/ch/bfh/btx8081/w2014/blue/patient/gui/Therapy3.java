@@ -21,7 +21,8 @@ import com.vaadin.ui.VerticalLayout;
 
 /**
  * @author Michel
- *
+ * This Class creates the 3th page of the 
+ * therapy section
  */
 @SuppressWarnings("serial")
 public class Therapy3 extends VerticalLayout implements View{
@@ -37,11 +38,8 @@ public class Therapy3 extends VerticalLayout implements View{
 	protected Button buttonNotOk;
 	
 	/**
-	 * Constructs a THERAPYVIEW on the base of different parameters.
-	 * 
-	 * 
+	 * Constructs a THERAPYVIEW3 on the base of different parameters.
 	 */
-	
 	public Therapy3()
 
 	{
@@ -56,27 +54,24 @@ public class Therapy3 extends VerticalLayout implements View{
 	 * create a layout and add this new layout at the mainLayout. the title
 	 * of this layout will be defined.
 	 */
-	
-	
 	private void createLayout() {
 
 		design.setTitleLabel("Therapy");
-		// verticalLayout_1
+		// verticalLayout_23
 		verticalLayout = buildVerticalLayout_23();
 		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
 
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * Builds the verticallayout and defines the size. Edits the
-	 * verticallayout by adding the application logo, 
+	 * verticallayout by adding the application logo, a table for the goals of therapy
+	 * and to shot of the goaleis done or not done
+	 * and a button for click done,
+	 * if the goal is not done, there is a link with the mail address
+	 * of the doctor to send him the reason why the goal is not done
+	 * and a next button to go to the next page
 	 */
-	
-
 	private VerticalLayout buildVerticalLayout_23() {
 		// common part: create layout
 		verticalLayout = new VerticalLayout();
@@ -85,8 +80,7 @@ public class Therapy3 extends VerticalLayout implements View{
 		verticalLayout.setHeight("360px");
 		verticalLayout.setMargin(false);
 
-		
-		
+
 	// Table for Goals of Therapies
 		
 	goalTable = new Table ("Therapy Goals: ");
@@ -98,9 +92,9 @@ public class Therapy3 extends VerticalLayout implements View{
 	goalTable.setImmediate(true);
 				
 	goalTable.setPageLength(5);
-	goalTable.addContainerProperty("Goals", String.class, "");
-	goalTable.addContainerProperty("Done", Button.class, "");
-	goalTable.addContainerProperty("Not done", Button.class, "");
+	goalTable.addContainerProperty("Task", String.class, "");
+	goalTable.addContainerProperty("Status", String.class, "");
+	goalTable.addContainerProperty("Date", String.class, "");
 				
 	verticalLayout.addComponent(goalTable);
 	verticalLayout.setComponentAlignment(goalTable,Alignment.TOP_CENTER);
@@ -117,12 +111,11 @@ public class Therapy3 extends VerticalLayout implements View{
 			Notification.show("Well done !");
 			}
 		});
-			
-		
-	
+
 	verticalLayout.addComponent(buttonOk);
 	verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
 	
+	/*
 	// Button for NOT OK
 	
 	buttonNotOk = new Button ("Not done");
@@ -138,17 +131,17 @@ public class Therapy3 extends VerticalLayout implements View{
 	
 	verticalLayout.addComponent(buttonNotOk);
 	verticalLayout.setComponentAlignment(buttonNotOk,Alignment.BOTTOM_CENTER);
+	*/
 	
 	// Link for Mail to Doctor send
-	/*
+	
 	Link mailToDoctor = new Link("Send a report to Doctor",
 	        new ExternalResource("Doctor@bfh.ch"));
 
 	mailToDoctor.setImmediate(true);
 	verticalLayout.addComponent(mailToDoctor);
 	verticalLayout.setComponentAlignment(mailToDoctor,Alignment.BOTTOM_CENTER);
-	*/	
-		
+
 	return verticalLayout;	
 	}
 
@@ -156,8 +149,5 @@ public class Therapy3 extends VerticalLayout implements View{
 	public void enter(ViewChangeEvent event) {
 	    
 	}
-    
-
 
 }
-
