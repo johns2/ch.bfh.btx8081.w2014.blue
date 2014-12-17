@@ -18,6 +18,7 @@ import com.vaadin.ui.Button.ClickEvent;
  * @author Pira
  * @author Sabine
  *
+ *
  */
 public class Medication extends VerticalLayout implements View {
 
