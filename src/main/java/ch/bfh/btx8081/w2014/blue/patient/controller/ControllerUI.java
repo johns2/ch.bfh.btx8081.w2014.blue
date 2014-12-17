@@ -33,6 +33,8 @@ public class ControllerUI extends UI {
 
 	private static Navigator navigator;
 	private static String previousView;
+	
+	private ControllerLogin loginController;
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = ControllerUI.class, widgetset = "ch.bfh.btx8081.w2014.blue.patient.gui.AppWidgetSet")
@@ -43,7 +45,7 @@ public class ControllerUI extends UI {
 	protected void init(VaadinRequest request) {
 		getSession().setAttribute("user", null);
 		navigator = new Navigator(this, this);
-		ControllerLogin loginController = new ControllerLogin(this);
+		loginController = new ControllerLogin(this);
 		navigator.addView(LOGINVIEW, new Login(loginController));
 		navigator.addView(THERAPYVIEW, new Therapy());
 		navigator.addView(THERAPYVIEW2, new Therapy2());
@@ -72,9 +74,9 @@ public class ControllerUI extends UI {
 	//
 	// }
 
-	public void navigateLogout(String view) {
+	public void performLogout() {
 		previousView = navigator.getState();
-		navigator.navigateTo(view);
+		navigator.navigateTo(LOGINVIEW);
 		// navigator.removeView(HOMEVIEW);
 
 	}
@@ -85,6 +87,12 @@ public class ControllerUI extends UI {
 	 */
 	public static String getPreviousView() {
 		return previousView;
+	}
+
+
+
+	public ControllerLogin getLoginController() {
+		return loginController;
 	}
 
 }

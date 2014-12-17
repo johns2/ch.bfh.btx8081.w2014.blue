@@ -20,35 +20,46 @@ import ch.bfh.btx8081.w2014.blue.patient.model.Authenticator;
 public class ControllerLogin extends ControllerUI {
 
 	private UI ControllerUI;
+	private Boolean isAuthenticated;
+	private Authenticator authenticator;
+
+	public Boolean getIsAuthenticated() {
+		return isAuthenticated;
+	}
 
 	public ControllerLogin(UI ControllerUI) {
 		this.ControllerUI = ControllerUI;
+		this.authenticator = new Authenticator(this.ControllerUI.getSession());
 	}
-	
+
 	/**
-	 * Performs a Login with the submitted credentials using the Authentificator Model
+	 * Performs a Login with the submitted credentials using the Authentificator
+	 * Model
+	 * 
 	 * @param userField
 	 * @param passwordField
 	 */
-	public void doLogin(TextField userField, PasswordField passwordField) {
-		Authenticator authenticator = new Authenticator();
-		Boolean isAuthenticated = authenticator.authenticate(
-				userField.getValue(), passwordField.getValue());
+	public void doLogin(String insertedUser, String insertedPassword) {
+		authenticator.setUsername(insertedUser);
+		authenticator.setPassword(insertedPassword);
+		this.isAuthenticated = authenticator.authenticate();
 		if (isAuthenticated == true) {
 
-			// Store the username in the session
-			ControllerUI.getSession()
-					.setAttribute("user", userField.getValue());
-			
 			// Navigate to main view after a successful login
 			ControllerUI.getNavigator().navigateTo(HOMEVIEW);
 
 		} else {
-			ControllerUI.getSession().setAttribute("user", null);
-			// Wrong password clear the password field and refocuses it
-			passwordField.setValue(null);
-			passwordField.focus();
-
+			doLogout();
 		}
+	}
+
+	/**
+	 * Performs a logout with setting null the "user" session variable.
+	 * 
+	 */
+	public void doLogout() {
+		// Navigate to login view after a logout
+		ControllerUI.getNavigator().navigateTo(LOGINVIEW);
+		ControllerUI.getSession().setAttribute("user", null);
 	}
 }

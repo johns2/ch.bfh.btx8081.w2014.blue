@@ -57,8 +57,8 @@ public class Login extends VerticalLayout implements View {
 		buildHorizontalLayout_1();
 		createLayout();
 	}
-	
-	public Login(ControllerLogin loginController){
+
+	public Login(ControllerLogin loginController) {
 		this();
 		this.loginController = loginController;
 	}
@@ -104,8 +104,8 @@ public class Login extends VerticalLayout implements View {
 		userField.setRequired(true);
 		userField.setWidth("80%");
 		userField.setHeight("-1px");
-		//userField.addValidator(new EmailValidator(
-			//	"False Username, Username must be an email address"));
+		// userField.addValidator(new EmailValidator(
+		// "False Username, Username must be an email address"));
 		userField.setInvalidAllowed(false);
 		verticalLayout.addComponent(userField);
 		verticalLayout
@@ -160,7 +160,13 @@ public class Login extends VerticalLayout implements View {
 				if (!userField.isValid() || !passwordField.isValid()) {
 					return;
 				}
-				loginController.doLogin(userField, passwordField);
+				loginController.doLogin(userField.getValue(),
+						passwordField.getValue());
+				if (loginController.getIsAuthenticated() == false) {
+					// Wrong password clear the password field and refocuses it
+					passwordField.setValue(null);
+					passwordField.focus();
+				}
 			}
 		});
 
@@ -209,7 +215,7 @@ public class Login extends VerticalLayout implements View {
 				);
 	}
 
-//	public void NavigateToHome() {
-//		ControllerUI.navigateToHome();
-//	}
+	// public void NavigateToHome() {
+	// ControllerUI.navigateToHome();
+	// }
 }
