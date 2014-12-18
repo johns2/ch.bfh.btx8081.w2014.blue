@@ -145,3 +145,11 @@ Problems:
 	- Deliver the project with this library
 		-> Pira will fix this
 - All project members were present
+
+18.12.2014
+	Feedback von Herr Vogel:
+	- Zustände Änderung muss noch diskutiert werden, ob man ev. noch für weitere Zustände verwenden kann
+	- Was für eine Zustandsänderung ausser Checkbox sollte es noch hervorrufen? 
+	- User Interface Änderung muss via Controller in Model und dann auf Zustandänderung (Checkbox)
+	- Bei Verwendung von Dummydaten für die Demo sollten die Daten in Model eingefügt werden
+	
