@@ -8,7 +8,7 @@ import com.vaadin.data.Item;
  * @author Stefan Johner
  *
  */
-public class Solved implements ITherapyState {
+public class Solved implements ITaskState {
 
 	private Item taskEntry;
 	public Solved(Item taskEntry) {

@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import com.vaadin.data.Item;
 
-import ch.bfh.btx8081.w2014.blue.patient.controller.ITherapyState;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ITaskState;
 import ch.bfh.btx8081.w2014.blue.patient.controller.NotSolved;
 import ch.bfh.btx8081.w2014.blue.patient.controller.Solved;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ToImprove;
@@ -18,7 +18,7 @@ import ch.bfh.btx8081.w2014.blue.patient.controller.ToImprove;
  *
  */
 public class Task {
-	private static ITherapyState therapyState;
+	private static ITaskState therapyState;
 	private String taskTitle;
 	private String taskGoal;
 	private String taskMessage;
@@ -65,7 +65,7 @@ public class Task {
 		this.taskMessage = taskMessage;
 	}
 
-	public ITherapyState getTherapyState() {
+	public ITaskState getTherapyState() {
 		return therapyState;
 	}
 

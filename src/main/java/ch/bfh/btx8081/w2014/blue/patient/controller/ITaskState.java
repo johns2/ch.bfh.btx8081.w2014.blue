@@ -8,7 +8,7 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
  * @author Stefan Johner
  *
  */
-public interface ITherapyState {
+public interface ITaskState {
 	/**
 	 * This method will check a <code>Task</code> of a <code>Therapy</code> and
 	 * describe them as solved

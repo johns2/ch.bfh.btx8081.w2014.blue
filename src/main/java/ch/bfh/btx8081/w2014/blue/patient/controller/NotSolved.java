@@ -2,7 +2,7 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
 
 import com.vaadin.data.Item;
 
-import ch.bfh.btx8081.w2014.blue.patient.controller.ITherapyState;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ITaskState;
 
 /**
  * This controller will implement the methods of a unsolved <code>Task</code>
@@ -10,7 +10,7 @@ import ch.bfh.btx8081.w2014.blue.patient.controller.ITherapyState;
  * @author Stefan Johner
  *
  */
-public class NotSolved implements ITherapyState {
+public class NotSolved implements ITaskState {
 	private Item taskEntry;
 	public NotSolved(Item taskEntry) {
 		this.taskEntry = taskEntry;
