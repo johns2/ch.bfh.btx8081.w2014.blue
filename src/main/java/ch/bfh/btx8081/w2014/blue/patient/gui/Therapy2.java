@@ -12,6 +12,7 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
@@ -32,7 +33,7 @@ public class Therapy2 extends VerticalLayout implements View{
 	private VerticalLayout verticalLayout;
 	private PatientMainDesign design;
 	protected Button buttonNext2;
-	protected TextField therapyName;
+	protected Label therapyName;
 	protected TextArea doctorNotes;
 
 	
@@ -79,11 +80,10 @@ public class Therapy2 extends VerticalLayout implements View{
 	
 	// Textfield for TherayTitleName
 		
-	therapyName = new TextField ("Therapy Title:");
+	therapyName = new Label ("Therapy Title:");
 				
 	therapyName.setWidth("80%");
 	therapyName.setHeight("-1px");
-	therapyName.setRequired(true);
 	therapyName.setImmediate(true);
 	verticalLayout.addComponent(therapyName);
 	verticalLayout.setComponentAlignment(therapyName,Alignment.TOP_CENTER);
@@ -125,6 +125,7 @@ public class Therapy2 extends VerticalLayout implements View{
 
 	@Override
 	public void enter(ViewChangeEvent event) {
+		
 	    
 	}
     

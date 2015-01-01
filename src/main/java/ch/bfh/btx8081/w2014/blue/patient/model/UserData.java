@@ -48,7 +48,7 @@ public class UserData {
 	 * @return The Medications for this patient
 	 */
 	public List<showMedication> getMedication() {
-		this.medications = XmlFileReader.getMedication(this);
+		this.medications = XmlFileReader.getMedication(null);
 		return this.medications;
 	}
 

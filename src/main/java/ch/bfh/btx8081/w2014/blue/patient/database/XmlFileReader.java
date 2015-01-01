@@ -15,8 +15,6 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import ch.bfh.btx8081.w2014.blue.patient.controller.ITaskState;
-import ch.bfh.btx8081.w2014.blue.patient.model.Task;
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 import ch.bfh.btx8081.w2014.blue.patient.model.showMedication;
 import ch.bfh.btx8081.w2014.blue.patient.model.showTherapy;
@@ -26,7 +24,6 @@ public class XmlFileReader {
 	private static final String USER_PATH = "XML/UserData.xml";
 	private static final String MEDICATION_PATH = "XML/Medication.xml";
 	private static final String THERAPY_PATH = "XML/Therapy.xml";
-	private static final String TASK_PATH = "XML/Task.xml";
 	
 	public static List<UserData> getUserData() {
 		
@@ -40,7 +37,7 @@ public class XmlFileReader {
 				Element rootNode = document.getRootElement();
 
 				// Get list of all User
-				List<Element> users = rootNode.getChildren("users");
+				List<Element> users = rootNode.getChildren("User");
 				List<UserData> retUser = new ArrayList<UserData>();
 				for (Element userElement : users) {
 					// Mapping XML-File to Model Class
@@ -148,51 +145,12 @@ public class XmlFileReader {
 		return null;
 	}
 	
-	public static List<Task> getTask(showTherapy therapy) {
-		SAXBuilder builder = new SAXBuilder();
-		File xmlFile = new File(TASK_PATH);
-
-		try {
-
-			// Create document from path
-			Document document = (Document) builder.build(xmlFile);
-			Element rootNode = document.getRootElement();
-
-			// Get list of all Tasks of a therapy
-			List<Element> therapyTasks = rootNode
-					.getChildren("tasks");
-			for (Element therapyTask : therapyTasks) {
-				// Find the Tasks that belongs to the Therapy we
-				// want to find information for
-				//if (therapyTask.getAttribute("therapy").equals(
-				//		therapy.getName())) {
-					List<Task> tasks = new ArrayList<Task>();
-					// Read the task for a therapy
-					for (Element taskElement : therapyTask
-							.getChildren("Task")) {
-						Task task = new Task();
-						// Map xml data to model class
-						task.setTaskDate(taskElement.getChildText("date"));
-						task.setTaskGoal(taskElement.getChildText("goal"));
-						task.setTaskMessage(taskElement.getChildText("message"));
-						task.setTaskTitle(taskElement.getChildText("title"));
-						task.setTherapyState(taskElement.getChildText("status"));
-					//}
-					// return the created array list of medications
-					return tasks;
-				}
-			}
-
-		} catch (IOException io) {
-			System.out.println(io.getMessage());
-		} catch (JDOMException jdomex) {
-			System.out.println(jdomex.getMessage());
-		}
-		// If the reading process was unsuccessful return null
-		return null;
-	}
-	
 	public static void main(String[] args) {
-		System.out.println(XmlFileReader.getTask(XmlFileReader.getTherapies().get(1)));
-
+//		List<UserData> li = XmlFileReader.getUserData();
+//		 
+//		for(UserData ausgabe : li)
+//		{
+//			System.out.println(ausgabe.getUsername());
+//		}
+		System.out.println(XmlFileReader.getUserData());
 }}

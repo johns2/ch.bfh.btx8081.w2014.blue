@@ -1,9 +1,12 @@
 package ch.bfh.btx8081.w2014.blue.patient.model;
 
+import java.util.List;
+
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
 
-import ch.bfh.btx8081.w2014.blue.patient.database.User;
+import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
+import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
 
 /**
  * 
@@ -51,11 +54,11 @@ public class Authenticator {
 	 */
 	public boolean authenticate() {
 		// Create Dummy User
-		User dummyPatient1 = new User("Patient1", "password");
+		List<UserData> dummyPatient1 = XmlFileReader.getUserData();
 		
 		//Compares the input credentials with them of the user
-		boolean isValid = username.equals(dummyPatient1.getUsername())
-				&& password.equals(dummyPatient1.getPassword());
+		boolean isValid = username.equals(dummyPatient1.iterator().next().getUsername())
+				&& password.equals(dummyPatient1.iterator().next().getPassword());
 		
 		if (isValid == true){
 			setValidSession();
@@ -75,4 +78,11 @@ public class Authenticator {
 	public void setValidSession() {
 		// Store the username in the session
 	}
+	public static void main(String[] args) {
+		
+		List<UserData> dummyPatient1 = XmlFileReader.getUserData();
+		System.out.println(dummyPatient1.iterator().next().getUsername());
+				
+
+}
 }
