@@ -135,7 +135,7 @@ public class Login extends VerticalLayout implements View {
 	private void buildHorizontalLayout_1() {
 
 		homeButton = new Button();
-		homeButton.setHeight(null);
+		homeButton.setHeight("0px");
 		homeButton.addStyleName("icons");
 		homeButton.setIcon(FontAwesome.SIGN_IN);
 		homeButton.setImmediate(true);
@@ -213,6 +213,7 @@ public class Login extends VerticalLayout implements View {
 				+ "padding:0;"
 				+"}"
 				);
+		
 	}
 
 	// public void NavigateToHome() {

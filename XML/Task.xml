@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks>
+	<task>
+		<goal>Stop smoking for seven days</goal>
+		<date>01.01.2015</date>
+		<taskState>NotSolved</taskState>
+	</task>
+	<task>
+		<goal>Stop drinking alcohol for five days</goal>
+		<date>02.01.2015</date>
+		<taskState>NotSolved</taskState>
+	</task>
+</tasks>

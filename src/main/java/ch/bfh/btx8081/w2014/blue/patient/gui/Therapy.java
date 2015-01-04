@@ -16,8 +16,11 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.ui.TabSheet;
 
 
 
@@ -35,6 +38,7 @@ public class Therapy extends VerticalLayout implements View{
 	private PatientMainDesign design;
 	protected ComboBox therapyList;
 	protected Button buttonNext1;
+	protected TabSheet therapyInfo;
 
 	
 	/**
@@ -80,23 +84,39 @@ public class Therapy extends VerticalLayout implements View{
 		
 		therapyList = new ComboBox ();
 		
+		therapyList.setInputPrompt("Select a Therapy");
 		therapyList.setWidth("80%");
 		therapyList.setHeight("-1px");
+		therapyList.setStyleName(ValoTheme.COMBOBOX_BORDERLESS);
 		therapyList.setNewItemsAllowed(true);
 		therapyList.setImmediate(true);
 		therapyList.setNullSelectionAllowed(false);
 		verticalLayout.addComponent(therapyList);
-		verticalLayout.setComponentAlignment(therapyList,Alignment.TOP_CENTER);
+		verticalLayout.setComponentAlignment(therapyList,Alignment.MIDDLE_CENTER);
+		
+		// Textarea for TherapyNotes
+		
+		therapyInfo = new TabSheet ();
+				
+		therapyInfo.setWidth("100%");
+		therapyInfo.setHeight("100%");
+		therapyInfo.setImmediate(true);
+		verticalLayout.addComponent(therapyInfo);
+		verticalLayout.setComponentAlignment(therapyInfo,Alignment.MIDDLE_CENTER);
+
+		
+		
+		
 		
 		// Button for Next
 		
-		buttonNext1 = new Button ("Next");
+		buttonNext1 = new Button ("GO to Tasks");
 		buttonNext1.setIcon(FontAwesome.ARROW_CIRCLE_O_RIGHT);
 		buttonNext1.addClickListener(new Button.ClickListener() {
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW2);
+				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW3);
 
 			}
 		});
@@ -112,19 +132,31 @@ public class Therapy extends VerticalLayout implements View{
 	@Override
 	public void enter(ViewChangeEvent event) {
 		therapyList.removeAllItems();
-		therapyList.addItems("Psychotherapy",
-				"Group psychotherapy",
-				"Cognitive behavioral therapy",
-				"Body-oriented psychotherapy",
-				"Pharmacotherapy");
 		 
-		//for(showTherapy s: XmlFileReader.getTherapies())
-		   // {
+		for(showTherapy s: XmlFileReader.getTherapies())
+		    {
 			
-			//therapyList.addItem(new Label(s.getName()));
-		// }
+			therapyList.addItems(s.getName());
+		}
+		
+		therapyInfo.removeAllComponents();
+		therapyInfo.addTab(new Label(XmlFileReader.getTherapies().get(0).getDescription()),"Therapy1");
+		therapyInfo.addTab(new Label(XmlFileReader.getTherapies().get(1).getDescription()),"Therapy2");
+		therapyInfo.addTab(new Label(XmlFileReader.getTherapies().get(2).getDescription()),"Therapy3");
+		therapyInfo.addTab(new Label(XmlFileReader.getTherapies().get(3).getDescription()),"Therapy4");
+		therapyInfo.addTab(new Label(XmlFileReader.getTherapies().get(4).getDescription()),"Therapy5");
+		
+	}
+	
+
+//		public static void main(String[] args) {
+//			for(showTherapy s: XmlFileReader.getTherapies())
+//		    {
+//			
+//			System.out.println(new Label(s.toString().);
+//		}
 
 		
 	    
 	}
-	}
+	

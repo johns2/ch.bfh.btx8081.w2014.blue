@@ -5,18 +5,14 @@ package ch.bfh.btx8081.w2014.blue.patient.gui;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 
-import com.sun.jna.platform.unix.X11.Font;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
-import com.vaadin.server.FontIcon;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  * Creates a new <code>HomeView</code> instance, that contains three buttons in
@@ -93,7 +89,7 @@ public class HomeView extends VerticalLayout implements View {
 
 	private void createLayout() {
 
-		design.setTitleLabel("MHC-Patient");
+		design.setTitleLabel("Home");
 		verticalLayout = buildVerticalLayout_1();
 		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
 
@@ -106,31 +102,36 @@ public class HomeView extends VerticalLayout implements View {
 		// common part: create layout
 		verticalLayout = new VerticalLayout();
 		verticalLayout.setImmediate(false);
-		layout.setImmediate(false);
-		layout.setWidth("260px");
-		layout.setHeight("360px");
-		layout.setMargin(false);
 		verticalLayout.setWidth("260px");
 		verticalLayout.setHeight("360px");
 		verticalLayout.setMargin(false);
 
 		medicationButton = new Button("Medication");
 		medicationButton.setIcon(FontAwesome.MEDKIT);
+		medicationButton.setImmediate(true);
+		medicationButton.setWidth("80%");
+		medicationButton.setHeight("-1px");
 		verticalLayout.addComponent(medicationButton);
 		verticalLayout.setComponentAlignment(medicationButton,
-				Alignment.TOP_CENTER);
+				Alignment.MIDDLE_CENTER);
 
 		therapyButton = new Button("Therapy");
 		therapyButton.setIcon(FontAwesome.USER_MD);
+		therapyButton.setImmediate(true);
+		therapyButton.setWidth("80%");
+		therapyButton.setHeight("-1px");
 		verticalLayout.addComponent(therapyButton);
 		verticalLayout.setComponentAlignment(therapyButton,
 				Alignment.MIDDLE_CENTER);
 
 		logoutButton = new Button("Logout");
 		logoutButton.setIcon(FontAwesome.SIGN_OUT);
+		logoutButton.setImmediate(true);
+		logoutButton.setWidth("80%");
+		logoutButton.setHeight("-1px");
 		verticalLayout.addComponent(logoutButton);
 		verticalLayout.setComponentAlignment(logoutButton,
-				Alignment.TOP_CENTER);
+				Alignment.BOTTOM_CENTER);
 
 		return verticalLayout;
 	}

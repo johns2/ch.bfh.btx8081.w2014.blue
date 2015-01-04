@@ -15,6 +15,8 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+import com.vaadin.ui.Label;
+
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 import ch.bfh.btx8081.w2014.blue.patient.model.showMedication;
 import ch.bfh.btx8081.w2014.blue.patient.model.showTherapy;
@@ -146,11 +148,9 @@ public class XmlFileReader {
 	}
 	
 	public static void main(String[] args) {
-//		List<UserData> li = XmlFileReader.getUserData();
-//		 
-//		for(UserData ausgabe : li)
-//		{
-//			System.out.println(ausgabe.getUsername());
-//		}
-		System.out.println(XmlFileReader.getUserData());
+		for(showTherapy s: XmlFileReader.getTherapies())
+	    {
+		
+		System.out.println(new Label(s.getName()));
+	}
 }}

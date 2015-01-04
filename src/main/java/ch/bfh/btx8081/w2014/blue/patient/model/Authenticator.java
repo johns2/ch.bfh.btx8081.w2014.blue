@@ -53,12 +53,12 @@ public class Authenticator {
 	 * @return isValid A boolean value if the login was valid or not
 	 */
 	public boolean authenticate() {
-		// Create Dummy User
-		List<UserData> dummyPatient1 = XmlFileReader.getUserData();
+		// Load Patient1 from database
+		List<UserData> Patient1 = XmlFileReader.getUserData();
 		
 		//Compares the input credentials with them of the user
-		boolean isValid = username.equals(dummyPatient1.iterator().next().getUsername())
-				&& password.equals(dummyPatient1.iterator().next().getPassword());
+		boolean isValid = username.equals(Patient1.iterator().next().getUsername())
+				&& password.equals(Patient1.iterator().next().getPassword());
 		
 		if (isValid == true){
 			setValidSession();
@@ -78,11 +78,6 @@ public class Authenticator {
 	public void setValidSession() {
 		// Store the username in the session
 	}
-	public static void main(String[] args) {
-		
-		List<UserData> dummyPatient1 = XmlFileReader.getUserData();
-		System.out.println(dummyPatient1.iterator().next().getUsername());
-				
 
 }
-}
+

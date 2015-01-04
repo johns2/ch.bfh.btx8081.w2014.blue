@@ -30,6 +30,28 @@
 @import "../valo/valo.scss";
 
 @mixin mytheme {
+ 
   @include valo;
   // Insert your own theme rules here
+   .mainlayout {			
+	background:#73DCFF;
+	position: fixed;
+	top: 50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	border: #cedcf2 double 4px;
+	border-color: #0000ff #0000ff; 
+	box-shadow: 0 0 30px #9ecaed;
+	}
+   .mylabel {
+    font-size: 40px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+	}
+	.mylayout{
+	padding-right: 30px;
+	padding-left: 30px;
+	background-color: black;
+	}
+ 
 }

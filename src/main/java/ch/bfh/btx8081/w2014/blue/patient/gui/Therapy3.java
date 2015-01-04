@@ -66,7 +66,7 @@ public class Therapy3 extends VerticalLayout implements View {
 	 */
 	private void createLayout() {
 
-		design.setTitleLabel("Therapy");
+		design.setTitleLabel("Task");
 		// verticalLayout_23
 		verticalLayout = buildVerticalLayout_23();
 		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
@@ -91,10 +91,10 @@ public class Therapy3 extends VerticalLayout implements View {
 
 		// Table for Goals of Therapies
 
-		goalTable = new Table("Therapy Goals: ");
+		goalTable = new Table();
 
-		goalTable.setWidth("80%");
-		goalTable.setHeight("-1px");
+		goalTable.setWidth("100%");
+		goalTable.setHeight("100%");
 
 		goalTable.setRequired(true);
 		goalTable.setImmediate(true);
@@ -118,6 +118,8 @@ public class Therapy3 extends VerticalLayout implements View {
 		buttonOk.setIcon(FontAwesome.CHECK);
 		buttonOk.setWidth("40%");
 		buttonOk.setHeight("-1px");
+		verticalLayout.addComponent(buttonOk);
+		verticalLayout.setComponentAlignment(buttonOk,Alignment.MIDDLE_CENTER);
 
 		buttonOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -172,6 +174,8 @@ public class Therapy3 extends VerticalLayout implements View {
 		buttonNotOk.setIcon(FontAwesome.TIMES);
 		buttonNotOk.setWidth("40%");
 		buttonNotOk.setHeight("-1px");
+		verticalLayout.addComponent(buttonNotOk);
+		verticalLayout.setComponentAlignment(buttonNotOk,Alignment.MIDDLE_CENTER);
 
 		buttonNotOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
