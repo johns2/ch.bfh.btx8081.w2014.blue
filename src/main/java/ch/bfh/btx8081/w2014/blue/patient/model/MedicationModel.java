@@ -5,13 +5,13 @@ package ch.bfh.btx8081.w2014.blue.patient.model;
  * @author R. Ramsauer
  */
 
-public class showMedication {
+public class MedicationModel {
 	
 	private String name;
 	private int dosage;
 	private String description;
 	
-	public showMedication() {
+	public MedicationModel() {
 		
 	}
 

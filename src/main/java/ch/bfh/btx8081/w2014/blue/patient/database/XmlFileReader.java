@@ -18,8 +18,8 @@ import org.jdom2.input.SAXBuilder;
 import com.vaadin.ui.Label;
 
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
-import ch.bfh.btx8081.w2014.blue.patient.model.showMedication;
-import ch.bfh.btx8081.w2014.blue.patient.model.showTherapy;
+import ch.bfh.btx8081.w2014.blue.patient.model.MedicationModel;
+import ch.bfh.btx8081.w2014.blue.patient.model.TherapyModel;
 
 /**
  ** This class is used to read data from different XML-Files that are located on
@@ -124,7 +124,7 @@ public class XmlFileReader {
 	 ** This method is used to load all therapies from the corresponding XML-File
 	 * Will throw a DataAccessException if an error occurs.
 	 **/
-	public static List<showTherapy> getTherapies() {
+	public static List<TherapyModel> getTherapies() {
 		builder = new SAXBuilder();
 		xmlFile = new File(THERAPY_PATH);
 		try {
@@ -134,14 +134,11 @@ public class XmlFileReader {
 
 			// Get a list of all the XML Elements (therapy)
 			// and create a list of showTherapy objects to return later on
-			// TODO Riza -> bitte showTherapy umbenennen, Klasse immer
-			// Grossbuchstaben, Name sagt nichts aus (sprich aber mit deinem
-			// Team darüber)
 			List<Element> therapies = rootNode.getChildren("therapy");
-			List<showTherapy> retTherapies = new ArrayList<showTherapy>();
+			List<TherapyModel> retTherapies = new ArrayList<TherapyModel>();
 			for (Element therapyElement : therapies) {
 				// Mapping XML-File to Model Class
-				showTherapy therapy = new showTherapy();
+				TherapyModel therapy = new TherapyModel();
 				therapy.setName(therapyElement.getChildText("name"));
 				therapy.setDescription(therapyElement
 						.getChildText("description"));
@@ -176,7 +173,7 @@ public class XmlFileReader {
 	 ** Method is used to get a list of the different Medications for a given
 	 * User or null if the user does not currently have any medications
 	 **/
-	public static List<showMedication> getMedication(UserData patient) {
+	public static List<MedicationModel> getMedication(UserData patient) {
 		builder = new SAXBuilder();
 		xmlFile = new File(MEDICATION_PATH);
 
@@ -197,13 +194,12 @@ public class XmlFileReader {
 				if (patientMedication.getAttribute("username").equals(
 						patient.getUsername())) {
 					// We found the right element
-					List<showMedication> medications = new ArrayList<showMedication>();
+					List<MedicationModel> medications = new ArrayList<MedicationModel>();
 					// Read the medications for this patient, those are elements
 					// of name Medication
 					for (Element medicationElement : patientMedication
 							.getChildren("Medication")) {
-						// TODO Riza same as above
-						showMedication medication = new showMedication();
+						MedicationModel medication = new MedicationModel();
 						// Map xml data to model class, first the name
 						medication.setName(medicationElement
 								.getChildText("name"));
@@ -244,7 +240,7 @@ public class XmlFileReader {
 	}
 
 	public static void main(String[] args) {
-		for (showTherapy s : XmlFileReader.getTherapies()) {
+		for (TherapyModel s : XmlFileReader.getTherapies()) {
 
 			System.out.println(new Label(s.getName()));
 		}

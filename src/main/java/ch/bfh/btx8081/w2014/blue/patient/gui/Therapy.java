@@ -6,7 +6,7 @@ package ch.bfh.btx8081.w2014.blue.patient.gui;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
-import ch.bfh.btx8081.w2014.blue.patient.model.showTherapy;
+import ch.bfh.btx8081.w2014.blue.patient.model.TherapyModel;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -133,7 +133,7 @@ public class Therapy extends VerticalLayout implements View{
 	public void enter(ViewChangeEvent event) {
 		therapyList.removeAllItems();
 		 
-		for(showTherapy s: XmlFileReader.getTherapies())
+		for(TherapyModel s: XmlFileReader.getTherapies())
 		    {
 			
 			therapyList.addItems(s.getName());

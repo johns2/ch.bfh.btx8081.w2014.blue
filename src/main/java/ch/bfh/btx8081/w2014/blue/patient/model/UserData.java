@@ -21,7 +21,7 @@ public class UserData {
 	private String username;
 	private String password;
 	private String emailaddress;
-	private List<showMedication> medications;
+	private List<MedicationModel> medications;
 
 	/**
 	 * The Patient constructor creates a Patient Object which extends the Person
@@ -47,7 +47,7 @@ public class UserData {
 	/**
 	 * @return The Medications for this patient
 	 */
-	public List<showMedication> getMedication() {
+	public List<MedicationModel> getMedication() {
 		this.medications = XmlFileReader.getMedication(null);
 		return this.medications;
 	}
