@@ -152,4 +152,23 @@ Problems:
 	- Was für eine Zustandsänderung ausser Checkbox sollte es noch hervorrufen? 
 	- User Interface Änderung muss via Controller in Model und dann auf Zustandänderung (Checkbox)
 	- Bei Verwendung von Dummydaten für die Demo sollten die Daten in Model eingefügt werden
+- All project members were present
 	
+07.01.2015
+	Feedback von Herr Vogel zu Sprint 2: 
+	Folgende Features/Verbesserungen sollten noch umgesetzt werden: 
+	- Tester-Klassen (sollte von allen individuell erstellt werden)
+	- Taskliste kompakter aufbauen (Buttons in Table integrieren)
+	- Exception-Handling erweitern
+- All project members were present
+	
+08.01.2015
+	Final presentation: 
+	These persons will present the following feature/aspect: 
+	Pira: Patient summary on HomeView
+	Amin: Main Design with CSS
+	Riza: Xml-FileReader
+	Michel: Element of a Therapy View
+	Sabine: Daily medication
+	Stefan: Authentication
+- All project members were present
