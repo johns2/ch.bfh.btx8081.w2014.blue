@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tasks>
-	<task>
-		<goal>Stop smoking for seven days</goal>
-		<date>01.01.2015</date>
-		<taskState>NotSolved</taskState>
-	</task>
-	<task>
-		<goal>Stop drinking alcohol for five days</goal>
-		<date>02.01.2015</date>
-		<taskState>NotSolved</taskState>
-	</task>
-</tasks>
+<Tasks>
+	<TherapyTasks therapy="1">
+	<Task>
+			<Goal>Stop smoking for seven days</Goal>
+			<Date>01.01.2015</Date>
+			<TaskState>NotSolved</TaskState>
+	</Task>
+	<Task>
+			<Goal>Stop drinking alcohol for five days</Goal>
+			<Date>02.01.2015</Date>
+			<TaskState>NotSolved</TaskState>
+	</Task>
+	</TherapyTasks>
+</Tasks>

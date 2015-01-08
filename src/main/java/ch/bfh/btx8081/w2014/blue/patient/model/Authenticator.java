@@ -1,9 +1,9 @@
 package ch.bfh.btx8081.w2014.blue.patient.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.UI;
 
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
@@ -53,12 +53,13 @@ public class Authenticator {
 	 * @return isValid A boolean value if the login was valid or not
 	 */
 	public boolean authenticate() {
+		List<UserData> Patient1 = new ArrayList<UserData>();
 		// Load Patient1 from database
-		List<UserData> Patient1 = XmlFileReader.getUserData();
+		Patient1 = XmlFileReader.getUserData();
 		
 		//Compares the input credentials with them of the user
-		boolean isValid = username.equals(Patient1.iterator().next().getUsername())
-				&& password.equals(Patient1.iterator().next().getPassword());
+		boolean isValid = username.equals(Patient1.get(0).getUsername())
+				&& password.equals(Patient1.get(0).getPassword());
 		
 		if (isValid == true){
 			setValidSession();

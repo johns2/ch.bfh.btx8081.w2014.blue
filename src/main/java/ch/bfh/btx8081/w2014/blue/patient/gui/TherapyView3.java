@@ -5,8 +5,10 @@ package ch.bfh.btx8081.w2014.blue.patient.gui;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
-import ch.bfh.btx8081.w2014.blue.patient.model.Task;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
+import ch.bfh.btx8081.w2014.blue.patient.model.TaskModel;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
@@ -30,7 +32,7 @@ import com.vaadin.ui.VerticalLayout;
  * @author Michel This Class creates the 3th page of the therapy section
  */
 @SuppressWarnings("serial")
-public class Therapy3 extends VerticalLayout implements View {
+public class TherapyView3 extends VerticalLayout implements View {
 
 	final VerticalLayout layout;
 	private AbsoluteLayout mainLayout;
@@ -41,18 +43,19 @@ public class Therapy3 extends VerticalLayout implements View {
 	private Link mailToDoctor;
 	private Button buttonOk;
 	private Button buttonNotOk;
-	private Task task1Object = new Task();
-	private Task task2Object = new Task();
 	private HashSet<Object> markedRows = new HashSet<Object>();
 	private String valueString;
 	private int chosenItem = 1;
+	private ControllerTherapy therapyController;
 
 	/**
 	 * Constructs a THERAPYVIEW3 on the base of different parameters.
 	 */
-	public Therapy3()
+	public TherapyView3(ControllerTherapy therapyController)
 
 	{
+		this.therapyController = therapyController;
+		therapyController.setTherapyView3(this);
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
@@ -111,7 +114,7 @@ public class Therapy3 extends VerticalLayout implements View {
 
 		verticalLayout.addComponent(goalTable);
 		verticalLayout.setComponentAlignment(goalTable, Alignment.TOP_CENTER);
-
+		
 		// Button for OK
 
 		buttonOk = new Button("Done");
@@ -119,7 +122,7 @@ public class Therapy3 extends VerticalLayout implements View {
 		buttonOk.setWidth("40%");
 		buttonOk.setHeight("-1px");
 		verticalLayout.addComponent(buttonOk);
-		verticalLayout.setComponentAlignment(buttonOk,Alignment.MIDDLE_CENTER);
+		verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
 
 		buttonOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -147,7 +150,6 @@ public class Therapy3 extends VerticalLayout implements View {
 					final Object target) {
 				if (ACTION_MARK == action) {
 					markedRows.add(target);
-					System.out.println(markedRows);
 				} else if (ACTION_UNMARK == action) {
 					markedRows.remove(target);
 				}
@@ -175,7 +177,8 @@ public class Therapy3 extends VerticalLayout implements View {
 		buttonNotOk.setWidth("40%");
 		buttonNotOk.setHeight("-1px");
 		verticalLayout.addComponent(buttonNotOk);
-		verticalLayout.setComponentAlignment(buttonNotOk,Alignment.MIDDLE_CENTER);
+		verticalLayout.setComponentAlignment(buttonNotOk,
+				Alignment.MIDDLE_CENTER);
 
 		buttonNotOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -206,23 +209,15 @@ public class Therapy3 extends VerticalLayout implements View {
 		return verticalLayout;
 	}
 
+
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// Generate first dummy task list item
-		task1Object.setTaskGoal("Stop smoking for seven days");
-		task1Object.setTaskDate("01.01.2015");
-
-		goalTable.addItem(new Object[] { task1Object.getTaskGoal(),
-				new CheckBox("", false), task1Object.getTaskDate() }, 0);
-		Task.setTherapyState(goalTable.getItem(0), "NotSolved");
-
-		// Generate second dummy task list item
-		task2Object.setTaskGoal("Stop drinking alcohol for five days");
-		task2Object.setTaskDate("02.01.2015");
-
-		goalTable.addItem(new Object[] { task2Object.getTaskGoal(),
-				new CheckBox("", false), task2Object.getTaskDate() }, 1);
-		Task.setTherapyState(goalTable.getItem(1), "NotSolved");
+		goalTable.removeAllItems();
+		int objectCounter = 0;
+		for (Object[] goalTableItem : therapyController.getTasksOfTherapy()){
+			goalTable.addItem(goalTableItem, objectCounter);
+			objectCounter++;
+		}
 	}
 
 }

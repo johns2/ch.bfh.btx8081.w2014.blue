@@ -11,26 +11,23 @@ import ch.bfh.btx8081.w2014.blue.patient.controller.ToImprove;
 
 /**
  * This model implements a task for the <code>Therapy</code> class. For
- * implementing the state pattern it uses the interface <code>IState</code> with
+ * implementing the state pattern it uses the interface <code>ITaskState</code> with
  * his subclasses
  * 
  * @author Stefan Johner, johns2@bfh.ch
  *
  */
-public class Task {
+public class TaskModel {
 	private static ITaskState therapyState;
-	private String taskTitle;
+	private String taskState;
 	private String taskGoal;
 	private String taskMessage;
 	private String taskDate;
 	
-	public Task(){
-		
-	}
-	
-	public Task (String taskTitle, String taskGoal){
-		this.taskTitle = taskTitle;
+	public TaskModel (String taskState, String taskGoal, String taskDate){
+		this.taskState = taskState;
 		this.taskGoal = taskGoal;
+		this.taskDate = taskDate;
 	}
 
 	public String getTaskDate() {
@@ -42,11 +39,11 @@ public class Task {
 	}
 
 	public String getTaskTitle() {
-		return taskTitle;
+		return taskState;
 	}
 
 	public void setTaskTitle(String taskTitle) {
-		this.taskTitle = taskTitle;
+		this.taskState = taskTitle;
 	}
 
 	public String getTaskGoal() {

@@ -41,11 +41,11 @@ public class Login extends VerticalLayout implements View {
 	 * 
 	 */
 
-	public Login()
+	public Login(ControllerLogin loginController)
 
 	{
-		
-		
+
+		this.loginController = loginController;		
 		design = new PatientMainDesign(this);
 		style=design.getStyles();
 		createCssForButton();
@@ -56,11 +56,6 @@ public class Login extends VerticalLayout implements View {
 		upperVerticalLayout = design.getUpperVerticalLayout();
 		buildHorizontalLayout_1();
 		createLayout();
-	}
-
-	public Login(ControllerLogin loginController) {
-		this();
-		this.loginController = loginController;
 	}
 
 	/**

@@ -17,6 +17,7 @@ import org.jdom2.input.SAXBuilder;
 
 import com.vaadin.ui.Label;
 
+import ch.bfh.btx8081.w2014.blue.patient.model.TaskModel;
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 import ch.bfh.btx8081.w2014.blue.patient.model.MedicationModel;
 import ch.bfh.btx8081.w2014.blue.patient.model.TherapyModel;
@@ -31,9 +32,10 @@ public class XmlFileReader {
 	 ** Constants for the location and name of the XML Files that will be read by
 	 * the application Where are the XML Files located?
 	 **/
-	private static final String USER_PATH = "XML/UserData.xml";
-	private static final String MEDICATION_PATH = "XML/Medication.xml";
-	private static final String THERAPY_PATH = "XML/Therapy.xml";
+	private static final String USER_PATH = "src/main/java/ch/bfh/btx8081/w2014/blue/patient/database/XML/UserData.xml";
+	private static final String MEDICATION_PATH = "src/main/java/ch/bfh/btx8081/w2014/blue/patient/database/XML/Medication.xml";
+	private static final String THERAPY_PATH = "src/main/java/ch/bfh/btx8081/w2014/blue/patient/database/XML/Therapy.xml";
+	private static final String TASK_PATH = "src/main/java/ch/bfh/btx8081/w2014/blue/patient/database/XML/Task.xml";
 
 	/**
 	 ** SAXBuilder, Document and Element from JDOM library and Java File object
@@ -59,12 +61,12 @@ public class XmlFileReader {
 		try {
 			// try to build a jdom document from the given xml File
 			// this will work if the file exists and is well structured
-			document = (Document) builder.build(xmlFile);
+			document = builder.build(xmlFile);
 			// get the first (root) element of the xml file
 			rootNode = document.getRootElement();
 
 			// Create a list of all the XML Elements named users
-			List<Element> users = rootNode.getChildren("users");
+			List<Element> users = rootNode.getChildren("user");
 			// Create a list of UserData Objects that will be returned later
 			List<UserData> retUser = new ArrayList<UserData>();
 			// Loop throught the XML Elements, foreach element a UserData object
@@ -74,10 +76,10 @@ public class XmlFileReader {
 				UserData user = new UserData();
 				// Take the text of the element called Username, set it in model
 				// class
-				user.setUsername(userElement.getChildText("Username"));
+				user.setUsername(userElement.getChildText("username"));
 				// Take the text of the element called Password, set it in model
 				// class
-				user.setPassword(userElement.getChildText("Password"));
+				user.setPassword(userElement.getChildText("password"));
 				// Add current Users to list
 				retUser.add(user);
 			}
@@ -129,7 +131,7 @@ public class XmlFileReader {
 		xmlFile = new File(THERAPY_PATH);
 		try {
 			// Create document from path
-			document = (Document) builder.build(xmlFile);
+			document = builder.build(xmlFile);
 			rootNode = document.getRootElement();
 
 			// Get a list of all the XML Elements (therapy)
@@ -138,15 +140,62 @@ public class XmlFileReader {
 			List<TherapyModel> retTherapies = new ArrayList<TherapyModel>();
 			for (Element therapyElement : therapies) {
 				// Mapping XML-File to Model Class
-				TherapyModel therapy = new TherapyModel();
-				therapy.setName(therapyElement.getChildText("name"));
-				therapy.setDescription(therapyElement
-						.getChildText("description"));
-				therapy.setPurpose(therapyElement.getChildText("purpose"));
+				TherapyModel therapy = new TherapyModel(
+						therapyElement.getChildText("name"),
+						therapyElement.getChildText("description"),
+						therapyElement.getChildText("purpose"));
 				// Add current Therapy to list
 				retTherapies.add(therapy);
 			}
 			return retTherapies;
+		} catch (JDOMException e) {
+			// We will end up here if the file is not well structured, not a
+			// valid xmlFile
+			// for debug purposes printStackTrace to console
+			e.printStackTrace();
+			// By passing on the exception to the method we determine the custom
+			// Error Message
+			// that will be added to the DataAccessException
+			throwDataAccessException(e);
+		} catch (IOException e) {
+			// We will end up here if the file doesn't exist
+			// for debug purposes printStackTrace to console
+			e.printStackTrace();
+			throwDataAccessException(e);
+		} catch (Exception e) {
+			// We end up here if an unknown error takes place
+			e.printStackTrace();
+			throwDataAccessException(e);
+		}
+		return null;
+	}
+
+	/**
+	 ** This method is used to load all taks from the corresponding XML-File Will
+	 * throw a DataAccessException if an error occurs.
+	 **/
+	public static List<TaskModel> getTasks() {
+		builder = new SAXBuilder();
+		xmlFile = new File(TASK_PATH);
+		try {
+			// Create document from path
+			document = builder.build(xmlFile);
+			rootNode = document.getRootElement();
+
+			// Get a list of all the XML Elements (task)
+			// and create a list of Task objects to return later on
+			List<Element> therapyTasks = rootNode.getChildren("task");
+			List<TaskModel> tasks = new ArrayList<TaskModel>();
+			for (Element taskElement : therapyTasks) {
+				// Mapping XML-File to Model Class
+				TaskModel task = new TaskModel(
+						taskElement.getChildText("taskstate"),
+						taskElement.getChildText("goal"),
+						taskElement.getChildText("date"));
+				// Add current Tasks to list
+				tasks.add(task);
+			}
+			return tasks;
 		} catch (JDOMException e) {
 			// We will end up here if the file is not well structured, not a
 			// valid xmlFile
@@ -180,7 +229,7 @@ public class XmlFileReader {
 		try {
 
 			// Create document from path
-			document = (Document) builder.build(xmlFile);
+			document = builder.build(xmlFile);
 			rootNode = document.getRootElement();
 
 			// Create a list of all XML Elements that contain a patients
@@ -240,9 +289,12 @@ public class XmlFileReader {
 	}
 
 	public static void main(String[] args) {
-		for (TherapyModel s : XmlFileReader.getTherapies()) {
-
-			System.out.println(new Label(s.getName()));
-		}
+//		for (TherapyModel s : XmlFileReader.getTherapies()) {
+//
+//			System.out.println(new Label(s.getName()));
+//		}
+//		for (UserData u : XmlFileReader.getUserData()){
+//			System.out.println(u.getUsername() );
+//		}
 	}
 }
