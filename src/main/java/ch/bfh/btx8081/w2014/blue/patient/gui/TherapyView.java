@@ -35,6 +35,7 @@ public class TherapyView extends VerticalLayout implements View {
 	protected Button buttonNext1;
 	protected TabSheet therapyInfo;
 	private ControllerTherapy therapyController;
+	protected Button buttonBack;
 
 	/**
 	 * Constructs a THERAPYVIEW on the base of different parameters.
@@ -115,10 +116,28 @@ public class TherapyView extends VerticalLayout implements View {
 
 			}
 		});
+		
+		// Button for got o 1 step back
+
+		buttonBack = new Button("GO back");
+		buttonBack.setIcon(FontAwesome.ARROW_CIRCLE_O_LEFT);
+		buttonBack.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				ControllerUI.navigateTo(ControllerUI.HOMEVIEW);
+
+			}
+
+
+		});
 
 		verticalLayout.addComponent(buttonNext1);
 		verticalLayout.setComponentAlignment(buttonNext1,
-				Alignment.MIDDLE_CENTER);
+				Alignment.BOTTOM_CENTER);
+		verticalLayout.addComponent(buttonBack);
+		verticalLayout.setComponentAlignment(buttonBack,
+				Alignment.BOTTOM_CENTER);
 
 		return verticalLayout;
 
