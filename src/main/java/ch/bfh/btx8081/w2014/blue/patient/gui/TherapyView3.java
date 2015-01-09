@@ -196,18 +196,7 @@ public class TherapyView3 extends VerticalLayout implements View {
 			}
 		});
 		
-		// Button for Next
 
-		buttonNext1 = new Button("GO to Tasks");
-		buttonNext1.setIcon(FontAwesome.ARROW_CIRCLE_O_RIGHT);
-		buttonNext1.addClickListener(new Button.ClickListener() {
-
-			@Override
-			public void buttonClick(ClickEvent event) {
-				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW3);
-
-			}
-		});
 		
 		// Button for got o 1 step back
 
@@ -223,9 +212,6 @@ public class TherapyView3 extends VerticalLayout implements View {
 			
 		});
 
-		verticalLayout.addComponent(buttonNext1);
-		verticalLayout.setComponentAlignment(buttonNext1,
-				Alignment.BOTTOM_CENTER);
 		verticalLayout.addComponent(buttonBack2);
 		verticalLayout.setComponentAlignment(buttonBack2,
 				Alignment.BOTTOM_CENTER);
