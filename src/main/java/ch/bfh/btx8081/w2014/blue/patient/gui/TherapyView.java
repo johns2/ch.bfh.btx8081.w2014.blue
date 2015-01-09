@@ -14,6 +14,7 @@ import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
@@ -30,6 +31,7 @@ public class TherapyView extends VerticalLayout implements View {
 	final VerticalLayout layout;
 	private AbsoluteLayout mainLayout;
 	private VerticalLayout verticalLayout;
+	private HorizontalLayout horizontalLayout;
 	private PatientMainDesign design;
 	protected ComboBox therapyList;
 	protected Button buttonNext1;
@@ -104,6 +106,8 @@ public class TherapyView extends VerticalLayout implements View {
 		verticalLayout.setComponentAlignment(therapyInfo,
 				Alignment.MIDDLE_CENTER);
 
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		
 		// Button for Next
 
 		buttonNext1 = new Button("GO to Tasks");
@@ -131,14 +135,13 @@ public class TherapyView extends VerticalLayout implements View {
 
 
 		});
+		
+		horizontalLayout.addComponent(buttonBack);
+		horizontalLayout.addComponent(buttonNext1);
+		
 
-		verticalLayout.addComponent(buttonNext1);
-		verticalLayout.setComponentAlignment(buttonNext1,
-				Alignment.BOTTOM_CENTER);
-		verticalLayout.addComponent(buttonBack);
-		verticalLayout.setComponentAlignment(buttonBack,
-				Alignment.BOTTOM_CENTER);
-
+		verticalLayout.addComponent(horizontalLayout);
+		verticalLayout.setComponentAlignment(horizontalLayout, Alignment.BOTTOM_CENTER);
 		return verticalLayout;
 
 	}
