@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 import ch.bfh.btx8081.w2014.blue.patient.model.TaskModel;
 
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -47,6 +48,9 @@ public class TherapyView3 extends VerticalLayout implements View {
 	private String valueString;
 	private int chosenItem = 1;
 	private ControllerTherapy therapyController;
+	protected Button buttonNext1;
+	protected Button buttonBack2;
+
 
 	/**
 	 * Constructs a THERAPYVIEW3 on the base of different parameters.
@@ -121,8 +125,8 @@ public class TherapyView3 extends VerticalLayout implements View {
 		buttonOk.setIcon(FontAwesome.CHECK);
 		buttonOk.setWidth("40%");
 		buttonOk.setHeight("-1px");
-		verticalLayout.addComponent(buttonOk);
-		verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
+		//verticalLayout.addComponent(buttonOk);
+		//verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
 
 		buttonOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -167,8 +171,8 @@ public class TherapyView3 extends VerticalLayout implements View {
 			}
 		});
 
-		verticalLayout.addComponent(buttonOk);
-		verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
+		//verticalLayout.addComponent(buttonOk);
+		//verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
 
 		// Button for NOT OK
 
@@ -176,9 +180,9 @@ public class TherapyView3 extends VerticalLayout implements View {
 		buttonNotOk.setIcon(FontAwesome.TIMES);
 		buttonNotOk.setWidth("40%");
 		buttonNotOk.setHeight("-1px");
-		verticalLayout.addComponent(buttonNotOk);
-		verticalLayout.setComponentAlignment(buttonNotOk,
-				Alignment.MIDDLE_CENTER);
+		//verticalLayout.addComponent(buttonNotOk);
+		//verticalLayout.setComponentAlignment(buttonNotOk,
+			//	Alignment.MIDDLE_CENTER);
 
 		buttonNotOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -191,10 +195,41 @@ public class TherapyView3 extends VerticalLayout implements View {
 
 			}
 		});
+		
+		// Button for Next
 
-		verticalLayout.addComponent(buttonNotOk);
-		verticalLayout.setComponentAlignment(buttonNotOk,
+		buttonNext1 = new Button("GO to Tasks");
+		buttonNext1.setIcon(FontAwesome.ARROW_CIRCLE_O_RIGHT);
+		buttonNext1.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW3);
+
+			}
+		});
+		
+		// Button for got o 1 step back
+
+		buttonBack2 = new Button("GO back");
+		buttonBack2.setIcon(FontAwesome.ARROW_CIRCLE_O_LEFT);
+		buttonBack2.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW);
+
+			}
+			
+		});
+
+		verticalLayout.addComponent(buttonNext1);
+		verticalLayout.setComponentAlignment(buttonNext1,
 				Alignment.BOTTOM_CENTER);
+		verticalLayout.addComponent(buttonBack2);
+		verticalLayout.setComponentAlignment(buttonBack2,
+				Alignment.BOTTOM_CENTER);
+
 
 		// Link for Mail to Doctor send
 		//
