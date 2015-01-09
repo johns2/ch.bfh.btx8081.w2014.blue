@@ -109,7 +109,7 @@ public class PatientMainDesign {
 
 		styles.add(".mainlayout {"
 
-		+ "background-image: url(http://us.123rf.com/450wm/gigello/gigello1110/gigello111000007/10798899-green-alternative-medication-concept--vector-illustration.jpg);" + "position: fixed;" + "top: 50%;"
+		+ "background-image: url(http://i.imgur.com/kaRnZJx.jpg?1);" + "position: fixed;" + "top: 50%;"
 				+ "left:50%;" + " transform: translate(-50%, -50%);"
 				+ "border: #cedcf2 double 4px;"
 				+ " border-color: #0000ff #0000ff; "
