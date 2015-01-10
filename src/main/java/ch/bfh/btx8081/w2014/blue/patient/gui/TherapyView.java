@@ -3,10 +3,16 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
+
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
 
+import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
@@ -38,6 +44,8 @@ public class TherapyView extends VerticalLayout implements View {
 	protected TabSheet therapyInfo;
 	private ControllerTherapy therapyController;
 	protected Button buttonBack;
+	private Map<String, String> therapyDescriptionMap;
+	private TextArea textArea;
 
 	/**
 	 * Constructs a THERAPYVIEW on the base of different parameters.
@@ -88,7 +96,7 @@ public class TherapyView extends VerticalLayout implements View {
 		therapyList.setWidth("80%");
 		therapyList.setHeight("-1px");
 		therapyList.setStyleName(ValoTheme.COMBOBOX_BORDERLESS);
-		therapyList.setNewItemsAllowed(true);
+		therapyList.setNewItemsAllowed(false);
 		therapyList.setImmediate(true);
 		therapyList.setNullSelectionAllowed(false);
 		verticalLayout.addComponent(therapyList);
@@ -97,13 +105,21 @@ public class TherapyView extends VerticalLayout implements View {
 
 		// Textarea for TherapyNotes
 
-		therapyInfo = new TabSheet();
+		//therapyInfo = new TabSheet();
+		textArea= new TextArea();
+		textArea.setRequired(false);
+		textArea.setValue("Please select a Therapy !");
+		textArea.setWidth("100%");
+		textArea.setHeight("100%");
+		textArea.setImmediate(true);
 
+		/*
 		therapyInfo.setWidth("100%");
 		therapyInfo.setHeight("100%");
 		therapyInfo.setImmediate(true);
-		verticalLayout.addComponent(therapyInfo);
-		verticalLayout.setComponentAlignment(therapyInfo,
+		*/
+		verticalLayout.addComponent(textArea);
+		verticalLayout.setComponentAlignment(textArea,
 				Alignment.MIDDLE_CENTER);
 
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
@@ -146,9 +162,22 @@ public class TherapyView extends VerticalLayout implements View {
 
 	}
 
+	private void createMapTherapyDescription(){
+		
+		therapyDescriptionMap=new TreeMap<String, String>();
+		ArrayList<String> therapyNames=therapyController.getTherapyNames();
+		
+		int i=0;
+		for(String str:therapyNames){
+			therapyDescriptionMap.put(str, therapyController.getTherapyDescriptions().get(i));
+			i++;
+		}
+	}
+
 	@Override
 	public void enter(ViewChangeEvent event) {
 
+		/*
 		// Add the therapy descriptions and count
 		therapyInfo.removeAllComponents();
 		int therapyCounter = 1;
@@ -159,11 +188,21 @@ public class TherapyView extends VerticalLayout implements View {
 			therapyCounter++;
 		}
 
+		 */
 		// Add the therapy names
-		therapyList.removeAllItems();
 		for (String therapyName : therapyController.getTherapyNames()) {
 			therapyList.addItem(therapyName);
 		}
+		
+		createMapTherapyDescription();
+		therapyList.addValueChangeListener(new ValueChangeListener() {
+			
+			@Override
+			public void valueChange(ValueChangeEvent event) {
+				// TODO Auto-generated method stub
+				textArea.setValue(therapyDescriptionMap.get(therapyList.getValue()));
+			}
+		});
 
 	}
 
