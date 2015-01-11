@@ -45,8 +45,9 @@ public class TherapyView extends VerticalLayout implements View {
 	protected Button buttonBack;
 	private Map<String, String> therapyDescriptionMap;
 	private Map<String, String> therapyPurposeMap;
-	private TextArea textArea;
-	private TextArea textArea2;
+	private ArrayList<String> therapyNames;
+	private TextArea descriptionTextArea;
+	private TextArea purposeTextArea;
 	private Styles style;
 
 	/**
@@ -55,12 +56,16 @@ public class TherapyView extends VerticalLayout implements View {
 	public TherapyView(ControllerTherapy therapyController)
 
 	{
+		
 		style = Page.getCurrent().getStyles();
 		this.therapyController = therapyController;
+		therapyNames=new ArrayList<String>();
+		therapyNames=this.therapyController.getTherapyNames();
 		therapyController.setTherapyView(this);
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
+		setStyleForTextArea();
 		buildVerticalLayout_21();
 		createLayout();
 	}
@@ -107,30 +112,29 @@ public class TherapyView extends VerticalLayout implements View {
 				Alignment.MIDDLE_CENTER);
 
 		// Textarea for Therapy description
-		textArea = new TextArea();
-		setStyleForTextArea();
-		textArea.setStyleName("textarea");
-		textArea.setRequired(false);
-		textArea.setValue("Description");
-		textArea.setWidth("100%");
-		textArea.setHeight("100%");
-		textArea.setImmediate(true);
+		descriptionTextArea = new TextArea("Description");
+		
+		descriptionTextArea.setStyleName("textarea");
+		descriptionTextArea.setRequired(false);
+		descriptionTextArea.setValue("Description");
+		descriptionTextArea.setWidth("100%");
+		descriptionTextArea.setHeight("100%");
+		descriptionTextArea.setImmediate(true);
 
-		verticalLayout.addComponent(textArea);
-		verticalLayout.setComponentAlignment(textArea, Alignment.MIDDLE_CENTER);
+		verticalLayout.addComponent(descriptionTextArea);
+		verticalLayout.setComponentAlignment(descriptionTextArea, Alignment.MIDDLE_CENTER);
 
 		// Textarea for Therapy purpose
-		textArea2 = new TextArea();
-		setStyleForTextArea();
-		textArea2.setStyleName("textarea");
-		textArea2.setRequired(false);
-		textArea2.setValue("Purpose");
-		textArea2.setWidth("100%");
-		textArea2.setHeight("100%");
-		textArea2.setImmediate(true);
+		purposeTextArea = new TextArea("purpose");
+		purposeTextArea.setStyleName("textarea");
+		purposeTextArea.setRequired(false);
+		purposeTextArea.setValue("Purpose");
+		purposeTextArea.setWidth("100%");
+		purposeTextArea.setHeight("100%");
+		purposeTextArea.setImmediate(true);
 
-		verticalLayout.addComponent(textArea2);
-		verticalLayout.setComponentAlignment(textArea2, Alignment.MIDDLE_CENTER);
+		verticalLayout.addComponent(purposeTextArea);
+		verticalLayout.setComponentAlignment(purposeTextArea, Alignment.MIDDLE_CENTER);
 
 		
 		
@@ -180,7 +184,6 @@ public class TherapyView extends VerticalLayout implements View {
 	private void createMapTherapyDescription() {
 
 		therapyDescriptionMap = new TreeMap<String, String>();
-		ArrayList<String> therapyNames = therapyController.getTherapyNames();
 
 		int i = 0;
 		for (String str : therapyNames) {
@@ -197,10 +200,10 @@ public class TherapyView extends VerticalLayout implements View {
 	private void createMapTherapyPurpose() {
 
 		therapyPurposeMap = new TreeMap<String, String>();
-		ArrayList<String> therapyPurpose = therapyController.getTherapyPurpose();
+		//ArrayList<String> therapyPurpose = therapyController.getTherapyPurpose();
 
 		int i = 0;
-		for (String str : therapyPurpose) {
+		for (String str : therapyNames) {
 			therapyPurposeMap.put(str, therapyController
 					.getTherapyPurpose().get(i));
 			i++;
@@ -221,7 +224,7 @@ public class TherapyView extends VerticalLayout implements View {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				// TODO Auto-generated method stub
-				textArea.setValue(therapyDescriptionMap.get(therapyList
+				descriptionTextArea.setValue(therapyDescriptionMap.get(therapyList
 						.getValue()));
 			}
 		});
@@ -233,7 +236,7 @@ public class TherapyView extends VerticalLayout implements View {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				// TODO Auto-generated method stub
-				textArea2.setValue(therapyPurposeMap.get(therapyList
+				purposeTextArea.setValue(therapyPurposeMap.get(therapyList
 						.getValue()));
 
 	}
