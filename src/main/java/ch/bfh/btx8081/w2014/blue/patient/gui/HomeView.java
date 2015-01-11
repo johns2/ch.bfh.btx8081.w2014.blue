@@ -3,16 +3,31 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
+
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 
+import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page;
+import com.vaadin.server.Page.Styles;
 import com.vaadin.ui.AbsoluteLayout;
+import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.TabSheet;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
 /**
  * Creates a new <code>HomeView</code> instance, that contains three buttons in
@@ -34,11 +49,18 @@ public class HomeView extends VerticalLayout implements View {
 	private Button therapyButton;
 	private Button logoutButton;
 	private PatientMainDesign design;
+	private TextArea textMedicationArea;
+	private TextArea textTherapyArea;
+	private Styles style;
+	private ControllerTherapy therapyController;
+	private Label medicationLabel;
+	private Map<String, String> therapySummaryMap;
 
 	/**
 	 * construct the Home view with two buttons.
 	 */
 	public HomeView() {
+		style = Page.getCurrent().getStyles();
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		buildVerticalLayout_1();
@@ -56,7 +78,7 @@ public class HomeView extends VerticalLayout implements View {
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				
+
 				ControllerUI.navigateTo(ControllerUI.MEDICATION);
 
 			}
@@ -115,6 +137,19 @@ public class HomeView extends VerticalLayout implements View {
 		verticalLayout.setComponentAlignment(medicationButton,
 				Alignment.MIDDLE_CENTER);
 
+		// common part: create TextArea for MedicationSummary
+		textMedicationArea = new TextArea("Medication Summary");
+		setStyleForTextArea();
+		textMedicationArea.setStyleName("textarea");
+
+		textMedicationArea.setWidth("100%");
+		textMedicationArea.setHeight("100%");
+		textMedicationArea.setImmediate(true);
+
+		verticalLayout.addComponent(textMedicationArea);
+		verticalLayout.setComponentAlignment(textMedicationArea,
+				Alignment.MIDDLE_CENTER);
+
 		therapyButton = new Button("Therapy");
 		therapyButton.setIcon(FontAwesome.USER_MD);
 		therapyButton.setImmediate(true);
@@ -122,6 +157,19 @@ public class HomeView extends VerticalLayout implements View {
 		therapyButton.setHeight("-1px");
 		verticalLayout.addComponent(therapyButton);
 		verticalLayout.setComponentAlignment(therapyButton,
+				Alignment.MIDDLE_CENTER);
+
+		// common part: create TextArea for TherapySummary
+		textTherapyArea = new TextArea("Therapy Summary");
+		setStyleForTextArea();
+		textTherapyArea.setStyleName("textarea");
+
+		textTherapyArea.setWidth("100%");
+		textTherapyArea.setHeight("100%");
+		textTherapyArea.setImmediate(true);
+
+		verticalLayout.addComponent(textTherapyArea);
+		verticalLayout.setComponentAlignment(textTherapyArea,
 				Alignment.MIDDLE_CENTER);
 
 		logoutButton = new Button("Logout");
@@ -134,6 +182,15 @@ public class HomeView extends VerticalLayout implements View {
 				Alignment.BOTTOM_CENTER);
 
 		return verticalLayout;
+	}
+
+	/*
+	 * Create CSS for the Style
+	 */
+	private void setStyleForTextArea() {
+		style.add(".textarea{" + " padding: 0.1cm !important;" 
+	+ "font-size: 40px;"
+	+ ";}");
 	}
 
 	@Override
