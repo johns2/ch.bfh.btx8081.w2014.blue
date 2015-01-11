@@ -77,14 +77,14 @@ public class ControllerMedication {
 	 * 
 	 * @return medicationDay in a <code>ArrayList</code><String>
 	 */
-	/*
+	
 	public ArrayList<String> getMedicationDays() {
 		for (MedicationModel medication : Medications) {
 			medicationDays.add(medication.getDay());
 		}
 		return medicationDays;
 	}
-	*/
+	
 
 }
 
