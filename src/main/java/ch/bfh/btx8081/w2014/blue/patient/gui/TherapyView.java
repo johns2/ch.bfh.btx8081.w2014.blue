@@ -9,19 +9,19 @@ import java.util.TreeMap;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
-import ch.bfh.btx8081.w2014.blue.patient.database.XmlFileReader;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page;
+import com.vaadin.server.Page.Styles;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
@@ -37,7 +37,6 @@ public class TherapyView extends VerticalLayout implements View {
 	final VerticalLayout layout;
 	private AbsoluteLayout mainLayout;
 	private VerticalLayout verticalLayout;
-	private HorizontalLayout horizontalLayout;
 	private PatientMainDesign design;
 	protected ComboBox therapyList;
 	protected Button buttonNext1;
@@ -46,6 +45,7 @@ public class TherapyView extends VerticalLayout implements View {
 	protected Button buttonBack;
 	private Map<String, String> therapyDescriptionMap;
 	private TextArea textArea;
+	private Styles style;
 
 	/**
 	 * Constructs a THERAPYVIEW on the base of different parameters.
@@ -53,6 +53,7 @@ public class TherapyView extends VerticalLayout implements View {
 	public TherapyView(ControllerTherapy therapyController)
 
 	{
+		style = Page.getCurrent().getStyles();
 		this.therapyController = therapyController;
 		therapyController.setTherapyView(this);
 		design = new PatientMainDesign(this);
@@ -104,20 +105,16 @@ public class TherapyView extends VerticalLayout implements View {
 				Alignment.MIDDLE_CENTER);
 
 		// Textarea for TherapyNotes
-
-		//therapyInfo = new TabSheet();
 		textArea= new TextArea();
+		setStyleForTextArea();
+		textArea.setStyleName("textarea");
 		textArea.setRequired(false);
 		textArea.setValue("Please select a Therapy !");
 		textArea.setWidth("100%");
 		textArea.setHeight("100%");
 		textArea.setImmediate(true);
 
-		/*
-		therapyInfo.setWidth("100%");
-		therapyInfo.setHeight("100%");
-		therapyInfo.setImmediate(true);
-		*/
+		
 		verticalLayout.addComponent(textArea);
 		verticalLayout.setComponentAlignment(textArea,
 				Alignment.MIDDLE_CENTER);
@@ -162,6 +159,9 @@ public class TherapyView extends VerticalLayout implements View {
 
 	}
 
+	/*
+	 * Create a map, containing the information about Therapies and their descriptions.
+	 */
 	private void createMapTherapyDescription(){
 		
 		therapyDescriptionMap=new TreeMap<String, String>();
@@ -177,18 +177,6 @@ public class TherapyView extends VerticalLayout implements View {
 	@Override
 	public void enter(ViewChangeEvent event) {
 
-		/*
-		// Add the therapy descriptions and count
-		therapyInfo.removeAllComponents();
-		int therapyCounter = 1;
-		for (String therapyDescription : therapyController
-				.getTherapyDescriptions()) {
-			therapyInfo.addTab(new Label(therapyDescription), "Therapy "
-					+ therapyCounter);
-			therapyCounter++;
-		}
-
-		 */
 		// Add the therapy names
 		for (String therapyName : therapyController.getTherapyNames()) {
 			therapyList.addItem(therapyName);
@@ -203,7 +191,17 @@ public class TherapyView extends VerticalLayout implements View {
 				textArea.setValue(therapyDescriptionMap.get(therapyList.getValue()));
 			}
 		});
+		
+		
 
+	}
+	/*
+	 * Create CSS for the Style
+	 */
+	private void setStyleForTextArea(){
+		style.add(".textarea{"
+    +" padding: 0.5cm !important;"+
+    ";}");
 	}
 
 }
