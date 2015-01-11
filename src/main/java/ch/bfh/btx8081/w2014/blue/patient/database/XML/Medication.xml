@@ -4,26 +4,36 @@
 			<name>Cipralex</name>
 			<dosage>10</dosage>
 			<description>antidepressant, emotionally elevating</description>
+			<day>Monday</day>
+			<time>10:00</time>
 		</Medication>
 		<Medication>
 			<name>Dafalgan</name>
 			<dosage>500</dosage>
 			<description>analgesic</description>
+			<day>Tuesday</day>
+			<time>12:00</time>
 		</Medication>
 		<Medication>
 			<name>Irfen</name>
 			<dosage>600</dosage>
 			<description>anti-inflammatory, pain-relieving</description>
+			<day>Wednesday</day>
+			<time>15:00</time>
 		</Medication>
 		<Medication>
 			<name>Remeron</name>
 			<dosage>30</dosage>
 			<description>antidepressant, sleep-inducing</description>
+			<day>Thursday</day>
+			<time>17:00</time>
 		</Medication>
 		<Medication>
 			<name>Stilnox</name>
 			<dosage>10</dosage>
 			<description>sedative</description>
+			<day>Friday</day>
+			<time>22:00</time>
 		</Medication>
 	</PatientMedication>
 </Medications>
