@@ -44,7 +44,9 @@ public class TherapyView extends VerticalLayout implements View {
 	private ControllerTherapy therapyController;
 	protected Button buttonBack;
 	private Map<String, String> therapyDescriptionMap;
+	private Map<String, String> therapyPurposeMap;
 	private TextArea textArea;
+	private TextArea textArea2;
 	private Styles style;
 
 	/**
@@ -104,25 +106,38 @@ public class TherapyView extends VerticalLayout implements View {
 		verticalLayout.setComponentAlignment(therapyList,
 				Alignment.MIDDLE_CENTER);
 
-		// Textarea for TherapyNotes
-		textArea= new TextArea();
+		// Textarea for Therapy description
+		textArea = new TextArea();
 		setStyleForTextArea();
 		textArea.setStyleName("textarea");
 		textArea.setRequired(false);
-		textArea.setValue("Please select a Therapy !");
+		textArea.setValue("Description");
 		textArea.setWidth("100%");
 		textArea.setHeight("100%");
 		textArea.setImmediate(true);
 
-		
 		verticalLayout.addComponent(textArea);
-		verticalLayout.setComponentAlignment(textArea,
-				Alignment.MIDDLE_CENTER);
+		verticalLayout.setComponentAlignment(textArea, Alignment.MIDDLE_CENTER);
 
-		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		// Textarea for Therapy purpose
+		textArea2 = new TextArea();
+		setStyleForTextArea();
+		textArea2.setStyleName("textarea");
+		textArea2.setRequired(false);
+		textArea2.setValue("Purpose");
+		textArea2.setWidth("100%");
+		textArea2.setHeight("100%");
+		textArea2.setImmediate(true);
+
+		verticalLayout.addComponent(textArea2);
+		verticalLayout.setComponentAlignment(textArea2, Alignment.MIDDLE_CENTER);
+
+		
 		
 		// Button for Next
 
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		
 		buttonNext1 = new Button("GO to Tasks");
 		buttonNext1.setIcon(FontAwesome.ARROW_CIRCLE_O_RIGHT);
 		buttonNext1.addClickListener(new Button.ClickListener() {
@@ -133,7 +148,7 @@ public class TherapyView extends VerticalLayout implements View {
 
 			}
 		});
-		
+
 		// Button for got o 1 step back
 
 		buttonBack = new Button("GO back");
@@ -146,30 +161,48 @@ public class TherapyView extends VerticalLayout implements View {
 
 			}
 
-
 		});
-		
+
 		horizontalLayout.addComponent(buttonBack);
 		horizontalLayout.addComponent(buttonNext1);
-		
 
 		verticalLayout.addComponent(horizontalLayout);
-		verticalLayout.setComponentAlignment(horizontalLayout, Alignment.BOTTOM_CENTER);
+		verticalLayout.setComponentAlignment(horizontalLayout,
+				Alignment.BOTTOM_CENTER);
 		return verticalLayout;
 
 	}
 
 	/*
-	 * Create a map, containing the information about Therapies and their descriptions.
+	 * Create a map, containing the information about Therapies and their
+	 * descriptions.
 	 */
-	private void createMapTherapyDescription(){
-		
-		therapyDescriptionMap=new TreeMap<String, String>();
-		ArrayList<String> therapyNames=therapyController.getTherapyNames();
-		
-		int i=0;
-		for(String str:therapyNames){
-			therapyDescriptionMap.put(str, therapyController.getTherapyDescriptions().get(i));
+	private void createMapTherapyDescription() {
+
+		therapyDescriptionMap = new TreeMap<String, String>();
+		ArrayList<String> therapyNames = therapyController.getTherapyNames();
+
+		int i = 0;
+		for (String str : therapyNames) {
+			therapyDescriptionMap.put(str, therapyController
+					.getTherapyDescriptions().get(i));
+			i++;
+		}
+	}
+	/*
+	 * Create a map, containing the information about Therapies and their
+	 * purpose.
+	 */
+	
+	private void createMapTherapyPurpose() {
+
+		therapyPurposeMap = new TreeMap<String, String>();
+		ArrayList<String> therapyPurpose = therapyController.getTherapyPurpose();
+
+		int i = 0;
+		for (String str : therapyPurpose) {
+			therapyPurposeMap.put(str, therapyController
+					.getTherapyPurpose().get(i));
 			i++;
 		}
 	}
@@ -181,27 +214,36 @@ public class TherapyView extends VerticalLayout implements View {
 		for (String therapyName : therapyController.getTherapyNames()) {
 			therapyList.addItem(therapyName);
 		}
-		
+
 		createMapTherapyDescription();
 		therapyList.addValueChangeListener(new ValueChangeListener() {
-			
+
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				// TODO Auto-generated method stub
-				textArea.setValue(therapyDescriptionMap.get(therapyList.getValue()));
+				textArea.setValue(therapyDescriptionMap.get(therapyList
+						.getValue()));
 			}
 		});
 		
 		
+		createMapTherapyPurpose();
+		therapyList.addValueChangeListener(new ValueChangeListener() {
+
+			@Override
+			public void valueChange(ValueChangeEvent event) {
+				// TODO Auto-generated method stub
+				textArea2.setValue(therapyPurposeMap.get(therapyList
+						.getValue()));
 
 	}
+		});}
+
 	/*
 	 * Create CSS for the Style
 	 */
-	private void setStyleForTextArea(){
-		style.add(".textarea{"
-    +" padding: 0.5cm !important;"+
-    ";}");
+	private void setStyleForTextArea() {
+		style.add(".textarea{" + " padding: 0.1cm !important;" + ";}");
 	}
 
-}
+	}

@@ -23,6 +23,7 @@ public class ControllerTherapy {
 	private ArrayList<Object[]> goalTableItems = new ArrayList<Object[]>();
 	private ArrayList<String> therapyNames = new ArrayList<String>();
 	private ArrayList<String> therapyDescriptions = new ArrayList<String>();
+	private ArrayList<String> therapyPurpose = new ArrayList<String>();
 
 	public ControllerTherapy(List<TherapyModel> list, TherapyView therapyView,
 			TherapyView3 therapyView3) {
@@ -75,5 +76,16 @@ public class ControllerTherapy {
 			therapyDescriptions.add(therapy.getDescription());
 		}
 		return therapyDescriptions;
+	}
+	/**
+	 * Returns the purpose texts of the therapies
+	 * 
+	 * @return therapyPurpose in a <code>ArrayList</code><String>
+	 */
+	public ArrayList<String> getTherapyPurpose() {
+		for (TherapyModel therapy : therapies) {
+			therapyPurpose.add(therapy.getPurpose());
+		}
+		return therapyPurpose;
 	}
 }
