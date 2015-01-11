@@ -113,7 +113,7 @@ public class HomeView extends VerticalLayout implements View {
 
 		design.setTitleLabel("Home");
 		verticalLayout = buildVerticalLayout_1();
-		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
+		mainLayout.addComponent(verticalLayout, "top:80.0px;left:30.0px;");
 
 	}
 
@@ -128,35 +128,27 @@ public class HomeView extends VerticalLayout implements View {
 		verticalLayout.setHeight("360px");
 		verticalLayout.setMargin(false);
 
-		medicationButton = new Button("Medication");
-		medicationButton.setIcon(FontAwesome.MEDKIT);
-		medicationButton.setImmediate(true);
-		medicationButton.setWidth("80%");
-		medicationButton.setHeight("-1px");
-		verticalLayout.addComponent(medicationButton);
-		verticalLayout.setComponentAlignment(medicationButton,
-				Alignment.MIDDLE_CENTER);
-
 		// common part: create TextArea for MedicationSummary
 		textMedicationArea = new TextArea("Medication Summary");
 		setStyleForTextArea();
 		textMedicationArea.setStyleName("textarea");
 
 		textMedicationArea.setWidth("100%");
-		textMedicationArea.setHeight("100%");
+		textMedicationArea.setHeight("100px");
 		textMedicationArea.setImmediate(true);
 
 		verticalLayout.addComponent(textMedicationArea);
 		verticalLayout.setComponentAlignment(textMedicationArea,
 				Alignment.MIDDLE_CENTER);
 
-		therapyButton = new Button("Therapy");
-		therapyButton.setIcon(FontAwesome.USER_MD);
-		therapyButton.setImmediate(true);
-		therapyButton.setWidth("80%");
-		therapyButton.setHeight("-1px");
-		verticalLayout.addComponent(therapyButton);
-		verticalLayout.setComponentAlignment(therapyButton,
+		// common part: create Button for Medication
+		medicationButton = new Button("Medication Details");
+		medicationButton.setIcon(FontAwesome.MEDKIT);
+		medicationButton.setImmediate(true);
+		medicationButton.setWidth("100%");
+		medicationButton.setHeight("-8px");
+		verticalLayout.addComponent(medicationButton);
+		verticalLayout.setComponentAlignment(medicationButton,
 				Alignment.MIDDLE_CENTER);
 
 		// common part: create TextArea for TherapySummary
@@ -165,18 +157,27 @@ public class HomeView extends VerticalLayout implements View {
 		textTherapyArea.setStyleName("textarea");
 
 		textTherapyArea.setWidth("100%");
-		textTherapyArea.setHeight("100%");
+		textTherapyArea.setHeight("100px");
 		textTherapyArea.setImmediate(true);
 
 		verticalLayout.addComponent(textTherapyArea);
 		verticalLayout.setComponentAlignment(textTherapyArea,
 				Alignment.MIDDLE_CENTER);
+		// common part: create Button for Therapy
+		therapyButton = new Button("Therapy Details");
+		therapyButton.setIcon(FontAwesome.USER_MD);
+		therapyButton.setImmediate(true);
+		therapyButton.setWidth("100%");
+		therapyButton.setHeight("-8px");
+		verticalLayout.addComponent(therapyButton);
+		verticalLayout.setComponentAlignment(therapyButton,
+				Alignment.MIDDLE_CENTER);
 
 		logoutButton = new Button("Logout");
 		logoutButton.setIcon(FontAwesome.SIGN_OUT);
 		logoutButton.setImmediate(true);
-		logoutButton.setWidth("80%");
-		logoutButton.setHeight("-1px");
+		logoutButton.setWidth("50%");
+		logoutButton.setHeight("-5px");
 		verticalLayout.addComponent(logoutButton);
 		verticalLayout.setComponentAlignment(logoutButton,
 				Alignment.BOTTOM_CENTER);
@@ -188,9 +189,8 @@ public class HomeView extends VerticalLayout implements View {
 	 * Create CSS for the Style
 	 */
 	private void setStyleForTextArea() {
-		style.add(".textarea{" + " padding: 0.1cm !important;" 
-	+ "font-size: 40px;"
-	+ ";}");
+		style.add(".textarea{" + " padding: 0.1cm !important;"
+				+ "font-size: 40px;" + ";}");
 	}
 
 	@Override
