@@ -55,6 +55,7 @@ public class HomeView extends VerticalLayout implements View {
 	private ControllerTherapy therapyController;
 	private Label medicationLabel;
 	private Map<String, String> therapySummaryMap;
+	 
 
 	/**
 	 * construct the Home view with two buttons.
@@ -67,6 +68,7 @@ public class HomeView extends VerticalLayout implements View {
 		mainLayout = design.getMainLayout();
 		createLayout();
 		addActionListnerToButtons();
+		
 
 	}
 
@@ -153,6 +155,7 @@ public class HomeView extends VerticalLayout implements View {
 
 		// common part: create TextArea for TherapySummary
 		textTherapyArea = new TextArea("Therapy Summary");
+		prepareTherapyTextArea();
 		setStyleForTextArea();
 		textTherapyArea.setStyleName("textarea");
 
@@ -192,10 +195,24 @@ public class HomeView extends VerticalLayout implements View {
 		style.add(".textarea{" + " padding: 0.1cm !important;"
 				+ "font-size: 40px;" + ";}");
 	}
+	
+	/*
+	 * fill out TherapyTextArea with therapyNames
+	 */
+	private void prepareTherapyTextArea(){
+		
+		String s1="";
+		for(String str: TherapyView.therapyNames)
+			{
+			s1+=str+"\n";
+			textTherapyArea.setValue(s1);
+			}
+	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {
 		// TODO Auto-generated method stub
+		
 
 	}
 
