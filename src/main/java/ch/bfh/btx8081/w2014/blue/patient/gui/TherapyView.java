@@ -45,7 +45,7 @@ public class TherapyView extends VerticalLayout implements View {
 	protected Button buttonBack;
 	private Map<String, String> therapyDescriptionMap;
 	private Map<String, String> therapyPurposeMap;
-	private ArrayList<String> therapyNames;
+	public static ArrayList<String> therapyNames;
 	private TextArea descriptionTextArea;
 	private TextArea purposeTextArea;
 	private Styles style;
@@ -246,7 +246,8 @@ public class TherapyView extends VerticalLayout implements View {
 	 * Create CSS for the Style
 	 */
 	private void setStyleForTextArea() {
-		style.add(".textarea{" + " padding: 0.1cm !important;" + ";}");
+		style.add(".textarea{" + " padding: 0.1cm !important;"
+				+";}");
 	}
-
-	}
+	
+}
