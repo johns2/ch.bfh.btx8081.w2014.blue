@@ -289,10 +289,9 @@ public class XmlFileReader {
 	}
 
 	public static void main(String[] args) {
-//		for (TherapyModel s : XmlFileReader.getTherapies()) {
-//
-//			System.out.println(new Label(s.getName()));
-//		}
+		for (TherapyModel s : XmlFileReader.getTherapies()) {
+			System.out.println(new Label(s.getName()));
+		}
 //		for (UserData u : XmlFileReader.getUserData()){
 //			System.out.println(u.getUsername() );
 //		}

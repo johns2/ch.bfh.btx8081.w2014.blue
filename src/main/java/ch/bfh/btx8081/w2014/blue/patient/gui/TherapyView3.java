@@ -22,11 +22,13 @@ import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.Table;
+import com.vaadin.ui.Table.ColumnGenerator;
 import com.vaadin.ui.VerticalLayout;
 
 /**
@@ -48,6 +50,8 @@ public class TherapyView3 extends VerticalLayout implements View {
 	private String valueString;
 	private int chosenItem = 1;
 	private ControllerTherapy therapyController;
+	private ColumnGenerator OkColumn;
+	private ColumnGenerator NotOkColumn;
 	protected Button buttonNext1;
 	protected Button buttonBack2;
 
@@ -105,15 +109,12 @@ public class TherapyView3 extends VerticalLayout implements View {
 
 		goalTable.setRequired(true);
 		goalTable.setImmediate(true);
-
-		goalTable.setPageLength(5);
 		goalTable.setColumnHeader(String.class, "Task");
-		goalTable.setColumnHeader(CheckBox.class, "Status");
 		goalTable.setColumnHeader(String.class, "Date");
 		goalTable.addContainerProperty("Task", String.class, "");
-		goalTable.addContainerProperty("Status", CheckBox.class, new CheckBox(
-				"", false));
 		goalTable.addContainerProperty("Date", String.class, "");
+		goalTable.addGeneratedColumn("Done", getOkColumn());
+		goalTable.addGeneratedColumn("Not Done", getNotOkColumn());
 		goalTable.setSelectable(true);
 
 		verticalLayout.addComponent(goalTable);
@@ -229,16 +230,56 @@ public class TherapyView3 extends VerticalLayout implements View {
 
 		return verticalLayout;
 	}
+	
+	public ColumnGenerator getOkColumn() {
+		OkColumn = new ColumnGenerator() {
+			@Override
+			public Object generateCell(final Table source, final Object itemId,
+					Object columnId) {
+				Button button = new Button("Done");
+				button.addClickListener(new ClickListener() {
+					@Override
+					public void buttonClick(ClickEvent event) {
+						//source.getContainerDataSource().removeItem(itemId);
+					}
+				});
+				return button;
+			}
+		};
+		return OkColumn;
+	}
 
+	public ColumnGenerator getNotOkColumn() {
+		NotOkColumn = new ColumnGenerator() {
+		@Override
+		public Object generateCell(final Table source, final Object itemId,
+				Object columnId) {
+			Button button = new Button("Not Done");
+			button.addClickListener(new ClickListener() {
+				@Override
+				public void buttonClick(ClickEvent event) {
+					//source.getContainerDataSource().removeItem(itemId);
+				}
+			});
+			return button;
+		}
+	};
+		return NotOkColumn;
+	}
 
-	@Override
-	public void enter(ViewChangeEvent event) {
+	public void buildTaskList(){
 		goalTable.removeAllItems();
 		int objectCounter = 0;
-		for (Object[] goalTableItem : therapyController.getTasksOfTherapy()){
-			goalTable.addItem(goalTableItem, objectCounter);
+		for (Object[] goalData : therapyController.getTasksOfTherapy()) {
+			goalTable.addItem(new Object[] { (String) goalData[0],
+					(String) goalData[1] }, objectCounter);
 			objectCounter++;
 		}
+	}
+	
+	@Override
+	public void enter(ViewChangeEvent event) {
+		buildTaskList();
 	}
 
 }

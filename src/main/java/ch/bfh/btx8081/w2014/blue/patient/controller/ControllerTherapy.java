@@ -20,7 +20,7 @@ public class ControllerTherapy {
 	private List<TherapyModel> therapies;
 	private TherapyView therapyView;
 	private TherapyView3 therapyView3;
-	private ArrayList<Object[]> goalTableItems = new ArrayList<Object[]>();
+	private ArrayList<Object[]> taskData = new ArrayList<Object[]>();
 	private ArrayList<String> therapyNames = new ArrayList<String>();
 	private ArrayList<String> therapyDescriptions = new ArrayList<String>();
 	private ArrayList<String> therapyPurpose = new ArrayList<String>();
@@ -47,11 +47,14 @@ public class ControllerTherapy {
 	 * @return goalTableItems in a <code>ArrayList</code><Object[]>
 	 */
 	public ArrayList<Object[]> getTasksOfTherapy() {
+		taskData.clear();
 		for (TaskModel task : therapies.get(0).getTasks()) {
-			goalTableItems.add(new Object[] { task.getTaskGoal(),
-					new CheckBox("", false), task.getTaskDate() });
+			Object[] taskTableContainer = new Object[2];
+			taskTableContainer[0] = task.getTaskGoal();
+			taskTableContainer[1] = task.getTaskDate();
+			taskData.add(taskTableContainer);
 		}
-		return goalTableItems;
+		return taskData;
 	}
 
 	/**
