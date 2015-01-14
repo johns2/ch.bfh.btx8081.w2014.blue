@@ -11,6 +11,7 @@ import ch.bfh.btx8081.w2014.blue.patient.gui.Login;
 import ch.bfh.btx8081.w2014.blue.patient.gui.Medication;
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView3;
+import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -37,6 +38,7 @@ public class ControllerUI extends UI {
 
 	private ControllerLogin loginController;
 	private ControllerTherapy therapyController;
+	private ControllerMedication medicationController;
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = ControllerUI.class, widgetset = "ch.bfh.btx8081.w2014.blue.patient.gui.AppWidgetSet")
@@ -50,11 +52,14 @@ public class ControllerUI extends UI {
 		loginController = new ControllerLogin(this);
 		therapyController = new ControllerTherapy(XmlFileReader.getTherapies(),
 				null, null);
+		medicationController=new ControllerMedication(XmlFileReader.getMedication
+				(new UserData("Patient1","111")));
 		navigator.addView(LOGINVIEW, new Login(loginController));
 		navigator.addView(THERAPYVIEW, new TherapyView(therapyController));
 		navigator.addView(THERAPYVIEW3, new TherapyView3(therapyController));
 		navigator.addView(HOMEVIEW, new HomeView());
-		navigator.addView(MEDICATION, new Medication());
+		
+		navigator.addView(MEDICATION, new Medication(medicationController));
 		navigateTo(LOGINVIEW);
 	}
 

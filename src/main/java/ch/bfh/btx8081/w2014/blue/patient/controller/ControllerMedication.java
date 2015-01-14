@@ -14,19 +14,23 @@ import ch.bfh.btx8081.w2014.blue.patient.model.MedicationModel;
  */
 public class ControllerMedication {
 
-	private List<MedicationModel> Medications;
+	private List<MedicationModel> medications;
 	private Medication medication;
 	private ArrayList<String> medicationNames = new ArrayList<String>();
-	private ArrayList<String> medicationDosages = new ArrayList<String>();
+	private ArrayList<Integer> medicationDosages = new ArrayList<Integer>();
 	private ArrayList<String> medicationDescriptions = new ArrayList<String>();
 	private ArrayList<String> medicationDays = new ArrayList<String>();
 	private ArrayList<String> medicationTime = new ArrayList<String>();
 
-	public ControllerMedication(List<MedicationModel> list, Medication medication) {
-		this.Medications = list;
-		this.medication = medication;
+	public ControllerMedication(List<MedicationModel> list) {
+		this.medications = list;
+		//this.medication = medication;
 	}
 
+	/**
+	 * set the medication
+	 * @param medication
+	 */
 	public void setMedication(Medication medication) {
 		this.medication = medication;
 	}
@@ -38,7 +42,7 @@ public class ControllerMedication {
 	 * @return medicationNames in a <code>ArrayList</code><String>
 	 */
 	public ArrayList<String> getMedicationNames() {
-		for (MedicationModel medication : Medications) {
+		for (MedicationModel medication : medications) {
 			medicationNames.add(medication.getName());
 		}
 		return medicationNames;
@@ -52,9 +56,9 @@ public class ControllerMedication {
 	 * 
 	 * @return medicationDosages in a <code>ArrayList</code><String>
 	 */
-	public ArrayList<String> getMedicationDosages() {
-		for (MedicationModel medication : Medications) {
-			medicationDosages.add(medication.getName());
+	public ArrayList<Integer> getMedicationDosages() {
+		for (MedicationModel medication : medications) {
+			medicationDosages.add(medication.getDosage());
 		}
 		return medicationDosages;
 	}
@@ -66,7 +70,7 @@ public class ControllerMedication {
 	 * @return medicationDescriptions in a <code>ArrayList</code><String>
 	 */
 	public ArrayList<String> getMedicationDescriptions() {
-		for (MedicationModel medication : Medications) {
+		for (MedicationModel medication : medications) {
 			medicationDescriptions.add(medication.getDescription());
 		}
 		return medicationDescriptions;
@@ -79,10 +83,38 @@ public class ControllerMedication {
 	 */
 	
 	public ArrayList<String> getMedicationDays() {
-		for (MedicationModel medication : Medications) {
-			medicationDays.add(medication.getDay());
+		for (MedicationModel medication : medications) {
+			if(medicationDays.contains(medication)) continue;
+			else medicationDays.add(medication.getDay());
 		}
 		return medicationDays;
+	}
+
+	/**
+	 * Returns the time of the medication
+	 *  @return medicationTime in a <code>ArrayList</code><String>
+	 */
+	public ArrayList<String> getMedicationTime() {
+		
+		for(MedicationModel medication :medications)
+		{
+			medicationTime.add(medication.getTime());
+		}
+		return medicationTime;
+	}
+
+	public void setMedicationTime(ArrayList<String> medicationTime) {
+		this.medicationTime = medicationTime;
+		
+		
+	}
+	
+	/**
+	 * 
+	 * @return the a list of medications
+	 */
+	public List<MedicationModel> getMedicationsList(){
+		return medications;
 	}
 	
 
