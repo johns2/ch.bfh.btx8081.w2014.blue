@@ -2,24 +2,20 @@
  * 
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
-
-import com.vaadin.annotations.Theme;
 import com.vaadin.server.Page;
 import com.vaadin.server.Page.Styles;
-import com.vaadin.server.Sizeable;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.Reindeer;
-import com.vaadin.ui.themes.ValoTheme;
 
 /**
  * @author Pira
  *
  */
-@Theme("mytheme")
+
 public class PatientMainDesign {
 
 	final VerticalLayout layout;
@@ -29,13 +25,20 @@ public class PatientMainDesign {
 	private Label title;
 	private Styles styles;
 
+	/*
+	 * create the main design for all of the views
+	 */
 	public PatientMainDesign(VerticalLayout layout) {
 		styles = Page.getCurrent().getStyles();
 		this.layout = layout;
 		createCssForMainLayout();
 		createLayout();
 	}
+	
 
+	/*
+	 * create the a vertical layout for mainLayout
+	 */
 	private void createLayout() {
 
 		layout.setStyleName("layout");
@@ -44,12 +47,12 @@ public class PatientMainDesign {
 		layout.setWidth(null);
 
 		layout.addComponent(mainLayout);
-		// layout.setComponentAlignment(mainLayout, Alignment.TOP_CENTER);
-		// layout.setWidth("25%");
-		// layout.setHeight("75%");
 
 	}
 
+	/*
+	 * Create main Layout
+	 */
 	private void createMainLayout() {
 		mainLayout = new AbsoluteLayout();
 		mainLayout.setStyleName("mainlayout");
@@ -63,6 +66,9 @@ public class PatientMainDesign {
 		mainLayout.addComponent(lowerHorizontalLayout, "bottom:0px;left:0px");
 	}
 
+	/*
+	 * create the Upper Vertical Layout
+	 */
 	private void createUpperVerticalLayout() {
 		upperVerticalLayout = new VerticalLayout();
 		upperVerticalLayout.setHeight("60px");
@@ -71,6 +77,9 @@ public class PatientMainDesign {
 
 	}
 
+	/*
+	 * create lower Horizontal layout
+	 */
 	private void createLowerHorizontalLayout() {
 		lowerHorizontalLayout = new HorizontalLayout();
 		lowerHorizontalLayout.setHeight("60px");
@@ -78,6 +87,7 @@ public class PatientMainDesign {
 		lowerHorizontalLayout.addStyleName("mylayout");
 	}
 
+	
 	public VerticalLayout getLayout() {
 		return layout;
 	}
@@ -117,19 +127,6 @@ public class PatientMainDesign {
 				";}");
 	}
 
-/*	private void createCssForLabel(){
-	styles.add(".mylabel {"
-	+ "font-size: 40px;"
-	+"padding-top: 10px;"
-	+"padding-bottom: 15px;"
-	+"}");
-	}*/
-
-	// styles.add(".mylayout {"
-	// +"padding-right: 30px;"
-	// +"padding-left: 30px;"
-	// +"background-color: black;"
-	// +"}");
 
 	public Styles getStyles() {
 		return styles;
