@@ -35,6 +35,13 @@
 			<day>Friday</day>
 			<time>22:00</time>
 		</Medication>
+		<Medication>
+			<name>Antibiotics</name>
+			<dosage>10</dosage>
+			<description>antibacterial effect</description>
+			<day>Friday</day>
+			<time>22:00</time>
+		</Medication>
 	</PatientMedication>
 </Medications>
 	
