@@ -240,7 +240,7 @@ public class XmlFileReader {
 				// Find the PatientMedication that belongs to the Patient we
 				// want to find information for (is attribute of the
 				// patientMedication element)
-				if (patientMedication.getAttribute("username").equals(
+				if (patientMedication.getAttribute("username").getValue().toLowerCase().equals(
 						patient.getUsername())) {
 					// We found the right element
 					List<MedicationModel> medications = new ArrayList<MedicationModel>();
@@ -258,7 +258,14 @@ public class XmlFileReader {
 						// then a description
 						medication.setDescription(medicationElement
 								.getChildText("description"));
+						medication.setDay(medicationElement
+								.getChildText("day"));
+						medication.setTime(medicationElement
+								.getChildText("time"));
+						
 						medications.add(medication);
+						
+						
 					}
 					// return the created array list of medications
 					return medications;
