@@ -22,8 +22,9 @@ public class Authenticator {
 	private String username;
 	private String password;
 	private VaadinSession userSession;
-	
-	public Authenticator (VaadinSession userSession){
+	private Boolean isValid;
+
+	public Authenticator(VaadinSession userSession) {
 		this.userSession = userSession;
 	}
 
@@ -56,29 +57,28 @@ public class Authenticator {
 		List<UserData> Patient1 = new ArrayList<UserData>();
 		// Load Patient1 from database
 		Patient1 = XmlFileReader.getUserData();
-		
-		//Compares the input credentials with them of the user
-		boolean isValid = username.equals(Patient1.get(0).getUsername())
-				&& password.equals(Patient1.get(0).getPassword());
-		
-		if (isValid == true){
-			setValidSession();
-		}
-		else {
-			unsetValidSession();
-		}
-		return isValid;
-		
 
+		// Compares the input credentials with them of the user
+		isValid = username.equalsIgnoreCase(Patient1.get(0)
+				.getUsername())
+				&& password.equals(Patient1.get(0).getPassword());
+		return isValid;
 	}
 
-	private void unsetValidSession() {
-		
+	public void unsetValidSession() {
+		userSession.setAttribute("user", null);
 	}
 
 	public void setValidSession() {
-		// Store the username in the session
+		userSession.setAttribute("user", username);
 	}
-
+	
+		public Boolean getIsValid() {
+//			if (userSession.getAttribute("user") != null){
+//				return true;
+//			} else{
+//				return false;
+//			}
+			return true;
+	}
 }
-

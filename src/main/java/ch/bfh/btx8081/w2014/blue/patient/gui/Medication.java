@@ -3,6 +3,7 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerLogin;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerMedication;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
 import ch.bfh.btx8081.w2014.blue.patient.model.MedicationModel;
@@ -37,6 +38,7 @@ public class Medication extends VerticalLayout implements View {
 	private ComboBox calendarList;
 	private Button homeButton;
 	private PatientMainDesign design;
+	private ControllerLogin loginController;
 	private Table medicationsTable;
 	private ControllerMedication controllerMedication;
 
@@ -44,8 +46,8 @@ public class Medication extends VerticalLayout implements View {
 	 * Constructs a MEDICATIONVIEW on the base of different parameters.
 	 */
 
-	public Medication(ControllerMedication controllerMedication) {
-		
+	public Medication(ControllerLogin loginController, ControllerMedication controllerMedication) {
+		this.loginController = loginController;
 		this.controllerMedication = controllerMedication;
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
@@ -164,12 +166,13 @@ public class Medication extends VerticalLayout implements View {
 	}
 
 	public void enter(ViewChangeEvent event) {
-
+		if (loginController.checkPermission() == false){
+			loginController.doLogout();
+		};
 		calendarList.addValueChangeListener(new ValueChangeListener() {
 
 			@Override
 			public void valueChange(ValueChangeEvent event) {
-				// TODO Auto-generated method stub
 				String day = calendarList.getValue().toString();
 				createMedicationTable(day);
 

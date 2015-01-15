@@ -6,6 +6,7 @@ package ch.bfh.btx8081.w2014.blue.patient.gui;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerMedication;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerLogin;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
@@ -36,13 +37,14 @@ public class HomeView extends VerticalLayout implements View {
 	private PatientMainDesign design;
 	private Table medicationSummaryTable;
 	private Table therapySummaryTable;
+	private ControllerLogin loginController;
 	 
 
 	/**
 	 * construct the Home view with two buttons.
 	 */
-	public HomeView() {
-		
+	public HomeView(ControllerLogin loginController) {
+		this.loginController = loginController;
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
@@ -191,9 +193,9 @@ public class HomeView extends VerticalLayout implements View {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
-		
-
+		if (loginController.checkPermission() == false){
+			loginController.doLogout();
+		};
 	}
 
 }

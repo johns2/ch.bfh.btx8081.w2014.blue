@@ -1,9 +1,5 @@
 package ch.bfh.btx8081.w2014.blue.patient.controller;
 
-import com.vaadin.navigator.Navigator;
-import com.vaadin.ui.PasswordField;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.UI;
 
 import ch.bfh.btx8081.w2014.blue.patient.model.Authenticator;
@@ -17,15 +13,10 @@ import ch.bfh.btx8081.w2014.blue.patient.model.Authenticator;
  *
  */
 
-public class ControllerLogin extends ControllerUI {
+public class ControllerLogin {
 
 	private UI ControllerUI;
-	private Boolean isAuthenticated;
 	private Authenticator authenticator;
-
-	public Boolean getIsAuthenticated() {
-		return isAuthenticated;
-	}
 
 	public ControllerLogin(UI ControllerUI) {
 		this.ControllerUI = ControllerUI;
@@ -42,12 +33,10 @@ public class ControllerLogin extends ControllerUI {
 	public void doLogin(String insertedUser, String insertedPassword) {
 		authenticator.setUsername(insertedUser);
 		authenticator.setPassword(insertedPassword);
-		this.isAuthenticated = authenticator.authenticate();
-		if (isAuthenticated == true) {
-
+		if (authenticator.authenticate() == true) {
 			// Navigate to main view after a successful login
-			ControllerUI.getNavigator().navigateTo(HOMEVIEW);
-
+			ControllerUI.getNavigator().navigateTo(ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI.getHomeview());
+			authenticator.setValidSession();
 		} else {
 			doLogout();
 		}
@@ -59,7 +48,19 @@ public class ControllerLogin extends ControllerUI {
 	 */
 	public void doLogout() {
 		// Navigate to login view after a logout
-		ControllerUI.getNavigator().navigateTo(LOGINVIEW);
-		ControllerUI.getSession().setAttribute("user", null);
+		ControllerUI.getNavigator().navigateTo(ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI.getLoginview());
+		authenticator.unsetValidSession();
+	}
+	
+	/**
+	 * Check, if a valid session is open or not. 
+	 * If not, the user is not permitted to view something.
+	 */
+	public Boolean checkPermission(){
+		if (authenticator.getIsValid()){
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -3,21 +3,17 @@
  */
 package ch.bfh.btx8081.w2014.blue.patient.gui;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerLogin;
 
-import com.vaadin.annotations.Theme;
-import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.Action;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.server.Page.Styles;
@@ -27,9 +23,6 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CheckBox;
-import com.vaadin.ui.Link;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.Table.ColumnGenerator;
 import com.vaadin.ui.VerticalLayout;
@@ -45,25 +38,24 @@ public class TherapyView3 extends VerticalLayout implements View {
 	private VerticalLayout verticalLayout;
 	private PatientMainDesign design;
 	private Table goalTable;
-	private Button next;
-	private Link mailToDoctor;
 	private Button buttonOk;
 	private Button buttonNotOk;
 	private HashSet<Object> markedRows = new HashSet<Object>();
 	private String valueString;
 	private int chosenItem = 1;
 	private ControllerTherapy therapyController;
+	private ControllerLogin loginController;
 	private ColumnGenerator OkColumn;
 	private ColumnGenerator NotOkColumn;
-	private Button buttonNext1;
 	private Button buttonBack2;
 
 	/**
 	 * Constructs a THERAPYVIEW3 on the base of different parameters.
 	 */
-	public TherapyView3(ControllerTherapy therapyController)
+	public TherapyView3(ControllerLogin loginController, ControllerTherapy therapyController)
 
 	{
+		this.loginController = loginController;
 		this.therapyController = therapyController;
 		therapyController.setTherapyView3(this);
 		design = new PatientMainDesign(this);
@@ -73,13 +65,16 @@ public class TherapyView3 extends VerticalLayout implements View {
 		// inject the colors for goal table here
 		styles.add(".v-table-row.v-table-row-highlight-green, .v-table-row-odd.v-table-row-highlight-green { background-color: #00ff00;}");
 		styles.add(".v-table-row.v-table-row-highlight-red, .v-table-row-odd.v-table-row-highlight-red { background-color: #ff0000;}");
-		styles.add(".v-table-row.v-table-row-highlight-orange, .v-table-row-odd.v-table-row-highlight-orange { background-color: #ff6600;}");
+		styles.add(".v-table-row.v-table-row-highlight-orange, .v-table-row-odd.v-table-row-highlight-orange { background-color: #ffbb00;}");
 		buildVerticalLayout_23();
 		createLayout();
 	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {
+		if (loginController.checkPermission() == false){
+			loginController.doLogout();
+		};
 		buildTaskList();
 	}
 
@@ -92,8 +87,7 @@ public class TherapyView3 extends VerticalLayout implements View {
 		design.setTitleLabel("Task");
 		// verticalLayout_23
 		verticalLayout = buildVerticalLayout_23();
-		mainLayout.addComponent(verticalLayout, "top:60.0px;left:30.0px;");
-
+		mainLayout.addComponent(verticalLayout, "top:80.0px;left:30.0px;");
 	}
 
 	/**

@@ -13,12 +13,10 @@ import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView3;
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 
-import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 
 /**
@@ -31,6 +29,26 @@ public class ControllerUI extends UI {
 	public static final String LOGINVIEW = "login";
 	public static final String THERAPYVIEW = "therapy";
 	public static final String THERAPYVIEW3 = "therapy3";
+	public static String getHomeview() {
+		return HOMEVIEW;
+	}
+
+	public static String getLoginview() {
+		return LOGINVIEW;
+	}
+
+	public static String getTherapyview() {
+		return THERAPYVIEW;
+	}
+
+	public static String getTherapyview3() {
+		return THERAPYVIEW3;
+	}
+
+	public static String getMedication() {
+		return MEDICATION;
+	}
+
 	public static final String MEDICATION = "medication";
 
 	private static Navigator navigator;
@@ -55,11 +73,10 @@ public class ControllerUI extends UI {
 		medicationController=new ControllerMedication(XmlFileReader.getMedication
 				(new UserData("Patient1","111")));
 		navigator.addView(LOGINVIEW, new Login(loginController));
-		navigator.addView(THERAPYVIEW, new TherapyView(therapyController));
-		navigator.addView(THERAPYVIEW3, new TherapyView3(therapyController));
-		navigator.addView(HOMEVIEW, new HomeView());
-		
-		navigator.addView(MEDICATION, new Medication(medicationController));
+		navigator.addView(THERAPYVIEW, new TherapyView(loginController, therapyController));
+		navigator.addView(THERAPYVIEW3, new TherapyView3(loginController, therapyController));
+		navigator.addView(HOMEVIEW, new HomeView(loginController));
+		navigator.addView(MEDICATION, new Medication(loginController, medicationController));
 		navigateTo(LOGINVIEW);
 	}
 
@@ -72,19 +89,9 @@ public class ControllerUI extends UI {
 		navigator.navigateTo(view);
 	}
 
-	// public static void navigateToHome()
-	// {
-	// //navigator.addView(HOMEVIEW, new HomeView());
-	// previousView = navigator.getState();
-	// navigator.navigateTo(HOMEVIEW);
-	//
-	// }
-
 	public void performLogout() {
 		previousView = navigator.getState();
 		navigator.navigateTo(LOGINVIEW);
-		// navigator.removeView(HOMEVIEW);
-
 	}
 
 	/**

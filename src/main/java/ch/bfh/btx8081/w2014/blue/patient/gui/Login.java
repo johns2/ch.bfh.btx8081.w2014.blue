@@ -157,7 +157,7 @@ public class Login extends VerticalLayout implements View {
 				}
 				loginController.doLogin(userField.getValue(),
 						passwordField.getValue());
-				if (loginController.getIsAuthenticated() == false) {
+				if (loginController.checkPermission()) {
 					// Wrong password clear the password field and refocuses it
 					passwordField.setValue(null);
 					passwordField.focus();
@@ -210,8 +210,4 @@ public class Login extends VerticalLayout implements View {
 				);
 		
 	}
-
-	// public void NavigateToHome() {
-	// ControllerUI.navigateToHome();
-	// }
 }

@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
+import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerLogin;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
@@ -41,6 +42,7 @@ public class TherapyView extends VerticalLayout implements View {
 	protected ComboBox therapyList;
 	protected Button buttonNext1;
 	protected TabSheet therapyInfo;
+	private ControllerLogin loginController;
 	private ControllerTherapy therapyController;
 	protected Button buttonBack;
 	private Map<String, String> therapyDescriptionMap;
@@ -53,11 +55,12 @@ public class TherapyView extends VerticalLayout implements View {
 	/**
 	 * Constructs a THERAPYVIEW on the base of different parameters.
 	 */
-	public TherapyView(ControllerTherapy therapyController)
+	public TherapyView(ControllerLogin loginController, ControllerTherapy therapyController)
 
 	{
 		
 		style = Page.getCurrent().getStyles();
+		this.loginController = loginController;
 		this.therapyController = therapyController;
 		therapyNames=new ArrayList<String>();
 		therapyNames=this.therapyController.getTherapyNames();
@@ -214,6 +217,9 @@ public class TherapyView extends VerticalLayout implements View {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
+		if (loginController.checkPermission() == false){
+			loginController.doLogout();
+		};
 
 		// Add the therapy names
 		for (String therapyName : therapyController.getTherapyNames()) {
