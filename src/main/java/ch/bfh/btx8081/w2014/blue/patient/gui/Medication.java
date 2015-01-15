@@ -137,6 +137,7 @@ public class Medication extends VerticalLayout implements View {
 		for (String day : controllerMedication.getMedicationDays()) {
 			calendarList.addItem(day);
 		}
+		calendarList.setNewItemsAllowed(false);
 	}
 
 	/**
@@ -145,8 +146,7 @@ public class Medication extends VerticalLayout implements View {
 	 */
 	private void createMedicationTable(String day) {
 
-		// medicationsTable=new Table ();
-
+		
 		medicationsTable.removeAllItems();
 
 		for (MedicationModel medication : controllerMedication
