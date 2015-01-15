@@ -132,10 +132,6 @@ public class TherapyView3 extends VerticalLayout implements View {
 		buttonOk.setIcon(FontAwesome.CHECK);
 		buttonOk.setWidth("40%");
 		buttonOk.setHeight("-1px");
-		// verticalLayout.addComponent(buttonOk);
-		// verticalLayout.setComponentAlignment(buttonOk,
-		// Alignment.MIDDLE_CENTER);
-
 		buttonOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				chosenItem = Integer.parseInt(valueString);
@@ -174,34 +170,19 @@ public class TherapyView3 extends VerticalLayout implements View {
 			@Override
 			public void valueChange(final ValueChangeEvent event) {
 				valueString = String.valueOf(event.getProperty().getValue());
-				// Notification.show("Value changed:", valueString,
-				// Type.TRAY_NOTIFICATION);
 			}
 		});
-
-		// verticalLayout.addComponent(buttonOk);
-		// verticalLayout.setComponentAlignment(buttonOk,
-		// Alignment.MIDDLE_CENTER);
-
-		// Button for NOT OK
 
 		buttonNotOk = new Button("Not done");
 		buttonNotOk.setIcon(FontAwesome.TIMES);
 		buttonNotOk.setWidth("40%");
 		buttonNotOk.setHeight("-1px");
-		// verticalLayout.addComponent(buttonNotOk);
-		// verticalLayout.setComponentAlignment(buttonNotOk,
-		// Alignment.MIDDLE_CENTER);
 
 		buttonNotOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				chosenItem = Integer.parseInt(valueString);
 				goalTable.getItem(chosenItem).getItemProperty("Status")
 						.setValue(new CheckBox("", false));
-				// .setValue(
-				// Task.setTherapyState(goalTable.getItem(0),
-				// "NotSolved"));
-
 			}
 		});
 
@@ -222,17 +203,6 @@ public class TherapyView3 extends VerticalLayout implements View {
 		verticalLayout.addComponent(buttonBack2);
 		verticalLayout.setComponentAlignment(buttonBack2,
 				Alignment.BOTTOM_CENTER);
-
-		// Link for Mail to Doctor send
-		//
-		// Link mailToDoctor = new Link("Send a report to Doctor",
-		// new ExternalResource("Doctor@bfh.ch"));
-		//
-		// mailToDoctor.setImmediate(true);
-		// verticalLayout.addComponent(mailToDoctor);
-		// verticalLayout.setComponentAlignment(mailToDoctor,
-		// Alignment.BOTTOM_CENTER);
-
 		return verticalLayout;
 	}
 
