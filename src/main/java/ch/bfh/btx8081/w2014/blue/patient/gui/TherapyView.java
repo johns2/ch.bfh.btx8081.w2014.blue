@@ -120,6 +120,7 @@ public class TherapyView extends VerticalLayout implements View {
 		descriptionTextArea.setWidth("100%");
 		descriptionTextArea.setHeight("100%");
 		descriptionTextArea.setImmediate(true);
+		descriptionTextArea.setReadOnly(true);
 
 		verticalLayout.addComponent(descriptionTextArea);
 		verticalLayout.setComponentAlignment(descriptionTextArea, Alignment.MIDDLE_CENTER);
@@ -132,6 +133,7 @@ public class TherapyView extends VerticalLayout implements View {
 		purposeTextArea.setWidth("100%");
 		purposeTextArea.setHeight("100%");
 		purposeTextArea.setImmediate(true);
+		purposeTextArea.setReadOnly(true);
 
 		verticalLayout.addComponent(purposeTextArea);
 		verticalLayout.setComponentAlignment(purposeTextArea, Alignment.MIDDLE_CENTER);
@@ -221,11 +223,14 @@ public class TherapyView extends VerticalLayout implements View {
 		createMapTherapyDescription();
 		therapyList.addValueChangeListener(new ValueChangeListener() {
 
+
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				// TODO Auto-generated method stub
+				descriptionTextArea.setReadOnly(false);
 				descriptionTextArea.setValue(therapyDescriptionMap.get(therapyList
 						.getValue()));
+				descriptionTextArea.setReadOnly(true);
 			}
 		});
 		
@@ -236,8 +241,10 @@ public class TherapyView extends VerticalLayout implements View {
 			@Override
 			public void valueChange(ValueChangeEvent event) {
 				// TODO Auto-generated method stub
+				purposeTextArea.setReadOnly(false);
 				purposeTextArea.setValue(therapyPurposeMap.get(therapyList
 						.getValue()));
+				purposeTextArea.setReadOnly(true);
 
 	}
 		});}
@@ -246,7 +253,7 @@ public class TherapyView extends VerticalLayout implements View {
 	 * Create CSS for the Style
 	 */
 	private void setStyleForTextArea() {
-		style.add(".textarea{" + " padding: 0.1cm !important;"
+		style.add(".textarea{" + " background:white !important;"
 				+";}");
 	}
 	
