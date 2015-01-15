@@ -120,8 +120,8 @@ public class HomeView extends VerticalLayout implements View {
 		medicationButton = new Button("Medication Details");
 		medicationButton.setIcon(FontAwesome.MEDKIT);
 		medicationButton.setImmediate(true);
-		medicationButton.setWidth("70%");
-		medicationButton.setHeight("-8px");
+		medicationButton.setWidth("100%");
+		medicationButton.setHeight("-1px");
 		verticalLayout.addComponent(medicationButton);
 		verticalLayout.setComponentAlignment(medicationButton,
 				Alignment.MIDDLE_CENTER);
@@ -135,8 +135,8 @@ public class HomeView extends VerticalLayout implements View {
 		therapyButton = new Button("Therapy Details");
 		therapyButton.setIcon(FontAwesome.USER_MD);
 		therapyButton.setImmediate(true);
-		therapyButton.setWidth("70%");
-		therapyButton.setHeight("-8px");
+		therapyButton.setWidth("100%");
+		therapyButton.setHeight("-15px");
 		verticalLayout.addComponent(therapyButton);
 		verticalLayout.setComponentAlignment(therapyButton,
 				Alignment.BOTTOM_CENTER);
@@ -161,6 +161,8 @@ public class HomeView extends VerticalLayout implements View {
 		
 		
 		therapySummaryTable=new Table();
+		therapySummaryTable.setWidth("100%");
+		therapySummaryTable.setHeight("120px");
 		therapySummaryTable.setPageLength(4);
 		therapySummaryTable.addContainerProperty("Therapy Summary", String.class, null);
 		
@@ -175,6 +177,8 @@ public class HomeView extends VerticalLayout implements View {
 	private void prepareTextMedicationArea(){
 		
 	medicationSummaryTable=new Table();
+	medicationSummaryTable.setWidth("100%");
+	medicationSummaryTable.setHeight("96px%");
 	medicationSummaryTable.setPageLength(3);
 	
 	medicationSummaryTable.addContainerProperty("Medication Summary", String.class, null);
