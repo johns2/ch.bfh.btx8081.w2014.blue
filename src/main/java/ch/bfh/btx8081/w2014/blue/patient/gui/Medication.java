@@ -35,7 +35,6 @@ public class Medication extends VerticalLayout implements View {
 	private AbsoluteLayout mainLayout;
 	private VerticalLayout verticalLayout;
 	private ComboBox calendarList;
-	// private Button showInfoButton;
 	private Button homeButton;
 	private PatientMainDesign design;
 	private Table medicationsTable;
@@ -46,9 +45,8 @@ public class Medication extends VerticalLayout implements View {
 	 */
 
 	public Medication(ControllerMedication controllerMedication) {
-		// buildVerticalLayout_1();
+		
 		this.controllerMedication = controllerMedication;
-		// this.controllerMedication.setMedication(this);
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
@@ -62,7 +60,6 @@ public class Medication extends VerticalLayout implements View {
 
 	private void createLayout() {
 		design.setTitleLabel("Medication");
-		// medication=new Table ("medication");
 		verticalLayout = buildVerticalLayout_1();
 		mainLayout.addComponent(verticalLayout, "top:80.0px;left:30.0px;");
 
@@ -86,12 +83,10 @@ public class Medication extends VerticalLayout implements View {
 				.setComponentAlignment(calendarList, Alignment.TOP_CENTER);
 
 		medicationsTable = new Table("Please select a day");
-		medicationsTable.setWidth("100%");
-		medicationsTable.setHeight("140px");
 		medicationsTable.addContainerProperty("Medication", String.class, null);
 		medicationsTable.addContainerProperty("Dosage", Integer.class, null);
 		medicationsTable.addContainerProperty("Time", String.class, null);
-
+		medicationsTable.setPageLength(0);
 		verticalLayout.addComponent(medicationsTable);
 		verticalLayout.setComponentAlignment(medicationsTable,
 				Alignment.TOP_CENTER);
@@ -165,18 +160,11 @@ public class Medication extends VerticalLayout implements View {
 			}
 
 		}
-		medicationsTable.setPageLength(medicationsTable.size());
+		medicationsTable.setPageLength(0);
 	}
 
 	public void enter(ViewChangeEvent event) {
 
-		/*
-		 * for (String medicationName :
-		 * controllerMedication.getMedicationDays()) {
-		 * calendarList.addItem(medicationName);
-		 * 
-		 * }
-		 */
 		calendarList.addValueChangeListener(new ValueChangeListener() {
 
 			@Override
@@ -188,10 +176,6 @@ public class Medication extends VerticalLayout implements View {
 			}
 		});
 
-		/*
-		 * calendarList.removeAllItems(); calendarList.addItems("Monday",
-		 * "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-		 */
 	}
 
 }
