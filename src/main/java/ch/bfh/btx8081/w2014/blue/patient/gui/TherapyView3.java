@@ -9,8 +9,9 @@ import java.util.List;
 
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerTherapy;
 import ch.bfh.btx8081.w2014.blue.patient.controller.ControllerUI;
-import ch.bfh.btx8081.w2014.blue.patient.model.TaskModel;
 
+import com.vaadin.annotations.Theme;
+import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.Action;
@@ -18,6 +19,8 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page;
+import com.vaadin.server.Page.Styles;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -52,9 +55,8 @@ public class TherapyView3 extends VerticalLayout implements View {
 	private ControllerTherapy therapyController;
 	private ColumnGenerator OkColumn;
 	private ColumnGenerator NotOkColumn;
-	protected Button buttonNext1;
-	protected Button buttonBack2;
-
+	private Button buttonNext1;
+	private Button buttonBack2;
 
 	/**
 	 * Constructs a THERAPYVIEW3 on the base of different parameters.
@@ -67,8 +69,18 @@ public class TherapyView3 extends VerticalLayout implements View {
 		design = new PatientMainDesign(this);
 		layout = design.getLayout();
 		mainLayout = design.getMainLayout();
+		Styles styles = Page.getCurrent().getStyles();
+		// inject the colors for goal table here
+		styles.add(".v-table-row.v-table-row-highlight-green, .v-table-row-odd.v-table-row-highlight-green { background-color: #00ff00;}");
+		styles.add(".v-table-row.v-table-row-highlight-red, .v-table-row-odd.v-table-row-highlight-red { background-color: #ff0000;}");
+		styles.add(".v-table-row.v-table-row-highlight-orange, .v-table-row-odd.v-table-row-highlight-orange { background-color: #ff6600;}");
 		buildVerticalLayout_23();
 		createLayout();
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		buildTaskList();
 	}
 
 	/**
@@ -115,19 +127,20 @@ public class TherapyView3 extends VerticalLayout implements View {
 		goalTable.addContainerProperty("Date", String.class, "");
 		goalTable.addGeneratedColumn("Done", getOkColumn());
 		goalTable.addGeneratedColumn("Not Done", getNotOkColumn());
-		goalTable.setSelectable(true);
+		goalTable.setSelectable(false);
 
 		verticalLayout.addComponent(goalTable);
 		verticalLayout.setComponentAlignment(goalTable, Alignment.TOP_CENTER);
-		
+
 		// Button for OK
 
 		buttonOk = new Button("Done");
 		buttonOk.setIcon(FontAwesome.CHECK);
 		buttonOk.setWidth("40%");
 		buttonOk.setHeight("-1px");
-		//verticalLayout.addComponent(buttonOk);
-		//verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
+		// verticalLayout.addComponent(buttonOk);
+		// verticalLayout.setComponentAlignment(buttonOk,
+		// Alignment.MIDDLE_CENTER);
 
 		buttonOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -167,13 +180,14 @@ public class TherapyView3 extends VerticalLayout implements View {
 			@Override
 			public void valueChange(final ValueChangeEvent event) {
 				valueString = String.valueOf(event.getProperty().getValue());
-				Notification.show("Value changed:", valueString,
-						Type.TRAY_NOTIFICATION);
+				// Notification.show("Value changed:", valueString,
+				// Type.TRAY_NOTIFICATION);
 			}
 		});
 
-		//verticalLayout.addComponent(buttonOk);
-		//verticalLayout.setComponentAlignment(buttonOk, Alignment.MIDDLE_CENTER);
+		// verticalLayout.addComponent(buttonOk);
+		// verticalLayout.setComponentAlignment(buttonOk,
+		// Alignment.MIDDLE_CENTER);
 
 		// Button for NOT OK
 
@@ -181,9 +195,9 @@ public class TherapyView3 extends VerticalLayout implements View {
 		buttonNotOk.setIcon(FontAwesome.TIMES);
 		buttonNotOk.setWidth("40%");
 		buttonNotOk.setHeight("-1px");
-		//verticalLayout.addComponent(buttonNotOk);
-		//verticalLayout.setComponentAlignment(buttonNotOk,
-			//	Alignment.MIDDLE_CENTER);
+		// verticalLayout.addComponent(buttonNotOk);
+		// verticalLayout.setComponentAlignment(buttonNotOk,
+		// Alignment.MIDDLE_CENTER);
 
 		buttonNotOk.addClickListener(new Button.ClickListener() {
 			public void buttonClick(ClickEvent event) {
@@ -196,9 +210,7 @@ public class TherapyView3 extends VerticalLayout implements View {
 
 			}
 		});
-		
 
-		
 		// Button for got o 1 step back
 
 		buttonBack2 = new Button("GO back");
@@ -210,13 +222,12 @@ public class TherapyView3 extends VerticalLayout implements View {
 				ControllerUI.navigateTo(ControllerUI.THERAPYVIEW);
 
 			}
-			
+
 		});
 
 		verticalLayout.addComponent(buttonBack2);
 		verticalLayout.setComponentAlignment(buttonBack2,
 				Alignment.BOTTOM_CENTER);
-
 
 		// Link for Mail to Doctor send
 		//
@@ -230,7 +241,7 @@ public class TherapyView3 extends VerticalLayout implements View {
 
 		return verticalLayout;
 	}
-	
+
 	public ColumnGenerator getOkColumn() {
 		OkColumn = new ColumnGenerator() {
 			@Override
@@ -240,7 +251,7 @@ public class TherapyView3 extends VerticalLayout implements View {
 				button.addClickListener(new ClickListener() {
 					@Override
 					public void buttonClick(ClickEvent event) {
-						//source.getContainerDataSource().removeItem(itemId);
+						therapyController.clickDoneButton(itemId);
 					}
 				});
 				return button;
@@ -251,23 +262,23 @@ public class TherapyView3 extends VerticalLayout implements View {
 
 	public ColumnGenerator getNotOkColumn() {
 		NotOkColumn = new ColumnGenerator() {
-		@Override
-		public Object generateCell(final Table source, final Object itemId,
-				Object columnId) {
-			Button button = new Button("Not Done");
-			button.addClickListener(new ClickListener() {
-				@Override
-				public void buttonClick(ClickEvent event) {
-					//source.getContainerDataSource().removeItem(itemId);
-				}
-			});
-			return button;
-		}
-	};
+			@Override
+			public Object generateCell(final Table source, final Object itemId,
+					Object columnId) {
+				Button button = new Button("Not Done");
+				button.addClickListener(new ClickListener() {
+					@Override
+					public void buttonClick(ClickEvent event) {
+						therapyController.clickNotDoneButton(itemId);
+					}
+				});
+				return button;
+			}
+		};
 		return NotOkColumn;
 	}
 
-	public void buildTaskList(){
+	public void buildTaskList() {
 		goalTable.removeAllItems();
 		int objectCounter = 0;
 		for (Object[] goalData : therapyController.getTasksOfTherapy()) {
@@ -275,11 +286,22 @@ public class TherapyView3 extends VerticalLayout implements View {
 					(String) goalData[1] }, objectCounter);
 			objectCounter++;
 		}
-	}
-	
-	@Override
-	public void enter(ViewChangeEvent event) {
-		buildTaskList();
+		changeRowColor(goalTable, "highlight-red", "highlight-red");
 	}
 
+	// color argument prüfen
+	public void changeRowColor(Object itemToChange, String color,
+			String oldColor) {
+		goalTable.setCellStyleGenerator(new Table.CellStyleGenerator() {
+			@Override
+			public String getStyle(Table source, Object chosenItem,
+					Object propertyId) {
+				if (itemToChange.equals(chosenItem)) {
+					return color;
+				} else {
+					return oldColor;
+				}
+			}
+		});
+	}
 }

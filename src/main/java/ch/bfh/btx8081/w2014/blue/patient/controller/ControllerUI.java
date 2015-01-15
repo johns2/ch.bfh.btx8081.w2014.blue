@@ -13,6 +13,7 @@ import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView3;
 import ch.bfh.btx8081.w2014.blue.patient.model.UserData;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -29,7 +30,6 @@ public class ControllerUI extends UI {
 	public static final String HOMEVIEW = "home";
 	public static final String LOGINVIEW = "login";
 	public static final String THERAPYVIEW = "therapy";
-	public static final String THERAPYVIEW2 = "therapy2";
 	public static final String THERAPYVIEW3 = "therapy3";
 	public static final String MEDICATION = "medication";
 

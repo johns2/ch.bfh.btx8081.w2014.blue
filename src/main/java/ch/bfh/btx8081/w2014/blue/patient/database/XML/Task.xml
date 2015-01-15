@@ -3,11 +3,11 @@
 	<task>
 		<goal>Stop smoking for seven days</goal>
 		<date>01.01.2015</date>
-		<taskState>NotSolved</taskState>
+		<taskstate>NotSolved</taskstate>
 	</task>
 	<task>
 		<goal>Stop drinking alcohol for five days</goal>
 		<date>02.01.2015</date>
-		<taskState>NotSolved</taskState>
+		<taskstate>NotSolved</taskstate>
 	</task>
 </tasks>

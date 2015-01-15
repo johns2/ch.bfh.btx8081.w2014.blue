@@ -18,8 +18,20 @@ import ch.bfh.btx8081.w2014.blue.patient.controller.ToImprove;
  *
  */
 public class TaskModel {
-	private static ITaskState therapyState;
 	private String taskState;
+	private int taskImproveState;
+	public int getTaskImproveState() {
+		return taskImproveState;
+	}
+	
+	public synchronized void incrementTaskImproveState(){
+		taskImproveState++;
+	}
+
+	public void setTaskImproveState(int taskImproveState) {
+		this.taskImproveState = taskImproveState;
+	}
+
 	private String taskGoal;
 	private String taskMessage;
 	private String taskDate;
@@ -38,11 +50,11 @@ public class TaskModel {
 		this.taskDate = taskDate;
 	}
 
-	public String getTaskTitle() {
+	public String getTaskState() {
 		return taskState;
 	}
 
-	public void setTaskTitle(String taskTitle) {
+	public void setTaskState(String taskTitle) {
 		this.taskState = taskTitle;
 	}
 
@@ -62,30 +74,30 @@ public class TaskModel {
 		this.taskMessage = taskMessage;
 	}
 
-	public ITaskState getTherapyState() {
-		return therapyState;
-	}
-
-	public static void setTherapyState(Item taskEntry, String actualState) {
-		if (actualState.equals("NotSolved")) {
-			therapyState = new NotSolved(taskEntry);
-		} else if (actualState.equals("ToImprove")) {
-			therapyState = new ToImprove(taskEntry);
-		} else {
-			therapyState = new Solved(taskEntry);
-		}
-	}
-
-	public void clickCheckMark() {
-		therapyState.clickCheckMark();
-	}
-
-	public void clickXMark() {
-		therapyState.clickXMark();
-
-	}
-
-	public void changeColor() {
-		therapyState.changeColor();
-	}
+//	public ITaskState getTherapyState() {
+//		return therapyState;
+//	}
+//
+//	public static void setTherapyState(Item taskEntry, String actualState) {
+//		if (actualState.equals("NotSolved")) {
+//			therapyState = new NotSolved(taskEntry);
+//		} else if (actualState.equals("ToImprove")) {
+//			therapyState = new ToImprove(taskEntry);
+//		} else {
+//			therapyState = new Solved(taskEntry);
+//		}
+//	}
+//
+//	public void clickCheckMark() {
+//		therapyState.clickDoneButton();
+//	}
+//
+//	public void clickXMark() {
+//		therapyState.clickNotDoneButton();
+//
+//	}
+//
+//	public void changeColor() {
+//		therapyState.changeColor();
+//	}
 }

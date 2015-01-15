@@ -3,6 +3,7 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vaadin.data.Item;
 import com.vaadin.ui.CheckBox;
 
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView;
@@ -20,10 +21,15 @@ public class ControllerTherapy {
 	private List<TherapyModel> therapies;
 	private TherapyView therapyView;
 	private TherapyView3 therapyView3;
+	private Solved solvedController = new Solved();
+	private NotSolved notSolvedController = new NotSolved();
+	private ToImprove toImproveController = new ToImprove();
 	private ArrayList<Object[]> taskData = new ArrayList<Object[]>();
 	private ArrayList<String> therapyNames = new ArrayList<String>();
 	private ArrayList<String> therapyDescriptions = new ArrayList<String>();
 	private ArrayList<String> therapyPurpose = new ArrayList<String>();
+	private TaskModel taskToChange;
+	private TaskModel changedTask;
 
 	public ControllerTherapy(List<TherapyModel> list, TherapyView therapyView,
 			TherapyView3 therapyView3) {
@@ -38,9 +44,11 @@ public class ControllerTherapy {
 
 	public void setTherapyView3(TherapyView3 therapyView3) {
 		this.therapyView3 = therapyView3;
+		solvedController.setView(therapyView3);
+		notSolvedController.setView(therapyView3);
+		toImproveController.setView(therapyView3);
 	}
 
-	
 	/**
 	 * Returns the tasks of a therapy
 	 * 
@@ -68,7 +76,7 @@ public class ControllerTherapy {
 		}
 		return therapyNames;
 	}
-	
+
 	/**
 	 * Returns the description texts of the therapies
 	 * 
@@ -80,6 +88,7 @@ public class ControllerTherapy {
 		}
 		return therapyDescriptions;
 	}
+
 	/**
 	 * Returns the purpose texts of the therapies
 	 * 
@@ -90,5 +99,43 @@ public class ControllerTherapy {
 			therapyPurpose.add(therapy.getPurpose());
 		}
 		return therapyPurpose;
+	}
+
+	public void clickDoneButton(Object itemId) {
+		taskToChange = therapies.get(0).getTasks().get((int) itemId);
+		if (changedTask == null){
+			changedTask = taskToChange;
+		}
+		if (taskToChange.getTaskState().equals("Solved")) {
+			taskToChange = solvedController.clickDoneButton(changedTask,
+					itemId);
+		} else if (taskToChange.getTaskState().equals("ToImprove")) {
+			taskToChange = toImproveController.clickDoneButton(changedTask,
+					itemId);
+		} else {
+			taskToChange = notSolvedController.clickDoneButton(changedTask,
+					itemId);
+		}
+		therapies.get(0).getTasks().set((int) itemId, taskToChange);
+	}
+
+	public void clickNotDoneButton(Object itemId) {
+		taskToChange = therapies.get(0).getTasks().get((int) itemId);
+		if (changedTask == null){
+			changedTask = taskToChange;
+		}
+		if (taskToChange.getTaskState().equals("Solved")) {
+			changedTask = solvedController.clickNotDoneButton(changedTask,
+					itemId);
+		} else if (taskToChange.getTaskState()
+				.equals("ToImprove")) {
+			changedTask = toImproveController.clickNotDoneButton(changedTask,
+					itemId);
+		} else {
+			changedTask = notSolvedController.clickNotDoneButton(changedTask,
+					itemId);
+		}
+		therapies.get(0).getTasks().set((int) itemId, changedTask);
+
 	}
 }

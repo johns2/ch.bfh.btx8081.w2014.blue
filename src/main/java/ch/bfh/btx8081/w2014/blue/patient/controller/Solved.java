@@ -1,6 +1,7 @@
 package ch.bfh.btx8081.w2014.blue.patient.controller;
 
-import com.vaadin.data.Item;
+import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView3;
+import ch.bfh.btx8081.w2014.blue.patient.model.TaskModel;
 
 /**
  * This controller will implement the methods of a solved <code>Task</code>
@@ -9,28 +10,29 @@ import com.vaadin.data.Item;
  *
  */
 public class Solved implements ITaskState {
+	private TherapyView3 view;
 
-	private Item taskEntry;
-	public Solved(Item taskEntry) {
-		this.taskEntry = taskEntry;
+	@Override
+	public TaskModel clickDoneButton(TaskModel taskToChange, Object itemId) {
+		taskToChange.setTaskImproveState(0);
+		return taskToChange;
 	}
 
 	@Override
-	public void clickCheckMark() {
-		// TODO Auto-generated method stub
-
+	public TaskModel clickNotDoneButton(TaskModel taskToChange, Object itemId) {
+		taskToChange.incrementTaskImproveState();
+		if (taskToChange.getTaskImproveState() < 3) {
+			view.changeRowColor(itemId, "highlight-orange", "highlight-green");
+		} else {
+			view.changeRowColor(itemId, "highlight-red", "highlight-green");
+			taskToChange.setTaskState("NotSolved");
+		}
+		return taskToChange;
 	}
 
 	@Override
-	public void clickXMark() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void changeColor() {
-		// TODO Auto-generated method stub
-
+	public void setView(TherapyView3 therapyView3) {
+		this.view = therapyView3;
 	}
 
 }
