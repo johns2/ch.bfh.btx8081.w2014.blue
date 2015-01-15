@@ -178,7 +178,7 @@ public class HomeView extends VerticalLayout implements View {
 		
 	medicationSummaryTable=new Table();
 	medicationSummaryTable.setWidth("100%");
-	medicationSummaryTable.setHeight("96px%");
+	medicationSummaryTable.setHeight("96px");
 	medicationSummaryTable.setPageLength(3);
 	
 	medicationSummaryTable.addContainerProperty("Medication Summary", String.class, null);
