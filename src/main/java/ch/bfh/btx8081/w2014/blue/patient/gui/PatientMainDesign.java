@@ -87,23 +87,42 @@ public class PatientMainDesign {
 		lowerHorizontalLayout.addStyleName("mylayout");
 	}
 
-	
+	/**
+	 * 
+	 * @return the layout
+	 */
 	public VerticalLayout getLayout() {
 		return layout;
 	}
 
+	/**
+	 * 
+	 * @return the mainLayout
+	 */
 	public AbsoluteLayout getMainLayout() {
 		return mainLayout;
 	}
 
+	/**
+	 * 
+	 * @return the upperVerticalLayout
+	 */
 	public VerticalLayout getUpperVerticalLayout() {
 		return upperVerticalLayout;
 	}
 
+	/**
+	 * 
+	 * @return the lowerHorizontalLayout
+	 */
 	public HorizontalLayout getLowerHorizontalLayout() {
 		return lowerHorizontalLayout;
 	}
 
+	/**
+	 * 
+	 * @param title set the title label to the given title
+	 */
 	public void setTitleLabel(String title) {
 
 		this.title = new Label(title);
@@ -115,6 +134,9 @@ public class PatientMainDesign {
 				Alignment.MIDDLE_CENTER);
 	}
 
+	/**
+	 * create CSS for the mainLayout
+	 */
 	private void createCssForMainLayout() {
 
 		styles.add(".mainlayout {"
@@ -128,6 +150,10 @@ public class PatientMainDesign {
 	}
 
 
+	/**
+	 * 
+	 * @return the style
+	 */
 	public Styles getStyles() {
 		return styles;
 	}
