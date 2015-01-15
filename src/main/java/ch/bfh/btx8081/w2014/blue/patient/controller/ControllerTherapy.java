@@ -3,9 +3,6 @@ package ch.bfh.btx8081.w2014.blue.patient.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.data.Item;
-import com.vaadin.ui.CheckBox;
-
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView;
 import ch.bfh.btx8081.w2014.blue.patient.gui.TherapyView3;
 import ch.bfh.btx8081.w2014.blue.patient.model.TaskModel;
@@ -102,7 +99,7 @@ public class ControllerTherapy {
 	}
 
 	public void clickDoneButton(Object itemId) {
-		taskToChange = therapies.get(0).getTasks().get((int) itemId);
+		taskToChange = therapies.get(0).getTasks().get((Integer) itemId);
 		if (changedTask == null){
 			changedTask = taskToChange;
 		}
@@ -116,11 +113,11 @@ public class ControllerTherapy {
 			taskToChange = notSolvedController.clickDoneButton(changedTask,
 					itemId);
 		}
-		therapies.get(0).getTasks().set((int) itemId, taskToChange);
+		therapies.get(0).getTasks().set((Integer) itemId, taskToChange);
 	}
 
 	public void clickNotDoneButton(Object itemId) {
-		taskToChange = therapies.get(0).getTasks().get((int) itemId);
+		taskToChange = therapies.get(0).getTasks().get((Integer) itemId);
 		if (changedTask == null){
 			changedTask = taskToChange;
 		}
@@ -135,7 +132,7 @@ public class ControllerTherapy {
 			changedTask = notSolvedController.clickNotDoneButton(changedTask,
 					itemId);
 		}
-		therapies.get(0).getTasks().set((int) itemId, changedTask);
+		therapies.get(0).getTasks().set((Integer) itemId, changedTask);
 
 	}
 }
